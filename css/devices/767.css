@@ -1,0 +1,70 @@
+/*------------------------------------------------------------------*/ 
+/*	2) Note: Design for a width of 480 px
+/*------------------------------------------------------------------*/
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+/*------------------------------------------------------------------*/ 
+/*	1) Header
+/*------------------------------------------------------------------*/
+.logo{margin-left:0; width:100%; text-align:center;}
+.search{margin:0 90px 10px 0;}
+.device-menu{ display:block; margin-top:10px;}
+ul.sf-menu { display:none; }
+
+/*------------------------------------------------------------------*/ 
+/*	2) Slider
+/*------------------------------------------------------------------*/
+.main-slider {
+	width:400px;
+}
+.slider2, .slider3{
+	display:none;
+}
+/*------------------------------------------------------------------*/ 
+/*	3) Content
+/*------------------------------------------------------------------*/
+.main-content{
+	width:100%;
+}
+.outertight{
+	width:100%;
+	margin-right:0;
+}
+.outertight img{
+	max-width:100%;
+}
+.outerwide{
+	width:100%;
+}
+.wnews li{
+	width:400px;
+}
+.wnews li img{
+	max-width:200px;
+}
+
+.block2 li{
+	width:100%;
+	margin-right:0;
+}
+/*------------------------------------------------------------------*/ 
+/*	3) Comments
+/*------------------------------------------------------------------*/
+.commment-text-wrap{
+	width:280px;
+}
+ul.children li div.commment-text-wrap{
+	width:250px;
+}
+ul.children li li div.commment-text-wrap{
+	width:220px;
+}
+ul.children li li li div.commment-text-wrap{
+	width:190px;
+}
+.form textarea{
+	width:380px;
+}
+
+
+}
