@@ -1,0 +1,62 @@
+/*------------------------------------------------------------------*/ 
+/*	1) Note: Design for a width of 768 px
+/*------------------------------------------------------------------*/
+@media only screen and (min-width: 768px) and (max-width: 1000px) {
+/*------------------------------------------------------------------*/ 
+/*	1) Header
+/*------------------------------------------------------------------*/
+.logo{margin-left:0;}
+ul.sf-menu { display:none; }
+.device-menu{ display:block; }
+
+/*------------------------------------------------------------------*/ 
+/*	2) Slider
+/*------------------------------------------------------------------*/
+.main-slider {
+	width:748px;
+}
+.slider2, .slider3{
+	display:none;
+}
+
+/*------------------------------------------------------------------*/ 
+/*	3) Content
+/*------------------------------------------------------------------*/
+.main-content{
+	width:512px;
+}
+.outertight{
+	width:236px;
+}
+.outertight img, .wnews li img{
+	max-width:236px;
+}
+.outerwide{
+	width:492px;
+}
+.wnews li{
+	width:492px;
+}
+.block2 li{
+	width:236px;
+}
+
+/*------------------------------------------------------------------*/ 
+/*	3) Comments
+/*------------------------------------------------------------------*/
+.commment-text-wrap{
+	width:370px;
+}
+ul.children li div.commment-text-wrap{
+	width:340px;
+}
+ul.children li li div.commment-text-wrap{
+	width:310px;
+}
+ul.children li li li div.commment-text-wrap{
+	width:280px;
+}
+.form textarea{
+	width:470px;
+}
+}

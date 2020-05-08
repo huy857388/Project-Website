@@ -1,0 +1,79 @@
+/*------------------------------------------------------------------*/ 
+/*	3) Note: Design for a width of 320 px
+/*------------------------------------------------------------------*/
+@media only screen and (min-width: 200px) and (max-width: 479px){
+
+/*------------------------------------------------------------------*/ 
+/*	1) Header
+/*------------------------------------------------------------------*/
+.logo{margin-left:0; width:100%; text-align:center;}
+.logo img{max-width:300px;}
+.search{margin:0 40px 10px 0;}
+.device-menu{ display:block; margin-top:10px;}
+ul.sf-menu { display:none; }
+
+/*------------------------------------------------------------------*/ 
+/*	3) Slider
+/*------------------------------------------------------------------*/
+.main-slider {
+	width:300px;
+	margin:0;
+}
+.slider2, .slider3{
+	display:none;
+}
+/*------------------------------------------------------------------*/ 
+/*	3) Content
+/*------------------------------------------------------------------*/
+.main-content{
+	width:100%;
+}
+.outertight{
+	width:100%;
+	margin-right:0;
+}
+.outertight img{
+	max-width:100%;
+}
+.outerwide{
+	width:100%;
+}
+.wnews li{
+	width:300px;
+}
+.wnews li img{
+	max-width:140px;
+}
+
+.block2 li{
+	width:100%;
+	margin-right:0;
+}
+.relatednews ul li:nth-child(2n){
+	margin-right:0;
+}
+/*------------------------------------------------------------------*/ 
+/*	4) Comments
+/*------------------------------------------------------------------*/
+.commment-text-wrap{
+	width:180px;
+}
+ul.children li div.commment-text-wrap{
+	width:180px;
+}
+ul.children li li div.commment-text-wrap{
+	width:180px;
+}
+ul.children li li li div.commment-text-wrap{
+	width:180px;
+}
+ul.children{
+	margin-left:0;
+	border:0;
+	margin-left:-19px;
+}
+.form textarea{
+	width:278px;
+}
+
+}
