@@ -60,7 +60,7 @@
                         <ul class="sf-menu">
                             <li class="current"><a href="index-2.html">TRANG CHỦ</a></li>
                             <li><a href="reviews.html">HOT</a></li>
-                            <li><a href="reviews.html">NEW</a></li>
+                            <li><a href="reviews.html">Tin tức</a></li>
                             <li>
 
                             	<a href="#">THỂ LOẠI</a>
@@ -84,7 +84,7 @@
                                     <li><i class="icon-right-open"></i><a href="#">LỊCH TRÌNH.</a></li>
                                 </ul>
                             </li> -->
-                            <li><a href="contact.html">ĐĂNG NHẬP</a></li>  
+                            <li><a href="{{route('login')}}">ĐĂNG NHẬP</a></li>  
                               <li><a href="contact.html">ĐĂNG KÍ</a></li>                        
                         </ul>
                         
@@ -100,7 +100,7 @@
             <div class="container">
                 <div class="main-slider">
                 	<div class="badg">
-                    	<p><a href="#">HOT</a></p>
+                    	<p><a href="#">Nóng</a></p>
                     </div>
                 	<div class="flexslider">
                         <ul class="slides">
