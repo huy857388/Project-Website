@@ -26,3 +26,13 @@ Route::get('/login',function(){
 
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
 Route::get('/callback/{provider}', 'SocialController@callback');
+route::get('/singel',function(){
+	return view('View.singel');
+
+});
+route::get('/danhmuc',function(){
+	return view('View.DanhMuc');
+});
+route::get('/Top-rating',function(){
+	return view('View.toprating');
+});
