@@ -56,13 +56,13 @@
                                 </button>
 
                                 <a href="{{url('/auth/redirect/facebook')}}">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="button" class="btn btn-primary">
                                         Facebook
                                     </button>
                                 </a>
 
                                 <a href="{{url('/auth/redirect/google')}}">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="button" class="btn btn-primary">
                                         Google
                                     </button>
                                 </a>

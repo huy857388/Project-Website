@@ -23,6 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $data = @file_get_contents("https://doantnnhom3.000webhostapp.com/api/news/read.php");
+
+        var_dump(json_decode($data));
+        // Có thể dùng Curl
         return view('home');
     }
 }
