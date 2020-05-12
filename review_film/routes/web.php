@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('View.home_index');
+    return view('views.home');
 });
 
 Auth::routes();
@@ -27,12 +27,12 @@ Route::get('/login',function(){
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
 Route::get('/callback/{provider}', 'SocialController@callback');
 route::get('/singel',function(){
-	return view('View.singel');
+	return view('pages.singel');
 
 });
 route::get('/danhmuc',function(){
-	return view('View.DanhMuc');
+	return view('pages.DanhMuc');
 });
 route::get('/Top-rating',function(){
-	return view('View.toprating');
+	return view('pages.toprating');
 });

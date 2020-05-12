@@ -1,4 +1,4 @@
-@extends('view.template') 
+@extends('layouts.master') 
         <!-- /Header -->
 @section('content')
         <!-- Slider -->
