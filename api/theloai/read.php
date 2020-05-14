@@ -13,11 +13,11 @@ $database = new Database();
 $db = $database->getConnection();
   
 // initialize object
-$news = new TheLoai($db);
+$theloai = new TheLoai($db);
   
 // read products will be here
 // query products
-$stmt = $news->read();
+$stmt = $theloai->read();
 $num = $stmt->rowCount();
   
 // check if more than 0 record found

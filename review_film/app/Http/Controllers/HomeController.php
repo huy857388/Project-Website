@@ -27,6 +27,8 @@ class HomeController extends Controller
 
         var_dump(json_decode($data));
         // Có thể dùng Curl
+
+        // Thêm, xoá , tìm kiếm như thế nào?
         return view('home');
     }
 }

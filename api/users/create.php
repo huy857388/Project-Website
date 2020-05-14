@@ -10,46 +10,36 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 include_once '../config/database.php';
   
 // instantiate product object
-include_once '../objects/news.php';
+include_once '../objects/users.php';
   
 $database = new Database();
 $db = $database->getConnection();
   
-$news = new News($db);
+$user = new User($db);
   
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
   
 // make sure data is not empty
 if(
-    !empty($data->idTheLoai) &&
-    !empty($data->title) &&
-    !empty($data->img) &&
-    !empty($data->short_content) &&
-    !empty($data->content) &&
-    !empty($data->hot) &&
-    !empty($data->new) &&
-    !empty($data->deCu) 
+    !empty($data->name) &&
+    !empty($data->email) &&
+    !empty($data->password)
 ){
   
     // set product property values
-    $news->idTheLoai = $data->idTheLoai;
-    $news->title = $data->title;
-    $news->img = $data->img;
-    $news->short_content = $data->short_content;
-    $news->content = $data->content;
-    $news->hot = $data->hot;
-    $news->new = $data->new;
-    $news->deCu = $data->deCu;
+    $user->name = $data->name;
+    $user->email = $data->email;
+    $user->password = $data->password;
   
     // create the product
-    if($news->create()){
+    if($user->create()){
   
         // set response code - 201 created
         http_response_code(201);
   
         // tell the user
-        echo json_encode(array("message" => "News was created."));
+        echo json_encode(array("message" => "User was created."));
     }
   
     // if unable to create the product, tell the user
@@ -59,7 +49,7 @@ if(
         http_response_code(503);
   
         // tell the user
-        echo json_encode(array("message" => "Unable to create news."));
+        echo json_encode(array("message" => "Unable to create user."));
     }
 }
   
@@ -70,6 +60,6 @@ else{
     http_response_code(400);
   
     // tell the user
-    echo json_encode(array("message" => "Unable to create news. Data is incomplete."));
+    echo json_encode(array("message" => "Unable to create user. Data is incomplete."));
 }
 ?>
