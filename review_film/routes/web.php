@@ -12,6 +12,7 @@
 */
 
 Route::get('/','HomeController@index');
+route::get('/single','HomeController@single');
 
 Auth::routes();
 
@@ -24,10 +25,7 @@ Route::get('/login',function(){
 
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
 Route::get('/callback/{provider}', 'SocialController@callback');
-route::get('/singel',function(){
-	return view('pages.singel');
 
-});
 route::get('/danhmuc',function(){
 	return view('pages.DanhMuc');
 });
