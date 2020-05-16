@@ -1,0 +1,8 @@
+mấy thanh niên vào thì chạy cái để có database
+Trước tiên chạy
+Bước 1: lên phpadmin tạo database tên là: rvphim
+Bước 2 : mở cmd tại folder review_film
+Bước 3: Gõ php artisan migrate
+Bước 4: Gõ php artisan db:seed
+*Lưu ý: có thể cần composer, ai chưa cài thì cài vào
+=> đã có database

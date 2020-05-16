@@ -11,8 +11,17 @@
                                 <li><a href="#tabs3">BÌNH LUẬN</a></li>
                             </ul>
                             <div id="tabs1">
-                                <ul><!--chạy for max 4 cái-->
+                                <ul>
+                                    <!--chạy for max 4 cái-->
+                                    <!-- Phần này t làm chưa hoàn chỉnh -->
+                                    @foreach($ds_new as $news)
                                     <li>
+                                        <a href="#" class="title">{{$news['short_content']}}</a>
+                                        <span class="meta">{{$news['created_at']}}   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
+                                        <span class="rating"><span style="width:70%;"></span></span>
+                                    </li>
+                                    @endforeach
+                                   <!--  <li>
                                         <a href="#" class="title">Blandit Rutrum, Erat et Sagittis Adipcising Elit.</a>
                                         <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
                                         <span class="rating"><span style="width:70%;"></span></span>
@@ -21,13 +30,21 @@
                                         <a href="#" class="title">Blandit Rutrum, Erat et Sagittis Adipcising Elit.</a>
                                         <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
                                         <span class="rating"><span style="width:70%;"></span></span>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                             <div id="tabs2">
                                 <ul>
-                                    <!--chạy for max 4 cái-->
+                                    <!-- chạy for max 4 cái  -->
+                                    <!-- Phần này t làm chưa hoàn chỉnh -->
+                                    @foreach($ds_hot as $news)
                                     <li>
+                                        <a href="#" class="title">{{$news['short_content']}}</a>
+                                        <span class="meta">{{$news['created_at']}}   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
+                                        <span class="rating"><span style="width:70%;"></span></span>
+                                    </li>
+                                    @endforeach
+                                   <!--  <li>
                                         <a href="#" class="title">Mauris eleifend est et turpis. Duis id erat.</a>
                                         <span class="meta">27 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
                                         <span class="rating"><span style="width:70%;"></span></span>
@@ -36,13 +53,20 @@
                                         <a href="#" class="title">Mauris eleifend est et turpis. Duis id erat.</a>
                                         <span class="meta">27 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
                                         <span class="rating"><span style="width:70%;"></span></span>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                             <div id="tabs3">
                                 <ul>
                                     <!--chạy for max 4 cái-->
+                                    <!-- Chỗ này chạy bình luận của tin nào vậy? -->
+                                    <!-- T để tạm tất cả  các thông tin sơ bình luận đó -->
+                                    @foreach($ds_cmt as $cmt)
                                     <li>
+                                        <a href="#" class="title"><strong>tài khoản {{$cmt['idUser']}} bình luận: </strong> {{$cmt['NoiDung']}}</a>
+                                    </li>
+                                    @endforeach
+                                   <!--  <li>
                                         <a href="#" class="title"><strong>Someone:</strong> eleifend est et turpis. Duis id erat.Mauris eleifend est et turpis. Duis id erat.</a>
                                     </li>
                                     <li>
@@ -50,7 +74,7 @@
                                     </li>
                                     <li>
                                         <a href="#" class="title"><strong>Someone:</strong> eleifend est et turpis. Duis id erat.Mauris eleifend est et turpis. Duis id erat.</a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>

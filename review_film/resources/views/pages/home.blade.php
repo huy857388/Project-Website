@@ -10,7 +10,15 @@
                     </div>
                 	<div class="flexslider">
                         <ul class="slides">
+                            @foreach($ds_hot as $news)
+                            
                             <li>
+                                <img src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" />
+                                <p class="flex-caption"><a href="#">{{$news['short_content']}}</a> 
+                                {{$news['content']}}</p>";
+                            </li>
+                            @endforeach
+                           <!--  <li>
                                 <img src="{{url('public/img/flexslider/1.png')}}" alt="MyPassion" />
                                 <p class="flex-caption"><a href="#">Google wants more women in tech.</a> Donec bibendum dolor at ante. Proin neque dui, pre tium quis fringilla ut,  sodales sed. </p>
                             </li>
@@ -29,7 +37,7 @@
                             <li>
                                 <img src="{{url('public/img/flexslider/2.png')}}" alt="MyPassion" />
                                 <p class="flex-caption"><a href="#">Stress may cause cravings.</a> Donec bibendum dolor at ante. Proin neque dui, pre tium quis fringilla ut,  sodales sed. </p>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -38,18 +46,19 @@
                 	<div class="badg">
                     	<p><a href="#">ĐỀ CỬ</a></p>
                     </div>
-                    <a href=""><img src="{{url('public/img/flexslider/6.png')}}" alt="MyPassion" /></a>
-                    <p class="caption"><a href="#">We Are News.</a> Donec bibendum dolor at ante. Proin neque dui, pre tium quis fringilla ut,  sodales sed metus. </p>
+
+                    <a href="#"><img src="{{url('public/news_img/'.$ds_decu[0]['img'])}}" alt="MyPassion" /></a>
+                    <p class="caption"><a href="#">{{$ds_decu[0]['short_content']}}</a>{{$ds_decu[0]['content']}} </p>
                 </div>
                 
                 <div class="slider3">
-                	<a href="#"><img src="{{url('public/img/trash/3.png')}}" alt="MyPassion" /></a>
-                    <p class="caption"><a href="#">Happy Birthday, blue jeans! </a></p>
+                	<a href="#"><img src="{{url('public/news_img/'.$ds_decu[1]['img'])}}" alt="MyPassion" /></a>
+                    <p class="caption"><a href="#">{{$ds_decu[1]['short_content']}}</a></p>
                 </div>
                 
                 <div class="slider3">
-                	<a href="#"><img src="{{url('public/img/trash/4.png')}}" alt="MyPassion" /></a>
-                    <p class="caption"><a href="#">Fantasy Family Photos </a></p>
+                    <a href="#"><img src="{{url('public/news_img/'.$ds_decu[2]['img'])}}" alt="MyPassion" /></a>
+                    <p class="caption"><a href="#">{{$ds_decu[2]['short_content']}}</a></p>
                 </div>
                 
             </div>    
@@ -74,19 +83,39 @@
                         
                         <div class="outerwide" >
                         	<ul class="wnews" id="carousel2">
-                            	<li>
+<!--                             	<li>
                                 	<img src="{{url('public/img/trash/25.png')}}" alt="MyPassion" class="alignleft" />
                                     <h6 class="regular"><a href="#">Blandit Rutrum, Erat et Sagittis. Lorem Ipsum Dolor, Sit Amet Adipsing.</a></h6>
                                     <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
                                     <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem purus eu sapien. Curabitur a orci nec risus lacinia vehic...</p>
-                                </li>
+                                </li> -->
                                 <!-- chạy dòng for -->
+                                <!-- Phần này t làm chưa hoàn chỉnh -->
+                                @foreach($ds_hot as $news)
+                                <li>
+                                    <img src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" class="alignleft" />
+                                    <h6 class="regular"><a href="#">{{$news['short_content']}}</a></h6>
+                                    <span class="meta">{{$news['created_at']}}   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
+                                    <p>{{$news['content']}}</p>
+                                </li>
+                                @endforeach
                             </ul>
                         </div>
                         
+                        <!-- Phần này ôg chưa chú thích nè, t để tạm các tin đề cử -->
                         <div class="outerwide">
                         	<ul class="block2">
+                                @foreach($ds_decu as $news)
                                 <li>
+                                    <a href="#"><img style="width: 75px; height: 75px;" src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" class="alignleft" /></a>
+                                    <p>
+                                        <span>{{$news['created_at']}}</span>
+                                        <a href="#">{{$news['short_content']}}</a>
+                                    </p>
+                                    <span class="rating"><span style="width:80%;"></span></span>
+                                </li>
+                                @endforeach
+                               <!--  <li>
                                     <a href="#"><img src="{{url('public/img/trash/17.png')}}" alt="MyPassion" class="alignleft" /></a>
                                     <p>
                                         <span>26 May, 2013.</span>
@@ -101,7 +130,7 @@
                                         <a href="#">Blandit Rutrum, Erat et Sagittis.</a>
                                     </p>
                                     <span class="rating"><span style="width:100%;"></span></span>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>

@@ -19,7 +19,7 @@ class NewsTableSeeder extends Seeder
         	[
         		'idTheLoai' => '1',
         		'title' => 'Conan - Thám tử lừng danh', 
-        		'img' => 'unknow.jpg',
+        		'img' => 'conan.jpg',
         		'short_content' => 'truyện kể về thám tử tí hon Conan',
         		'content' => 'kể về những cuộc phá án đầy ngoạn ngục của thám tử nhí tài ba',
         		'hot' => '1',
