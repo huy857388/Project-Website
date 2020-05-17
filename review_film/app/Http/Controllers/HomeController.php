@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\News;
 use App\Comment;
 use App\TheLoai;
+use DB;
 
 class HomeController extends Controller
 {
@@ -15,21 +16,8 @@ class HomeController extends Controller
      * @return void
      */
 
-    // public $ds_theloai;
-    // public $ds_new;
-    // public $ds_decu;
-    // public $ds_hot;
-    // public $ds_cmt;
-    // public $ds_theloai;
-
     public function __construct()
     {
-        // $this->middleware('auth');
-        // $this->ds_new = News::where('new',1)->take(4)->get()->toArray();
-        // $this->ds_decu = News::where('deCu',1)->take(3)->get()->toArray();
-        // $this->ds_hot = News::where('hot',1)->get()->toArray();
-        // $this->ds_cmt = Comment::all()->toArray();
-        // $this->ds_theloai = TheLoai::all()->toArray();
     }
 
     /**
@@ -39,22 +27,53 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $ds_new = News::where('new',1)->take(4)->get()->toArray();
+        
         $ds_decu = News::where('deCu',1)->take(3)->get()->toArray();
+        $ds_new = News::where('new',1)->take(4)->get()->toArray();
         $ds_film = News::all()->toArray();
         $ds_hot = News::where('hot',1)->get()->toArray();
         $ds_cmt = Comment::all()->toArray();
         $ds_theloai = TheLoai::all()->toArray();
         // var_dump($ds_hot);
         return view('pages.home',compact('ds_decu','ds_hot','ds_new','ds_cmt','ds_theloai','ds_film'));
+        // 4 cái này hàm này cũng phải gọi nha vì nó để ở trang menu và footer mà 2 trang đó là template
+        // Nếu ko thì hãy vào layouts/menu và footer đóng lại hàm for là dc vì 2 file này dùng nó
+        
+
     }
 
-    public function single(){
+    public function single($news_id){
+
+        $news = News::find($news_id)->toArray();
+
+        // var_dump($news);
         $ds_new = News::where('new',1)->take(4)->get()->toArray();
-        $ds_decu = News::where('deCu',1)->take(3)->get()->toArray();
+       
         $ds_hot = News::where('hot',1)->get()->toArray();
         $ds_cmt = Comment::all()->toArray();
         $ds_theloai = TheLoai::all()->toArray();
-        return view('pages.single',compact('ds_decu','ds_hot','ds_new','ds_cmt','ds_theloai'));   
+        return view('pages.single',compact('news','ds_hot','ds_new','ds_cmt','ds_theloai'));   
+    }
+
+    public function topRating(){
+        // Hàm xây dựng xếp hạng theo lượt bình luận của news
+        $ds_top_news = News::join('comment','news.id','=','comment.idBaiRv')
+                    ->select('news.id','news.idTheLoai','news.title','news.img','news.short_content','news.content','news.hot','news.new','news.DeCu','news.created_at',DB::raw('count(comment.idBaiRv) as count'))
+                    ->groupBy('news.id','news.idTheLoai','news.title','news.img','news.short_content','news.content','news.hot','news.new','news.DeCu','news.created_at')
+                    ->orderBy('count','desc')
+                    ->take(10)->get()->toArray();
+        // var_dump($ds_top_news);
+        
+        // Lấy phần tử đầu ra
+        $first_news = array_shift($ds_top_news);
+        $second_news = array_shift($ds_top_news);
+        // var_dump($top_news);
+        // var_dump($ds_top_news);
+
+        $ds_new = News::where('new',1)->take(4)->get()->toArray();
+        $ds_hot = News::where('hot',1)->get()->toArray();
+        $ds_cmt = Comment::all()->toArray();
+        $ds_theloai = TheLoai::all()->toArray();
+        return view('pages.toprating',compact('ds_new','ds_hot','ds_cmt','ds_theloai','first_news','second_news','ds_top_news'));
     }
 }
