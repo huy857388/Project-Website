@@ -41,11 +41,12 @@ class HomeController extends Controller
     {
         $ds_new = News::where('new',1)->take(4)->get()->toArray();
         $ds_decu = News::where('deCu',1)->take(3)->get()->toArray();
+        $ds_film = News::all()->toArray();
         $ds_hot = News::where('hot',1)->get()->toArray();
         $ds_cmt = Comment::all()->toArray();
         $ds_theloai = TheLoai::all()->toArray();
         // var_dump($ds_hot);
-        return view('pages.home',compact('ds_decu','ds_hot','ds_new','ds_cmt','ds_theloai'));
+        return view('pages.home',compact('ds_decu','ds_hot','ds_new','ds_cmt','ds_theloai','ds_film'));
     }
 
     public function single(){

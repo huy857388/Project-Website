@@ -2,7 +2,9 @@
                 
                 <!-- Left Sidebar -->
                 <div class="column-one-third">                
-                    
+                     <div class="sidebar">
+                        <h5 class="line"><span>Review Video.</span></h5>
+                     </div>
                  <div class="sidebar">
                         <div id="tabs">
                             <ul>
@@ -44,16 +46,7 @@
                                         <span class="rating"><span style="width:70%;"></span></span>
                                     </li>
                                     @endforeach
-                                   <!--  <li>
-                                        <a href="#" class="title">Mauris eleifend est et turpis. Duis id erat.</a>
-                                        <span class="meta">27 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                                        <span class="rating"><span style="width:70%;"></span></span>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="title">Mauris eleifend est et turpis. Duis id erat.</a>
-                                        <span class="meta">27 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                                        <span class="rating"><span style="width:70%;"></span></span>
-                                    </li> -->
+                                  
                                 </ul>
                             </div>
                             <div id="tabs3">
@@ -61,20 +54,13 @@
                                     <!--chạy for max 4 cái-->
                                     <!-- Chỗ này chạy bình luận của tin nào vậy? -->
                                     <!-- T để tạm tất cả  các thông tin sơ bình luận đó -->
+                                    <!-- chạy random vài bình luận ,t chỉnh rồi đó -->
                                     @foreach($ds_cmt as $cmt)
                                     <li>
                                         <a href="#" class="title"><strong>tài khoản {{$cmt['idUser']}} bình luận: </strong> {{$cmt['NoiDung']}}</a>
                                     </li>
                                     @endforeach
-                                   <!--  <li>
-                                        <a href="#" class="title"><strong>Someone:</strong> eleifend est et turpis. Duis id erat.Mauris eleifend est et turpis. Duis id erat.</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="title"><strong>Someone:</strong> eleifend est et turpis. Duis id erat.Mauris eleifend est et turpis. Duis id erat.</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="title"><strong>Someone:</strong> eleifend est et turpis. Duis id erat.Mauris eleifend est et turpis. Duis id erat.</a>
-                                    </li> -->
+                                   
                                 </ul>
                             </div>
                         </div>
@@ -101,12 +87,16 @@
                 <div class="column-one-fourth">
                    <h5 class="line"><span>THỂ LOẠI.</span></h5>
                     <ul class="footnav"><!-- chạy dòng for -->
-                        <li><a href="#"><i class="icon-right-open"></i> KINH DỊ</a></li>
+                       <!--  @foreach($ds_theloai as $theloai)
+                <li><a href="danhmuc"><i class="icon-right-open"></i> {{$theloai['Ten']}}</a></li>
+                @endforeach -->
+                        
                     </ul>
                 </div>
                 <div class="column-one-fourth">
                     <h5 class="line"><span>GIỚI THIỆU</span></h5>
-                    <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhon cus sem purus eu sapien. Lorem ipsum dolor sit amet adipcising elit. Elit norem simuls tortor lorem adipcising purus mosteu dsapien egestas.</p>
+                    <p>Sản phẩm của nhóm 1 sử dụng laravel xây dựng website đánh giá, bàn luận film. Thành viên trong nhóm:  <br> Phạm Minh Huy - DH51603606 <br> Ngô Quốc Khánh - DH51603657 <br> Võ Hoàng Công Danh - DH51603941 <br> Hông Thuận Phát- DH51603902 <br> Nguyễn Hoàng Khang - DH51604086
+  </p>
                 </div>
                 <p class="copyright">Nhóm 1</p>
             </div>
