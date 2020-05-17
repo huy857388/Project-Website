@@ -14,7 +14,7 @@
                             
                             <li>
                                 <img src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" />
-                                <p class="flex-caption"><a href="#">{{$news['short_content']}}</a> 
+                                <p class="flex-caption"><a href="{{route('single',$news['id'])}}">{{$news['short_content']}}</a> 
                                 {{$news['content']}}</p>";
                             </li>
                             @endforeach
@@ -47,18 +47,18 @@
                     	<p><a href="#">ĐỀ CỬ</a></p>
                     </div>
 
-                    <a href="#"><img src="{{url('public/news_img/'.$ds_decu[0]['img'])}}" alt="MyPassion" /></a>
-                    <p class="caption"><a href="#">{{$ds_decu[0]['short_content']}}</a>{{$ds_decu[0]['content']}} </p>
+                    <a href="{{ route('single',$ds_decu[0]['id']) }}"><img src="{{url('public/news_img/'.$ds_decu[0]['img'])}}" alt="MyPassion" /></a>
+                    <p class="caption"><a href="{{ route('single',$ds_decu[0]['id']) }}">{{$ds_decu[0]['short_content']}}</a>{{$ds_decu[0]['content']}} </p>
                 </div>
                 
                 <div class="slider3">
-                	<a href="#"><img src="{{url('public/news_img/'.$ds_decu[1]['img'])}}" alt="MyPassion" /></a>
-                    <p class="caption"><a href="#">{{$ds_decu[1]['short_content']}}</a></p>
+                	<a href="{{route('single',$ds_decu[1]['id'])}}"><img src="{{url('public/news_img/'.$ds_decu[1]['img'])}}" alt="MyPassion" /></a>
+                    <p class="caption"><a href="{{ route('single',$ds_decu[1]['id']) }}">{{$ds_decu[1]['short_content']}}</a></p>
                 </div>
                 
                 <div class="slider3">
-                    <a href="#"><img src="{{url('public/news_img/'.$ds_decu[2]['img'])}}" alt="MyPassion" /></a>
-                    <p class="caption"><a href="#">{{$ds_decu[2]['short_content']}}</a></p>
+                    <a href="{{route('single',$ds_decu[2]['id'])}}"><img src="{{url('public/news_img/'.$ds_decu[2]['img'])}}" alt="MyPassion" /></a>
+                    <p class="caption"><a href="{{ route('single',$ds_decu[2]['id']) }}">{{$ds_decu[2]['short_content']}}</a></p>
                 </div>
                 
             </div>    
@@ -94,7 +94,7 @@
                                 @foreach($ds_hot as $news)
                                 <li>
                                     <img src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" class="alignleft" />
-                                    <h6 class="regular"><a href="#">{{$news['short_content']}}</a></h6>
+                                    <h6 class="regular"><a href="{{ route('single',$news['id']) }}">{{$news['short_content']}}</a></h6>
                                     <span class="meta">{{$news['created_at']}}   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
                                     <p>{{$news['content']}}</p>
                                 </li>
@@ -107,10 +107,10 @@
                         	<ul class="block2">
                                 @foreach($ds_decu as $news)
                                 <li>
-                                    <a href="#"><img style="width: 75px; height: 75px;" src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" class="alignleft" /></a>
+                                    <a href="{{ route('single',$news['id']) }}"><img style="width: 75px; height: 75px;" src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" class="alignleft" /></a>
                                     <p>
                                         <span>{{$news['created_at']}}</span>
-                                        <a href="#">{{$news['short_content']}}</a>
+                                        <a href="{{ route('single',$news['id']) }}">{{$news['short_content']}}</a>
                                     </p>
                                     <span class="rating"><span style="width:80%;"></span></span>
                                 </li>

@@ -11,8 +11,10 @@
 |
 */
 
+// Client
 Route::get('/','HomeController@index');
-route::get('/single','HomeController@single');
+route::get('/single/{id}','HomeController@single')->name('single');
+route::get('/Top-rating','HomeController@topRating')->name('TopRating');
 
 Auth::routes();
 
@@ -29,6 +31,5 @@ Route::get('/callback/{provider}', 'SocialController@callback');
 route::get('/danhmuc',function(){
 	return view('pages.DanhMuc');
 });
-route::get('/Top-rating',function(){
-	return view('pages.toprating');
-});
+
+// Admin

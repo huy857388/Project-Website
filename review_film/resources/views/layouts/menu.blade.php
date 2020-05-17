@@ -15,7 +15,7 @@
                 @endforeach
             </ul>
         </li>
-        <li><a href="Top-rating">TOP RATED MOVIES</a></li>
+        <li><a href="{{ route('TopRating')}}">TOP RATED MOVIES</a></li>
         <li><a href="reviews.html">ĐỀ CỬ</a></li>
      <!--   <li>
             <a href="reviews.html">LỊCH.</a>
