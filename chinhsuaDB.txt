@@ -2,3 +2,4 @@
 -trong news bỏ phần đề cử, đề cử chỉ là random các film bất kì thôi, nên không cần tạo riêng
 -trong theloai id nên sửa lại vd: kinh dị - kd, hành động - hd, ...
 - trong theloai bỏ tênkhôngđấu đi nếu k có sài
+- thêm column điểm đánh giá trong news nữa
