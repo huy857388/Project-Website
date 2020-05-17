@@ -6,7 +6,7 @@
             	
                 <div class="breadcrumbs column">
                     <!-- Phần này World news là hiện gì thế? còn single nữa? -->
-                	<p><a href="{{route('home')}}">Home.</a>   \\   <a href="#">World News.</a>   \\   Single.</p>
+                	<p><a href="{{route('home')}}">Home.</a>    \\   Single.</p>
                 </div>
             
             	<!-- Main Content -->
@@ -30,11 +30,10 @@
                             </ul>
                         </div>
                         
-                        <h6 class="title">{{$news['short_content']}}</h6>
+                        <h6 class="title">{{$news['title']}}</h6>
                         <span class="meta">{{$news['created_at']}}   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                        <p>{{$news['content']}}</p>
-                        
-                        
+                        <p>Tóm tắt nội dung: {{$news['short_content']}}</p>
+                        <p>Nội dung: {{$news['content']}}</p>
                         
                         
                         <div class="comments">
