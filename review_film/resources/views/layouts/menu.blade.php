@@ -8,11 +8,11 @@
 
         	<a href="#">THỂ LOẠI</a>
             <ul>
-                <!-- <li><i class="icon-right-open"></i><a href="danhmuc">KINH DỊ</a></li> -->
+                <li><i class="icon-right-open"></i><a href="danhmuc">KINH DỊ</a></li> 
                 <!-- Viết dòng for để liệt kê thể loại -->
-               <!--  @foreach($ds_theloai as $theloai)
+                @foreach($ds_theloai as $theloai)
                 <li><i class="icon-right-open"></i><a href="danhmuc">{{$theloai['Ten']}}</a></li>
-                @endforeach -->
+                @endforeach 
             </ul>
         </li>
         <li><a href="{{ route('topRating')}}">TOP RATED MOVIES</a></li>

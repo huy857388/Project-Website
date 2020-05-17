@@ -87,9 +87,9 @@
                 <div class="column-one-fourth">
                    <h5 class="line"><span>THỂ LOẠI.</span></h5>
                     <ul class="footnav"><!-- chạy dòng for -->
-                       <!--  @foreach($ds_theloai as $theloai)
+                        @foreach($ds_theloai as $theloai)
                 <li><a href="danhmuc"><i class="icon-right-open"></i> {{$theloai['Ten']}}</a></li>
-                @endforeach -->
+                @endforeach 
                         
                     </ul>
                 </div>
