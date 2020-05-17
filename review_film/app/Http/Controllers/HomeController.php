@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\News;
 use App\Comment;
 use App\TheLoai;
+use DB;
 
 class HomeController extends Controller
 {
@@ -52,11 +53,24 @@ class HomeController extends Controller
     }
 
     public function topRating(){
+        // Hàm xây dựng xếp hạng theo lượt bình luận của news
+        $ds_top_news = News::join('comment','news.id','=','comment.idBaiRv')
+                    ->select('news.id','news.idTheLoai','news.title','news.img','news.short_content','news.content','news.hot','news.new','news.DeCu','news.created_at',DB::raw('count(comment.idBaiRv) as count'))
+                    ->groupBy('news.id','news.idTheLoai','news.title','news.img','news.short_content','news.content','news.hot','news.new','news.DeCu','news.created_at')
+                    ->orderBy('count','desc')
+                    ->take(10)->get()->toArray();
+        // var_dump($ds_top_news);
+        
+        // Lấy phần tử đầu ra
+        $first_news = array_shift($ds_top_news);
+        $second_news = array_shift($ds_top_news);
+        // var_dump($top_news);
+        // var_dump($ds_top_news);
+
         $ds_new = News::where('new',1)->take(4)->get()->toArray();
-       
         $ds_hot = News::where('hot',1)->get()->toArray();
         $ds_cmt = Comment::all()->toArray();
         $ds_theloai = TheLoai::all()->toArray();
-        return view('pages.toprating',compact('ds_new','ds_hot','ds_cmt','ds_theloai'));
+        return view('pages.toprating',compact('ds_new','ds_hot','ds_cmt','ds_theloai','first_news','second_news','ds_top_news'));
     }
 }

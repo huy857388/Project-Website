@@ -1,7 +1,7 @@
  <!-- Nav -->
 <nav id="nav">
     <ul class="sf-menu">
-        <li class="current"><a href="index-2.html">TRANG CHỦ</a></li>
+        <li class="current"><a href="{{ url('/')}}">TRANG CHỦ</a></li>
         <li><a href="danhmuc">HOT</a></li>
         <li><a href="danhmuc">NEW</a></li>
         <li>
@@ -15,7 +15,7 @@
                 @endforeach
             </ul>
         </li>
-        <li><a href="{{ route('TopRating')}}">TOP RATED MOVIES</a></li>
+        <li><a href="{{ route('topRating')}}">TOP RATED MOVIES</a></li>
         <li><a href="reviews.html">ĐỀ CỬ</a></li>
      <!--   <li>
             <a href="reviews.html">LỊCH.</a>
