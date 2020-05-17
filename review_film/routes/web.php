@@ -32,3 +32,11 @@ route::get('/danhmuc',function(){
 route::get('/Top-rating',function(){
 	return view('pages.toprating');
 });
+//	frontEnd
+
+
+//	backEnd
+Route::get('/admin','adminController@index');
+Route::get('/dashboard','adminController@showDashboard');
+Route::post('/adminDashboard','adminController@dashboard');
+Route::get('/logOut','adminController@logOut');
