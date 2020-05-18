@@ -44,7 +44,11 @@ Route::get('/dashboard','adminController@showDashboard'); //Danh
 Route::post('/adminDashboard','adminController@dashboard'); //Danh
 Route::get('/logOut','adminController@logOut'); // Danh
 // bai viet
-Route::get('them_baiviet','NewsProduct@them_baiviet'); //Khanh
+Route::get('/them_baiviet','NewsProduct@them_baiviet'); //Khanh
+Route::get('/edit_baiviet/{id_baiviet}','NewsProduct@edit_baiviet');//Khanh
+Route::get('/xoa_baiviet/{id_baiviet}','NewsProduct@xoa_baiviet');//Khanh
 Route::get('/danhsach_baiviet','NewsProduct@danhsach_baiviet'); //Khanh
+Route::post('/update_baiviet/{id_baiviet}','NewsProduct@update_baiviet');//Khanh
 Route::post('/save_baiviet','NewsProduct@save_baiviet'); //Khanh
 // >>>>>>> 9b85fe5447345d6ec862198bb72b73d08133b047
+// 
