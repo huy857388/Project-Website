@@ -43,4 +43,8 @@ Route::get('/admin','adminController@index'); //Danh
 Route::get('/dashboard','adminController@showDashboard'); //Danh
 Route::post('/adminDashboard','adminController@dashboard'); //Danh
 Route::get('/logOut','adminController@logOut'); // Danh
+// bai viet
+Route::get('them_baiviet','NewsProduct@them_baiviet'); //Khanh
+Route::get('/danhsach_baiviet','NewsProduct@danhsach_baiviet'); //Khanh
+Route::post('/save_baiviet','NewsProduct@save_baiviet'); //Khanh
 // >>>>>>> 9b85fe5447345d6ec862198bb72b73d08133b047
