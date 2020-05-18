@@ -8,12 +8,16 @@
 
         	<a href="#">THỂ LOẠI</a>
             <ul>
-                <li><i class="icon-right-open"></i><a href="danhmuc">KINH DỊ</a></li>
+                <!-- <li><i class="icon-right-open"></i><a href="danhmuc">KINH DỊ</a></li> -->
                 <!-- Viết dòng for để liệt kê thể loại -->
+                @foreach($ds_theloai as $theloai)
+                <li><i class="icon-right-open"></i><a href="{{route('theLoai',$theloai['TenKhongDau'])}}">{{$theloai['Ten']}}</a></li>
+                @endforeach
             </ul>
         </li>
-        <li><a href="{{ route('topRating')}}">TOP RATED MOVIES</a></li>
-        <li><a href="reviews.html">ĐỀ CỬ</a></li>
+        <li><a href="#">TOP RATED MOVIES</a></li>
+        <li><a href="{{ route('topComment')}}">TOP COMMENT MOVIES</a></li>
+        <!-- <li><a href="reviews.html">ĐỀ CỬ</a></li> -->
      <!--   <li>
             <a href="reviews.html">LỊCH.</a>
             <ul>

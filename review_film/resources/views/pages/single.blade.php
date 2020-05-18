@@ -40,7 +40,19 @@
                             <h5 class="line"><span>Comments.</span></h5>
                             <ul>
                                 <li>
+                                    @foreach($ds_cmt as $cmt)
                                     <div>
+                                        <div class="comment-avatar"><img src="{{url('public/img/avatar.png')}}" alt="MyPassion" /></div>
+                                        <div class="commment-text-wrap">
+                                            <div class="comment-data">
+                                                <p><a href="#" class="url">Tài khoản 1</a> <br /> <span>{{$cmt['created_at']}} - <a href="#" class="comment-reply-link">reply</a></span></p>
+                                            </div>
+                                            <div class="comment-text">Curabitur nunc mauris, <a href="#">link test</a> {{$cmt['NoiDung']}}</div>
+                                        </div>
+                                        
+                                    </div>
+                                    @endforeach
+                                    <!-- <div>
                                         <div class="comment-avatar"><img src="{{url('public/img/avatar.png')}}" alt="MyPassion" /></div>
                                         <div class="commment-text-wrap">
                                             <div class="comment-data">
@@ -107,15 +119,16 @@
                                                 </div>
                                             </div>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
                             </ul>
                         </div>
                         
                         <div class="comment-form">
                             <h5 class="line"><span>Leave a reply.</span></h5>
-                            <form action="#" method="post">
-                                <div class="form">
+                            <form action="{{route('comment')}}" method="post">
+                                {{csrf_field()}}
+                                <!-- <div class="form">
                                     <label>Name*</label>
                                     <div class="input">
                                         <input type="text" class="name" />
@@ -132,10 +145,10 @@
                                     <div class="input">
                                         <input type="text" class="name" />
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form">
                                     <label>Comment*</label>
-                                    <textarea rows="10" cols="20"></textarea>
+                                    <textarea name="content" rows="10" cols="20"></textarea>
                                 </div>
                                 <input type="submit" class="post-comment" value="Post Comment" />
                             </form>

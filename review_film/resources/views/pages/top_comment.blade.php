@@ -2,8 +2,6 @@
         <!-- /Header -->
 @section('content')
         
-        
-        
         <!-- Content -->
         <section id="content">
             <div class="container">

@@ -14,7 +14,9 @@
 // Client 
 Route::get('/','HomeController@index'); // Huy và Phát
 route::get('/single/{id}','HomeController@single')->name('single'); // Phát
-route::get('/Top-rating','HomeController@topRating')->name('topRating'); //Phát
+route::get('/top-comment','HomeController@topComment')->name('topComment'); //Phát
+route::get('/the-loai/{id}','HomeController@theLoai')->name('theLoai');
+route::post('/comment','HomeController@postComment')->name('comment');
 
 Auth::routes();
 
@@ -28,9 +30,7 @@ Route::get('/login',function(){
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect'); //Phát
 Route::get('/callback/{provider}', 'SocialController@callback'); //Phát
 
-route::get('/danhmuc',function(){
-	return view('pages.DanhMuc');
-}); //Huy
+
 // <<<<<<< HEAD
 
 // Admin
