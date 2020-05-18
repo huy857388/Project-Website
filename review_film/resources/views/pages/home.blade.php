@@ -13,31 +13,11 @@
                             @foreach($ds_hot as $news)
                             
                             <li>
-                                <img src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" />
+                                <img src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" width="450" height="400"/>
                                 <p class="flex-caption"><a href="{{route('single',$news['id'])}}">{{$news['title']}}</a> 
                                 {{$news['content']}}</p>";
                             </li>
                             @endforeach
-                           <!--  <li>
-                                <img src="{{url('public/img/flexslider/1.png')}}" alt="MyPassion" />
-                                <p class="flex-caption"><a href="#">Google wants more women in tech.</a> Donec bibendum dolor at ante. Proin neque dui, pre tium quis fringilla ut,  sodales sed. </p>
-                            </li>
-                            <li>
-                                <img src="{{url('public/img/flexslider/3.png')}}" alt="MyPassion" />
-                                <p class="flex-caption"><a href="#">Small Businesses Surge against all expectations.</a> Donec bibendum dolor at ante. Proin neque dui, pre tium quis fringilla ut,  sodales sed. </p>
-                            </li>
-                            <li>
-                                <img src="{{url('public/img/flexslider/5.png')}}" alt="MyPassion" />
-                                <p class="flex-caption"><a href="#">Drones: Future of disaster response?</a> Donec bibendum dolor at ante. Proin neque dui, pre tium quis fringilla ut,  sodales sed. </p>
-                            </li>
-                            <li>
-                                <img src="{{url('public/img/flexslider/4.png')}}" alt="MyPassion" />
-                                <p class="flex-caption"><a href="#">Hollywood cowboys' retreat. </a> Donec bibendum dolor at ante. Proin neque dui, pre tium quis fringilla ut,  sodales sed. </p>
-                            </li>
-                            <li>
-                                <img src="{{url('public/img/flexslider/2.png')}}" alt="MyPassion" />
-                                <p class="flex-caption"><a href="#">Stress may cause cravings.</a> Donec bibendum dolor at ante. Proin neque dui, pre tium quis fringilla ut,  sodales sed. </p>
-                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -46,19 +26,20 @@
                 	<div class="badg">
                     	<p><a href="#">ĐỀ CỬ</a></p>
                     </div>
+ 					<?php $rand_key= array_rand($ds_film,3); ?>
+                    <a href="{{ route('single',$ds_film[$rand_key[0]]['id']) }}"><img src="{{url('public/news_img/'.$ds_film[$rand_key[0]]['img'])}}" alt="MyPassion" width="400" height="250" /></a>
+                    <p class="caption"><a href="{{ route('single',$ds_film[$rand_key[0]]['id']) }}">{{$ds_film[$rand_key[0]]['title']}}</a>{{$ds_film[$rand_key[0]]['content']}} </p>
+                </div>
+                
+                <div class="slider3">
+                	<a href="{{route('single',$ds_film[$rand_key[1]]['id'])}}"><img src="{{url('public/news_img/'.$ds_film[$rand_key[1]]['img'])}}" alt="MyPassion" width="200" height="150" /></a>
+                    <p class="caption"><a href="{{ route('single',$ds_film[$rand_key[1]]['id']) }}">{{$ds_film[$rand_key[1]]['title']}}</a></p>
+                </div>
+                
+                <div class="slider3">
+                    <a href="{{route('single',$ds_film[$rand_key[2]]['id'])}}"><img src="{{url('public/news_img/'.$ds_film[$rand_key[2]]['img'])}}" alt="MyPassion" width="200" height="150" /></a>
+                    <p class="caption"><a href="{{ route('single',$ds_film[$rand_key[2]]['id']) }}">{{$ds_film[$rand_key[2]]['title']}}</a></p>
 
-                    <a href="{{ route('single',$ds_decu[0]['id']) }}"><img src="{{url('public/news_img/'.$ds_decu[0]['img'])}}" alt="MyPassion" /></a>
-                    <p class="caption"><a href="{{ route('single',$ds_decu[0]['id']) }}">{{$ds_decu[0]['title']}}</a>{{$ds_decu[0]['content']}} </p>
-                </div>
-                
-                <div class="slider3">
-                	<a href="{{route('single',$ds_decu[1]['id'])}}"><img src="{{url('public/news_img/'.$ds_decu[1]['img'])}}" alt="MyPassion" /></a>
-                    <p class="caption"><a href="{{ route('single',$ds_decu[1]['id']) }}">{{$ds_decu[1]['title']}}</a></p>
-                </div>
-                
-                <div class="slider3">
-                    <a href="{{route('single',$ds_decu[2]['id'])}}"><img src="{{url('public/news_img/'.$ds_decu[2]['img'])}}" alt="MyPassion" /></a>
-                    <p class="caption"><a href="{{ route('single',$ds_decu[2]['id']) }}">{{$ds_decu[2]['title']}}</a></p>
                 </div>
                 
             </div>    
@@ -93,7 +74,7 @@
                                 <!-- Phần này t làm chưa hoàn chỉnh -->
                                 @foreach($ds_hot as $news)
                                 <li>
-                                    <img src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" class="alignleft" />
+                                    <img src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" class="alignleft"  width="600" height="350"/>
                                     <h6 class="regular"><a href="{{ route('single',$news['id']) }}">{{$news['title']}}</a></h6>
                                     <span class="meta">{{$news['created_at']}}   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
                                     <p>{{$news['content']}}</p>

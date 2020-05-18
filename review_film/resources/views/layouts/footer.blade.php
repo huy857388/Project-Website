@@ -1,8 +1,47 @@
  <!-- /Main Content -->
-                
+                <script type="text/javascript">
+        var player;
+        function F1()
+        {
+            var apiKey = "AIzaSyAvamzI--kIuSoUGgRmoexZcDCibzdqRqM";
+            var idVideo = "PLBULsmyQGMTh2BUCv70mTaIe6BsLdMMGT";
+            var url= "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLBULsmyQGMTh2BUCv70mTaIe6BsLdMMGT&key=AIzaSyAvamzI--kIuSoUGgRmoexZcDCibzdqRqM&maxResults=3";
+            //alert('f1');
+            $.ajax({
+                async: false,
+                type: 'GET',
+                url: url,
+                success:function(s)
+                {
+                    //alert('ok');
+                    console.log(s);
+                    var output = '';
+                                        output += '<div>';
+                                         $.each(s.items, function(i, result_item){
+                                            var title = result_item.snippet.title;
+                                            var href = result_item.id;
+                                            var img = result_item.snippet.thumbnails.default.url;
+                                          //  output += '<img src="'+img+'" />';
+                                           output += '<div><a class="title" href="https://www.youtube.com/watch?v='+href+'"  >'+'<img src="'+img+'" width="280" height="150" /><br>'+title+'</a></div>';
+                                        output +='</div>';
+                                         });
+                                        document.getElementById("demo").innerHTML = output;
+                                     
+                                    
+                },
+            });
+        }
+window.onload =F1;
+                        
+    </script>
                 <!-- Left Sidebar -->
                 <div class="column-one-third">                
-                    
+                     <div class="sidebar">
+                        <h5 class="line"><span>TIN TỨC</span></h5>
+
+                        <span id ="demo"></span>
+                        <span class="meta" align="right" > Nguồn:Phê Phim</span>
+                     </div>
                  <div class="sidebar">
                         <div id="tabs">
                             <ul>
@@ -13,15 +52,8 @@
                             <div id="tabs1">
                                 <ul>
                                     <!--chạy for max 4 cái-->
-                                    <!-- Phần này t làm chưa hoàn chỉnh -->
-                                    @foreach($ds_new as $news)
+                                    <!-- Phần này t làm chưa hoàn chỉnh -->                                    
                                     <li>
-                                        <a href="#" class="title">{{$news['short_content']}}</a>
-                                        <span class="meta">{{$news['created_at']}}   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                                        <span class="rating"><span style="width:70%;"></span></span>
-                                    </li>
-                                    @endforeach
-                                   <!--  <li>
                                         <a href="#" class="title">Blandit Rutrum, Erat et Sagittis Adipcising Elit.</a>
                                         <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
                                         <span class="rating"><span style="width:70%;"></span></span>
@@ -30,30 +62,23 @@
                                         <a href="#" class="title">Blandit Rutrum, Erat et Sagittis Adipcising Elit.</a>
                                         <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
                                         <span class="rating"><span style="width:70%;"></span></span>
-                                    </li> -->
+                                    </li>
                                 </ul>
                             </div>
                             <div id="tabs2">
                                 <ul>
                                     <!-- chạy for max 4 cái  -->
                                     <!-- Phần này t làm chưa hoàn chỉnh -->
-                                    @foreach($ds_hot as $news)
-                                    <li>
-                                        <a href="#" class="title">{{$news['short_content']}}</a>
-                                        <span class="meta">{{$news['created_at']}}   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                                        <span class="rating"><span style="width:70%;"></span></span>
-                                    </li>
-                                    @endforeach
-                                   <!--  <li>
-                                        <a href="#" class="title">Mauris eleifend est et turpis. Duis id erat.</a>
-                                        <span class="meta">27 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
+                                     <li>
+                                        <a href="#" class="title">Blandit Rutrum, Erat et Sagittis Adipcising Elit.</a>
+                                        <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
                                         <span class="rating"><span style="width:70%;"></span></span>
                                     </li>
                                     <li>
-                                        <a href="#" class="title">Mauris eleifend est et turpis. Duis id erat.</a>
-                                        <span class="meta">27 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
+                                        <a href="#" class="title">Blandit Rutrum, Erat et Sagittis Adipcising Elit.</a>
+                                        <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
                                         <span class="rating"><span style="width:70%;"></span></span>
-                                    </li> -->
+                                    </li>
                                 </ul>
                             </div>
                             <div id="tabs3">
@@ -61,20 +86,17 @@
                                     <!--chạy for max 4 cái-->
                                     <!-- Chỗ này chạy bình luận của tin nào vậy? -->
                                     <!-- T để tạm tất cả  các thông tin sơ bình luận đó -->
-                                    @foreach($ds_cmt as $cmt)
+                                    <!-- chạy random vài bình luận ,t chỉnh rồi đó -->
                                     <li>
-                                        <a href="#" class="title"><strong>tài khoản {{$cmt['idUser']}} bình luận: </strong> {{$cmt['NoiDung']}}</a>
-                                    </li>
-                                    @endforeach
-                                   <!--  <li>
-                                        <a href="#" class="title"><strong>Someone:</strong> eleifend est et turpis. Duis id erat.Mauris eleifend est et turpis. Duis id erat.</a>
+                                        <a href="#" class="title"><strong>tài khoản bình luận: </strong>123456</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="title"><strong>Someone:</strong> eleifend est et turpis. Duis id erat.Mauris eleifend est et turpis. Duis id erat.</a>
+                                        <a href="#" class="title"><strong>tài khoản bình luận: </strong> 78978978</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="title"><strong>Someone:</strong> eleifend est et turpis. Duis id erat.Mauris eleifend est et turpis. Duis id erat.</a>
-                                    </li> -->
+                                        <a href="#" class="title"><strong>tài khoản bình luận: </strong> 978978789</a>
+                                    </li>
+                                   
                                 </ul>
                             </div>
                         </div>
@@ -101,12 +123,14 @@
                 <div class="column-one-fourth">
                    <h5 class="line"><span>THỂ LOẠI.</span></h5>
                     <ul class="footnav"><!-- chạy dòng for -->
-                        <li><a href="#"><i class="icon-right-open"></i> KINH DỊ</a></li>
+                        <li><a href="danhmuc"><i class="icon-right-open"></i> Kinh dị</a></li>
+                        <li><a href="danhmuc"><i class="icon-right-open"></i> Viễn tưởng</a></li>
                     </ul>
                 </div>
                 <div class="column-one-fourth">
                     <h5 class="line"><span>GIỚI THIỆU</span></h5>
-                    <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhon cus sem purus eu sapien. Lorem ipsum dolor sit amet adipcising elit. Elit norem simuls tortor lorem adipcising purus mosteu dsapien egestas.</p>
+                    <p>Sản phẩm của nhóm 1 sử dụng laravel xây dựng website đánh giá, bàn luận film. Thành viên trong nhóm:  <br> Phạm Minh Huy - DH51603606 <br> Ngô Quốc Khánh - DH51603657 <br> Võ Hoàng Công Danh - DH51603941 <br> Hông Thuận Phát- DH51603902 <br> Nguyễn Hoàng Khang - DH51604086
+  </p>
                 </div>
                 <p class="copyright">Nhóm 1</p>
             </div>

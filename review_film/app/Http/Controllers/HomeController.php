@@ -29,14 +29,17 @@ class HomeController extends Controller
     {
         
         $ds_decu = News::where('deCu',1)->take(3)->get()->toArray();
-        // 4 cái này hàm này cũng phải gọi nha vì nó để ở trang menu và footer mà 2 trang đó là template
-        // Nếu ko thì hãy vào layouts/menu và footer đóng lại hàm for là dc vì 2 file này dùng nó
-        $ds_theloai = TheLoai::all()->toArray();
         $ds_new = News::where('new',1)->take(4)->get()->toArray();
+        $ds_film = News::all()->toArray();
         $ds_hot = News::where('hot',1)->get()->toArray();
         $ds_cmt = Comment::all()->toArray();
+        $ds_theloai = TheLoai::all()->toArray();
+        // var_dump($ds_hot);
+        return view('pages.home',compact('ds_decu','ds_hot','ds_new','ds_cmt','ds_theloai','ds_film'));
+        // 4 cái này hàm này cũng phải gọi nha vì nó để ở trang menu và footer mà 2 trang đó là template
+        // Nếu ko thì hãy vào layouts/menu và footer đóng lại hàm for là dc vì 2 file này dùng nó
         
-        return view('pages.home',compact('ds_decu','ds_hot','ds_new','ds_cmt','ds_theloai'));
+
     }
 
     public function single($news_id){
