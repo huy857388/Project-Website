@@ -45,7 +45,7 @@
             <div class="container">
                 <div class="column">
                     <div class="logo">
-                        <a href="index-2.html"><img src="{{url('public/img/lo.png')}}" alt="MyPassion" /></a>
+                        <a href="{{url('/')}}"><img src="{{url('public/img/lo.png')}}" alt="MyPassion" /></a>
                     </div>
                     
                     @include('layouts.search')

@@ -10,7 +10,7 @@
             	<!-- Main Content -->
                 
                 <div class="breadcrumbs column">
-                	<p><a href="#">Home.</a>   \\   <a href="#">Categories.</a>   \\   World News.</p>
+                	<p><a href="{{url('/')}}">Home.</a>   \\ Thể loại \\   {{$theloai}}</p>
                 </div>
                 
                 <div class="main-content">
@@ -19,11 +19,11 @@
                 	<div class="column-two-third">
                     	<div class="outertight m-t-no">
                             <div class="badg">
-                                <p><a href="#">Featured.</a></p>
+                                <p><a href="#">TOP 1</a></p>
                             </div>
                             <div class="flexslider">
                                 <ul class="slides">
-                                    <li>
+                                    <!-- <li>
                                         <img src="{{url('public/img/trash/25.png')}}" alt="MyPassion" />
                                     </li>
                                     <li>
@@ -31,24 +31,32 @@
                                     </li>
                                     <li>
                                         <img src="{{url('public/img/trash/26.png')}}" alt="MyPassion" />
+                                    </li> -->
+                                    <li>
+                                        <img src="{{url('public/news_img/'.$first_news['img'])}}" alt="{{url('public/news_img/'.$first_news['img'])}}" />
+                                    </li>
+                                     <li>
+                                        <img src="{{url('public/news_img/'.$first_news['img'])}}" alt="{{url('public/news_img/'.$first_news['img'])}}" />
+                                    </li>
+                                     <li>
+                                        <img src="{{url('public/news_img/'.$first_news['img'])}}" alt="{{url('public/news_img/'.$first_news['img'])}}" />
                                     </li>
                                 </ul>
+
                             </div>
                             
-                            <h6 class="regular"><a href="single.html">Blandit Rutrum, Erat et Sagittis. Lorem
-Ipsum Dolor, Sit Amet Adipsing.</a></h6>
-                            <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                            <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem purus eu sapien. Curabitur a orci nec risus lacinia vehic. Lorem ipsum 
-dolor adipcising elit. Erat egestan sagittis lorem aupo dolor sit ameta, auctor libero tempor...</p>
+                            <h6 class="regular"><a href="{{route('single',$first_news['id'])}}">{{$first_news['title']}}</a></h6>
+                            <span class="meta">{{$first_news['created_at']}}   \\   <a href="#">No Coments.</a></span>
+                            <p>{{$first_news['content']}}</p>
                         </div>
                         
                         <div class="outertight m-r-no m-t-no">
                             <div class="badg">
-                                <p><a href="#">Featured.</a></p>
+                                <p><a href="#">TOP 2</a></p>
                             </div>
                             <div class="flexslider">
                                 <ul class="slides">
-                                    <li>
+                                    <!-- <li>
                                         <img src="{{url('public/img/trash/27.png')}}" alt="MyPassion" />
                                     </li>
                                     <li>
@@ -56,20 +64,38 @@ dolor adipcising elit. Erat egestan sagittis lorem aupo dolor sit ameta, auctor 
                                     </li>
                                     <li>
                                         <img src="{{url('public/img/trash/24.png')}}" alt="MyPassion" />
+                                    </li> -->
+                                    <li>
+                                        <img src="{{url('public/news_img/'.$second_news['img'])}}" alt="{{url('public/news_img/'.$second_news['img'])}}" />
                                     </li>
+                                    <li>
+                                        <img src="{{url('public/news_img/'.$second_news['img'])}}" alt="{{url('public/news_img/'.$second_news['img'])}}" />
+                                    </li>
+                                    <li>
+                                        <img src="{{url('public/news_img/'.$second_news['img'])}}" alt="{{url('public/news_img/'.$second_news['img'])}}" />
+                                    </li>
+                                    
                                 </ul>
                             </div>
                             
-                            <h6 class="regular"><a href="single.html">Blandit Rutrum, Erat et Sagittis. Lorem
-Ipsum Dolor, Sit Amet Adipsing.</a></h6>
-                            <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                            <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem purus eu sapien. Curabitur a orci nec risus lacinia vehic. Lorem ipsum 
-dolor adipcising elit. Erat egestan sagittis lorem aupo dolor sit ameta, auctor libero tempor...</p>
+                            <h6 class="regular"><a href="{{route('single',$second_news['id'])}}">{{$second_news['title']}}</a></h6>
+                            <span class="meta">{{$second_news['created_at']}}   \\   <a href="#">No Coments.</a></span>
+                            <p>{{$second_news['content']}}</p>
                         </div>
                         
                         <div class="outerwide">
                         	<ul class="block2">
-                                <li>
+                                @foreach($ds_news as $news)
+                                <li class="m-r-no">
+                                    <a href="{{route('single',$news['id'])}}"><img src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" class="alignleft" width="75px" height="75px" /></a>
+                                    <p>
+                                        <span>26 May, 2013.</span>
+                                        <a href="{{route('single',$news['id'])}}">{{$news['title']}}</a>
+                                    </p>
+                                    <span class="rating"><span style="width:100%;"></span></span>
+                                </li>
+                                @endforeach
+                                <!-- <li>
                                     <a href="single.html"><img src="{{url('public/img/trash/5.png')}}" alt="MyPassion" class="alignleft" /></a>
                                     <p>
                                         <span>26 May, 2013.</span>
@@ -109,8 +135,7 @@ dolor adipcising elit. Erat egestan sagittis lorem aupo dolor sit ameta, auctor 
                                         <a href="single.html">Blandit Rutrum, Erat et Sagittis.</a>
                                     </p>
                                     <span class="rating"><span style="width:100%;"></span></span>
-                                </li>
-
+                                </li> -->
                             </ul>
                         </div>
                         

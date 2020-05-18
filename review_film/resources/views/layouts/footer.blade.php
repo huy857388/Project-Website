@@ -1,5 +1,5 @@
  <!-- /Main Content -->
-                <script type="text/javascript">
+    <script type="text/javascript">
         var player;
         function F1()
         {
@@ -16,16 +16,16 @@
                     //alert('ok');
                     console.log(s);
                     var output = '';
-                                        output += '<div>';
-                                         $.each(s.items, function(i, result_item){
-                                            var title = result_item.snippet.title;
-                                            var href = result_item.id;
-                                            var img = result_item.snippet.thumbnails.default.url;
-                                          //  output += '<img src="'+img+'" />';
-                                           output += '<div><a class="title" href="https://www.youtube.com/watch?v='+href+'"  >'+'<img src="'+img+'" width="280" height="150" /><br>'+title+'</a></div>';
-                                        output +='</div>';
-                                         });
-                                        document.getElementById("demo").innerHTML = output;
+                    output += '<div>';
+                     $.each(s.items, function(i, result_item){
+                        var title = result_item.snippet.title;
+                        var href = result_item.id;
+                        var img = result_item.snippet.thumbnails.default.url;
+                      //  output += '<img src="'+img+'" />';
+                       output += '<div><a class="title" href="https://www.youtube.com/watch?v='+href+'"  >'+'<img src="'+img+'" width="280" height="150" /><br>'+title+'</a></div>';
+                    output +='</div>';
+                     });
+                    document.getElementById("demo").innerHTML = output;
                                      
                                     
                 },
@@ -37,7 +37,7 @@ window.onload =F1;
                 <!-- Left Sidebar -->
                 <div class="column-one-third">                
                      <div class="sidebar">
-                        <h5 class="line"><span>TIN TỨC</span></h5>
+                        <h5 class="line"><span>Review Video.</span></h5>
 
                         <span id ="demo"></span>
                         <span class="meta" align="right" > Nguồn:Phê Phim</span>
@@ -124,7 +124,7 @@ window.onload =F1;
                    <h5 class="line"><span>THỂ LOẠI.</span></h5>
                     <ul class="footnav"><!-- chạy dòng for -->
                         <li><a href="danhmuc"><i class="icon-right-open"></i> Kinh dị</a></li>
-                        <li><a href="danhmuc"><i class="icon-right-open"></i> Viễn tưởng</a></li>
+                        <li><a href="danhmuc"><i class="icon-right-open"></i> Viễn tưởng</a></li>                        
                     </ul>
                 </div>
                 <div class="column-one-fourth">
