@@ -17,7 +17,7 @@ route::get('/single/{id}','HomeController@single')->name('single'); // Phát
 route::get('/top-comment','HomeController@topComment')->name('topComment'); //Phát
 route::get('/the-loai/{id}','HomeController@theLoai')->name('theLoai');
 route::post('/comment','HomeController@postComment')->name('comment');
-
+route::get('/danh-muc/{id}','HomeController@danhmuc')->name('danhmuc');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home'); // Huy và Phát
