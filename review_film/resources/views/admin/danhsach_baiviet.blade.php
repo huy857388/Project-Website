@@ -35,27 +35,38 @@
           </tr>
         </thead>
         <tbody>
+          <?php foreach ($ds_baiviet as $key => $baiviet): ?>
+            
           <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>Conan</td>
-            <td>kể về những cuộc phá án đầy ngoạn ngục của thám tử nhí tài ba</td>
-            <td>truyện kể về thám tử tí hon Conan</td>
+            <td>{{$baiviet->id}}</td>
+            <td>{{$baiviet->idTheLoai}}</td>
+            <td>{{$baiviet->title}}</td>
+            <td>{{$baiviet->content}}</td>
+            <td>{{$baiviet->short_content}}</td>
+                      <?php 
+                      $kt_hot=$baiviet->hot==0?0:'checked'; 
+                      $kt_new=$baiviet->new==0?0:'checked';
+                      $kt_decu=$baiviet->deCu==0?0:'checked';
+                      ?>
             <td>
-                <input type="checkbox" name="hot">
+                <input type="checkbox" <?php echo $kt_hot?> >
+            </td> 
+                        <td>
+                <input type="checkbox" <?php echo $kt_new?> >
             </td>
                         <td>
-                <input type="checkbox" name="hot">
+                <input type="checkbox" <?php echo $kt_decu?>>
             </td>
-                        <td>
-                <input type="checkbox" name="hot">
-            </td>
-                        <td>5/17</td>
-                                    <td>17/5</td>
+                        <td></td>
+                        <td></td>
             <td>
-              <a href="" class="active" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+              <a href="{{URL::to('/edit_baiviet/'.$baiviet->id)}}" class="active styling-edit" ui-toggle-class="">
+                <i class="fa fa-pencil-square-o text-success text-active"></i></a>
+                <a href="{{URL::to('/xoa_baiviet/'.$baiviet->id)}}" class="active styling-edit" ui-toggle-class="">
+                <i class="fa fa-times text-danger text"></i></a>
             </td>
           </tr>
+                    <?php endforeach ?>
         </tbody>
       </table>
     </div>

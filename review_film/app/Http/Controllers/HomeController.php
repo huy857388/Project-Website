@@ -31,19 +31,21 @@ class HomeController extends Controller
         
         $ds_decu = News::where('deCu',1)->take(3)->get()->toArray();
         $ds_new = News::where('new',1)->take(4)->get()->toArray();
-        $ds_film = News::all()->toArray();
         $ds_hot = News::where('hot',1)->get()->toArray();
+         $ds_film = News::all()->toArray();
         $ds_cmt = Comment::all()->toArray();
         $ds_theloai = TheLoai::all()->toArray();
         // var_dump($ds_hot);
         return view('pages.home',compact('ds_decu','ds_hot','ds_new','ds_cmt','ds_theloai','ds_film'));
     }
-
+// CHÚ Ý: nếu trang bị lỗi là do phần footer hiện HOT , NEW nhưng chưa truyền ds_hot, ds_new
     public function single($news_id){
         // Problem
         // Hình lệch? No comment? World new?
         // Chưa hoàn thiện phần comment? (đang ở dạng 1 tầng)
         // Dự tính: Ajax
+        $ds_new = News::where('new',1)->take(4)->get()->toArray();
+        $ds_hot = News::where('hot',1)->get()->toArray();
         $news = News::find($news_id)->toArray();
 
         $ds_cmt = News::join('comment','news.id','=','comment.idBaiRv')
@@ -54,7 +56,7 @@ class HomeController extends Controller
         // var_dump($news);
 
         $ds_theloai = TheLoai::all()->toArray();
-        return view('pages.single',compact('news','ds_theloai','ds_cmt'));   
+        return view('pages.single',compact('ds_new','ds_hot','news','ds_theloai','ds_cmt'));   
     }
 
     public function topComment(){
@@ -88,6 +90,8 @@ class HomeController extends Controller
         // Link top1, top 2? No comment? phần sao top 3 <?
         // Ít hơn 2 tin thì làm s ?
         // Chưa làm paging nè? breadcrumbs?
+        $ds_new = News::where('new',1)->take(4)->get()->toArray();
+        $ds_hot = News::where('hot',1)->get()->toArray();
 
         $ds_news = TheLoai::join('news','news.idTheLoai','=','theloai.id')
                 ->where('theloai.TenKhongDau','LIKE',$url)
@@ -102,9 +106,28 @@ class HomeController extends Controller
         // var_dump($ds_news);
 
         $ds_theloai = TheLoai::all()->toArray();
-        return view('pages.theloai',compact('theloai','first_news','second_news','ds_news','ds_theloai'));
+        return view('pages.theloai',compact('theloai','first_news','second_news','ds_news','ds_theloai','ds_new','ds_hot'));
     }
 
+     public function danhmuc($url){
+        $ds_new = News::where('new',1)->take(4)->get()->toArray();
+        $ds_hot = News::where('hot',1)->get()->toArray();
+        if($url=='HOT')
+        {
+        $ds_film = News::where('news.hot',1)
+                ->get()->toArray();
+        }
+        if($url=='NEW')
+        {
+        $ds_film = News::where('news.new',1)
+                ->get()->toArray();
+        }
+        $danhmuc = $url;
+         $ds_theloai = TheLoai::all()->toArray();
+        // var_dump($ds_film);
+
+        return view('pages.danhmuc',compact('danhmuc','ds_film','ds_theloai','ds_hot','ds_new'));
+    }
     public function postComment(Request $rq){
         var_dump($rq->all());
         $cmt = new Comment;

@@ -52,33 +52,43 @@ window.onload =F1;
                             <div id="tabs1">
                                 <ul>
                                     <!--chạy for max 4 cái-->
-                                    <!-- Phần này t làm chưa hoàn chỉnh -->                                    
+                                    <!-- Phần này t làm chưa hoàn chỉnh --> 
+                                    <?php 
+                                    if(isset($ds_new)){
+                                        if(count($ds_new)>2)
+                                        {
+                                            $len=2;
+                                        }
+                                        else $len=count($ds_new)?>
+                                    @for ($i = 0; $i < $len; $i++)                                    
                                     <li>
-                                        <a href="#" class="title">Blandit Rutrum, Erat et Sagittis Adipcising Elit.</a>
-                                        <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
+                                        <a href="{{route('single',$ds_new[$i]['id'])}}" class="title">{{$ds_new[$i]['title']}}</a>
+                                        <span class="meta">{{$ds_new[$i]['short_content']}}  </span>
                                         <span class="rating"><span style="width:70%;"></span></span>
                                     </li>
-                                    <li>
-                                        <a href="#" class="title">Blandit Rutrum, Erat et Sagittis Adipcising Elit.</a>
-                                        <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                                        <span class="rating"><span style="width:70%;"></span></span>
-                                    </li>
+                                    @endfor
+                                    ?<?php } ?>
                                 </ul>
                             </div>
                             <div id="tabs2">
                                 <ul>
-                                    <!-- chạy for max 4 cái  -->
-                                    <!-- Phần này t làm chưa hoàn chỉnh -->
-                                     <li>
-                                        <a href="#" class="title">Blandit Rutrum, Erat et Sagittis Adipcising Elit.</a>
-                                        <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                                        <span class="rating"><span style="width:70%;"></span></span>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="title">Blandit Rutrum, Erat et Sagittis Adipcising Elit.</a>
-                                        <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                                        <span class="rating"><span style="width:70%;"></span></span>
-                                    </li>
+                                      <!--chạy for max 4 cái-->
+                                    <!-- Phần này t làm chưa hoàn chỉnh --> 
+                                    <?php 
+                                    if(isset($ds_hot)){
+                                        if(count($ds_hot)>2)
+                                        {
+                                            $len=2;
+                                        }
+                                        else $len=count($ds_hot)?>
+                                     @for ($i = 0; $i < $len; $i++)                                    
+                                        <li>
+                                            <a href="{{route('single',$ds_hot[$i]['id'])}}" class="title">{{$ds_hot[$i]['title']}}</a>
+                                            <span class="meta">{{$ds_hot[$i]['short_content']}}  </span>
+                                            <span class="rating"><span style="width:70%;"></span></span>
+                                        </li>
+                                        @endfor
+                                    <?php } ?>
                                 </ul>
                             </div>
                             <div id="tabs3">

@@ -2,8 +2,8 @@
 <nav id="nav">
     <ul class="sf-menu">
         <li class="current"><a href="{{ url('/')}}">TRANG CHỦ</a></li>
-        <li><a href="danhmuc">HOT</a></li>
-        <li><a href="danhmuc">NEW</a></li>
+        <li><a href="{{route('danhmuc','HOT')}}">HOT</a></li>
+        <li><a href="{{route('danhmuc','NEW')}}">NEW</a></li>
         <li>
 
         	<a href="#">THỂ LOẠI</a>
