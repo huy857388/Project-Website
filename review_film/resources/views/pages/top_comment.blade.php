@@ -42,7 +42,7 @@
                                 </ul>
                             </div>
                             
-                            <h6 class="regular"><a href="{{route('single',$first_news['id'])}}">{{$first_news['title']}}</a></h6>
+                            <h6 class="regular"><a href="{{route('showInfo',[$first_news['TenKhongDau'],$first_news['slug']])}}">{{$first_news['title']}}</a></h6>
                             <!-- <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span> -->
                             <span class="meta">{{$first_news['created_at']}} \\   <a href="#">No Coments.</a></span>
                         </div>
@@ -78,7 +78,7 @@
                                                         Ipsum Dolor, Sit Amet Adipsing.</a></h6>
                             <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span> -->
 
-                            <h6 class="regular"><a href="{{route('single',$second_news['id'])}}">{{$second_news['title']}}</a></h6>
+                            <h6 class="regular"><a href="{{route('showInfo',[$second_news['TenKhongDau'],$second_news['slug']])}}">{{$second_news['title']}}</a></h6>
                             <span class="meta">{{$second_news['created_at']}}  \\   <a href="#">No Coments.</a></span>
                             </div>
                         
@@ -86,10 +86,10 @@
                         	<ul class="block2">
                                 @foreach($ds_top_news as $key => $news)
                                <li>
-                                    <a href="{{route('single',$news['id'])}}"><img style="width: 100px; height: 100px;" src="{{url('public/news_img/'.$news['img'])}}" alt="{{url('public/news_img/'.$news['img'])}}" class="alignleft" /></a>
+                                    <a href="{{route('showInfo',[$news['TenKhongDau'],$news['slug']])}}"><img style="width: 100px; height: 100px;" src="{{url('public/news_img/'.$news['img'])}}" alt="{{url('public/news_img/'.$news['img'])}}" class="alignleft" /></a>
                                     <p>
                                         <span>TOP {{$key + 3}}</span>
-                                        <a href="{{route('single',$news['id'])}}">{{$news['title']}}</a>
+                                        <a href="{{route('showInfo',[$news['TenKhongDau'],$news['slug']])}}">{{$news['title']}}</a>
                                     </p>
                                     <span class="rating"><span style="width:80%;"></span></span>
                                 </li>

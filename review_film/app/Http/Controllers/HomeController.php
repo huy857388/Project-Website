@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\News;
-use App\Comment;
 use App\TheLoai;
+use App\User;
+use App\Comment;
+use App\SubComment;
 use Carbon\Carbon;
+
 use DB;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -27,50 +31,97 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
-        $ds_decu = News::where('deCu',1)->take(3)->get()->toArray();
-        $ds_new = News::where('new',1)->take(4)->get()->toArray();
-        $ds_hot = News::where('hot',1)->get()->toArray();
-         $ds_film = News::all()->toArray();
+    {  
+        $ds_new = TheLoai::join('news','news.idTheLoai','=','theloai.id')
+                ->where('news.new','=',1)
+                ->take(4)->get()->toArray();
+
+        $ds_hot = TheLoai::join('news','news.idTheLoai','=','theloai.id')
+                ->where('news.hot','=',1)
+               ->get()->toArray();   
+
+        $ds_film = TheLoai::join('news','news.idTheLoai','=','theloai.id')                
+                ->get()->toArray();                    
+        // var_dump($ds_film);     
+
+        // old patch
+        // $ds_new = News::where('new',1)->take(4)->get()->toArray();
+        // $ds_hot = News::where('hot',1)->get()->toArray();
+        // $ds_film = News::all()->toArray();
         $ds_cmt = Comment::all()->toArray();
         $ds_theloai = TheLoai::all()->toArray();
         // var_dump($ds_hot);
-        return view('pages.home',compact('ds_decu','ds_hot','ds_new','ds_cmt','ds_theloai','ds_film'));
+        return view('pages.home',compact('ds_hot','ds_new','ds_cmt','ds_theloai','ds_film'));
     }
 // CHÚ Ý: nếu trang bị lỗi là do phần footer hiện HOT , NEW nhưng chưa truyền ds_hot, ds_new
-    public function single($news_id){
+    public function single($theloai_url,$news_url){
         // Problem
-        // Hình lệch? No comment? World new?
-        // Chưa hoàn thiện phần comment? (đang ở dạng 1 tầng)
+        // Hình lệch? No comment? World new? datetime chưa định dạng?
+        // Comment nhìu quá làm s? (xem thêm? => ajax or thg`)
         // Dự tính: Ajax
-        $ds_new = News::where('new',1)->take(4)->get()->toArray();
-        $ds_hot = News::where('hot',1)->get()->toArray();
-        $news = News::find($news_id)->toArray();
+        $news = News::where('slug','LIKE',$news_url)
+                ->first()->toArray();
 
-        $ds_cmt = News::join('comment','news.id','=','comment.idBaiRv')
-                ->where('news.id','=',$news['id'])
+        $ds_new = TheLoai::join('news','news.idTheLoai','=','theloai.id')
+                ->where('news.new','=',1)
+                ->take(4)->get()->toArray();
+
+        $ds_hot = TheLoai::join('news','news.idTheLoai','=','theloai.id')
+                ->where('news.hot','=',1)
+                ->get()->toArray();   
+        
+        // var_dump($news);                        
+        $theloai = TheLoai::where('TenKhongDau','LIKE',$theloai_url)
+                ->select('Ten')->first()->Ten;       
+
+        $ds_cmt = User::join('comment','users.id','=','comment.idUser')
+                ->select('users.name','comment.id','comment.NoiDung','comment.updated_at')
+                ->where('comment.idBaiRv','=',$news['id'])
                 ->get()->toArray();
-
-        // var_dump($ds_cmt);
-        // var_dump($news);
+        // foreach ko chèn dc :))) chả hĩu
+        // foreach ($ds_cmt as $cmt) {            
+        //     $sub_cmt = SubComment::where('idComment','=',$cmt['id'])
+        //                             ->get()->toArray();
+        //     array_push($cmt,$sub_cmt);
+        // }
+        for ($i=0; $i < count($ds_cmt) ; $i++) { 
+            $sub_cmt = User::join('subcomment','users.id','=','subcomment.idUser')
+                    ->select('users.name','subcomment.updated_at','subcomment.NoiDung')
+                    ->where('subcomment.idComment','=',$ds_cmt[$i]['id'])
+                    ->get()->toArray();
+            $ds_cmt[$i]['sub_cmt'] = $sub_cmt;
+        }
 
         $ds_theloai = TheLoai::all()->toArray();
-        return view('pages.single',compact('ds_new','ds_hot','news','ds_theloai','ds_cmt'));   
+        return view('pages.single',compact('ds_new','ds_hot','news','ds_theloai','ds_cmt','theloai'));   
     }
 
     public function topComment(){
         // Problem
         // Hình lệch này? No Comment? datetime chưa định dạng? phần sao ở top 3 < ?
-        // Link top 1, top 2 ?
+        // Link top 1, top 2 ?        
+
+        $ds_new = TheLoai::join('news','news.idTheLoai','=','theloai.id')
+                ->where('news.new','=',1)
+                ->take(4)->get()->toArray();
+
+        $ds_hot = TheLoai::join('news','news.idTheLoai','=','theloai.id')
+                ->where('news.hot','=',1)
+                ->get()->toArray();   
 
         // Hàm xây dựng xếp hạng theo lượt bình luận của news
         $ds_top_news = News::join('comment','news.id','=','comment.idBaiRv')
-                    ->select('news.id','news.idTheLoai','news.title','news.img','news.short_content','news.content','news.hot','news.new','news.DeCu','news.created_at',DB::raw('count(comment.idBaiRv) as count'))
-                    ->groupBy('news.id','news.idTheLoai','news.title','news.img','news.short_content','news.content','news.hot','news.new','news.DeCu','news.created_at')
+                    ->select('news.id','news.idTheLoai','news.title','news.slug','news.img','news.short_content','news.content','news.hot','news.new','news.created_at',DB::raw('count(comment.idBaiRv) as count'))
+                    ->groupBy('news.id','news.idTheLoai','news.title','news.slug','news.img','news.short_content','news.content','news.hot','news.new','news.created_at')
                     ->orderBy('count','desc')
                     ->take(10)->get()->toArray();
+        
         // var_dump($ds_top_news);
+        // Lấy slug của thể loại
+        for ($i=0; $i < count($ds_top_news) ; $i++) { 
+            $ds_top_news[$i]['TenKhongDau'] = TheLoai::where('id','=',$ds_top_news[$i]['idTheLoai'])
+                                        ->select('TenKhongDau')->first()->TenKhongDau; 
+        }
         
         // Lấy phần tử đầu ra
         $first_news = array_shift($ds_top_news);
@@ -78,62 +129,92 @@ class HomeController extends Controller
         // var_dump($top_news);
         // var_dump($ds_top_news);
 
-        $ds_new = News::where('new',1)->take(4)->get()->toArray();
-        $ds_hot = News::where('hot',1)->get()->toArray();
         $ds_cmt = Comment::all()->toArray();
         $ds_theloai = TheLoai::all()->toArray();
         return view('pages.top_comment',compact('ds_new','ds_hot','ds_cmt','ds_theloai','first_news','second_news','ds_top_news'));
     }
 
-    public function theLoai($url){
+    public function theLoai($theloai_url){
         // Problem
         // Link top1, top 2? No comment? phần sao top 3 <?
         // Ít hơn 2 tin thì làm s ?
         // Chưa làm paging nè? breadcrumbs?
-        $ds_new = News::where('new',1)->take(4)->get()->toArray();
-        $ds_hot = News::where('hot',1)->get()->toArray();
+        $ds_new = TheLoai::join('news','news.idTheLoai','=','theloai.id')
+                ->where('news.new','=',1)
+                ->take(4)->get()->toArray();
+
+        $ds_hot = TheLoai::join('news','news.idTheLoai','=','theloai.id')
+                ->where('news.hot','=',1)
+                ->get()->toArray();   
 
         $ds_news = TheLoai::join('news','news.idTheLoai','=','theloai.id')
-                ->where('theloai.TenKhongDau','LIKE',$url)
-                ->get()->toArray();
-        $theloai = $ds_news[0]['Ten'];
+                ->where('theloai.TenKhongDau','LIKE',$theloai_url)
+                ->get()->toArray();        
 
-        for ($i=0; $i < 15; $i++) { 
+        for ($i=0; $i < 15 ; $i++) { 
             $ds_news[] = $ds_news[0];
         }
+                
         $first_news = array_shift($ds_news);
         $second_news = array_shift($ds_news);
         // var_dump($ds_news);
 
         $ds_theloai = TheLoai::all()->toArray();
-        return view('pages.theloai',compact('theloai','first_news','second_news','ds_news','ds_theloai','ds_new','ds_hot'));
+        return view('pages.theloai',compact('ds_news','ds_theloai','ds_new','ds_hot','first_news','second_news'));
     }
 
      public function danhmuc($url){
-        $ds_new = News::where('new',1)->take(4)->get()->toArray();
-        $ds_hot = News::where('hot',1)->get()->toArray();
+        $ds_new = TheLoai::join('news','news.idTheLoai','=','theloai.id')
+                ->where('news.new','=',1)
+                ->take(4)->get()->toArray();
+
+        $ds_hot = TheLoai::join('news','news.idTheLoai','=','theloai.id')
+                ->where('news.hot','=',1)
+                ->get()->toArray();  
+
         if($url=='HOT')
-        {
-        $ds_film = News::where('news.hot',1)
+        {        
+            $ds_film = TheLoai::join('news','news.idTheLoai','=','theloai.id')
+                ->where('news.hot','=',1)
                 ->get()->toArray();
         }
         if($url=='NEW')
-        {
-        $ds_film = News::where('news.new',1)
+        {       
+            $ds_film = TheLoai::join('news','news.idTheLoai','=','theloai.id')
+                ->where('news.hot','=',1)
                 ->get()->toArray();
         }
         $danhmuc = $url;
          $ds_theloai = TheLoai::all()->toArray();
         // var_dump($ds_film);
+        return view('pages.danhmuc',compact('danhmuc','ds_film','ds_theloai','ds_hot','ds_new')); 
 
-        return view('pages.danhmuc',compact('danhmuc','ds_film','ds_theloai','ds_hot','ds_new'));
+        // $ds_new = News::where('new',1)->take(4)->get()->toArray();
+        // $ds_hot = News::where('hot',1)->get()->toArray();
+        // if($url=='HOT')
+        // {
+        // $ds_film = News::where('news.hot',1)
+        //         ->get()->toArray();
+        // }
+        // if($url=='NEW')
+        // {
+        // $ds_film = News::where('news.new',1)
+        //         ->get()->toArray();
+        // }
+        // $danhmuc = $url;
+        //  $ds_theloai = TheLoai::all()->toArray();
+        // // var_dump($ds_film);
+
+        // return view('pages.danhmuc',compact('danhmuc','ds_film','ds_theloai','ds_hot','ds_new'));
     }
+    
     public function postComment(Request $rq){
         var_dump($rq->all());
         $cmt = new Comment;
-        $cmt->idUser = 1;
-        $cmt->idBaiRv = 1;
+        $cmt->idUser = Auth()->user()->id;
+        $cmt->idBaiRv = $rq->idBaiRv;
         $cmt->NoiDung = $rq->content;
+        $cmt->remember_token = $rq->_token;
         $cmt->created_at = Carbon::now()->toDateTimeString();
         $cmt->updated_at = Carbon::now()->toDateTimeString();
 

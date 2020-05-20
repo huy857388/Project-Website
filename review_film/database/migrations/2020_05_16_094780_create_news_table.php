@@ -18,12 +18,14 @@ class CreateNewsTable extends Migration
             $table->integer('idTheLoai')->unsigned();
             $table->foreign('idTheLoai')->references('id')->on('theloai')->onUpdate('cascade');
             $table->string('title')->nullable();
+            $table->string('slug')->nullable();
             $table->string('img')->nullable();
             $table->string('short_content')->nullable();
-            $table->string('content')->nullable();
+            $table->longText('content')->nullable();
+            $table->double('diem_danh_gia',3,2)->nullable();
             $table->integer('hot')->default(0);
             $table->integer('new')->default(0);
-            $table->integer('deCu')->default(0);
+            // $table->integer('deCu')->default(0);
             $table->timestamps();
         });
     }

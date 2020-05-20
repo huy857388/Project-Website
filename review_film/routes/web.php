@@ -20,13 +20,13 @@ route::get('/danh-muc/{id}','HomeController@danhmuc')->name('danhmuc'); // Huy
 // Mục tin tức Ajax và API => Huy
 
 // >>>>>>> 7e7198d5fd9f50dade39ae6705ed8a7ea6eb5386
-Route::get('/home', 'HomeController@index')->name('home'); // Huy và Phát
+Route::get('/home','HomeController@index')->name('home'); // Huy và Phát
 Route::get('/','HomeController@index'); // Huy và Phát
 
-route::get('/single/{id}','HomeController@single')->name('single'); // Phát
+route::get('the-loai/{theloai_url}/{news_url}','HomeController@single')->name('showInfo'); // Phát
+route::get('the-loai/{theloai_url}','HomeController@theLoai')->name('theLoai'); // Phát
 route::get('/top-comment','HomeController@topComment')->name('topComment'); //Phát
-route::get('/the-loai/{id}','HomeController@theLoai')->name('theLoai'); // Phát
-route::post('/comment','HomeController@postComment')->name('comment'); //Phát
+route::post('/comment','HomeController@postComment')->name('comment')->middleware('auth'); //Phát
 Auth::routes(); //Phát
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect'); //Phát
 Route::get('/callback/{provider}', 'SocialController@callback'); //Phát

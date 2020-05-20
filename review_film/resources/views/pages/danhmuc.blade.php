@@ -26,7 +26,7 @@
                                 </ul>
                             </div>
                             
-                              <h6 class="regular"><a href="{{route('single',$ds_film[0]['id'])}}">{{$ds_film[0]['title']}}</a></h6>
+                              <h6 class="regular"><a href="{{ route('showInfo',[$ds_film[0]['TenKhongDau'],$ds_film[0]['slug']]) }}">{{$ds_film[0]['title']}}</a></h6>
                             <span class="meta">{{$ds_film[0]['created_at']}}   \\   <a href="#">No Coments.</a></span>
                             <p>{{$ds_film[0]['content']}}</p>  </div>
                         
@@ -40,7 +40,7 @@
                                 </ul>
                             </div>
                             
-                            <h6 class="regular"><a href="{{route('single',$ds_film[1]['id'])}}">{{$ds_film[1]['title']}}</a></h6>
+                            <h6 class="regular"><a href="{{ route('showInfo',[$ds_film[1]['TenKhongDau'],$ds_film[1]['slug']]) }}">{{$ds_film[1]['title']}}</a></h6>
                             <span class="meta">{{$ds_film[1]['created_at']}}   \\   <a href="#">No Coments.</a></span>
                             <p>{{$ds_film[1]['content']}}</p>   </div>
                         
@@ -49,10 +49,10 @@
                                 <?php $len=count($ds_film)?>
                                  @for ($i = 2; $i < $len; $i++)
                                 <li class="m-r-no">
-                                    <a href="{{route('single',$ds_film[$i]['id'])}}"><img src="{{url('public/news_img/'.$ds_film[$i]['img'])}}" alt="MyPassion" class="alignleft" width="75px" height="75px" /></a>
+                                    <a href="{{route('showInfo',[$ds_film[$i]['TenKhongDau'],$ds_film[$i]['slug']])}}"><img src="{{url('public/news_img/'.$ds_film[$i]['img'])}}" alt="MyPassion" class="alignleft" width="75px" height="75px" /></a>
                                     <p>
                                         <span>26 May, 2013.</span>
-                                        <a href="{{route('single',$ds_film[$i]['id'])}}">{{$ds_film[$i]['title']}}</a>
+                                        <a href="{{route('showInfo',[$ds_film[$i]['TenKhongDau'],$ds_film[$i]['slug']])}}">{{$ds_film[$i]['title']}}</a>
                                     </p>
                                     <span class="rating"><span style="width:100%;"></span></span>
                                 </li>

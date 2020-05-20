@@ -17,7 +17,7 @@ class CreateTheloaiTable extends Migration
             $table->increments('id');
             $table->string('Ten')->nullable();
             $table->string('TenKhongDau')->nullable();
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

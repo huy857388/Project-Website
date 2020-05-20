@@ -21,6 +21,8 @@ class TheLoaiTableSeeder extends Seeder
         	['Ten' => 'Tình cảm'],
         	['Ten' => 'Phép thuật'],
         	['Ten' => 'Viễn tưởng'],
+            ['Ten' => 'Kinh dị'],
+            ['Ten' => 'Hành động'],
         ];
 
         foreach ($data as $v) {
@@ -28,8 +30,8 @@ class TheLoaiTableSeeder extends Seeder
         		[
         			'Ten' => $v['Ten'],
         			'TenKhongDau' => str_slug($v['Ten']),
-                    'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-                    'updated_at' => Carbon\Carbon::now()->toDateTimeString()
+                    // 'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+                    // 'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         		]
         	);
         }      

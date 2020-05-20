@@ -10,7 +10,7 @@
             	<!-- Main Content -->
                 
                 <div class="breadcrumbs column">
-                	<p><a href="{{url('/')}}">Home.</a>   \\ Thể loại \\   {{$theloai}}</p>
+                	<p><a href="{{url('/')}}">Home.</a>   \\   {{$ds_news[0]['Ten']}}</p>
                 </div>
                 
                 <div class="main-content">
@@ -45,7 +45,7 @@
 
                             </div>
                             
-                            <h6 class="regular"><a href="{{route('single',$first_news['id'])}}">{{$first_news['title']}}</a></h6>
+                            <h6 class="regular"><a href="{{ route('showInfo',[$first_news['TenKhongDau'],$first_news['slug']]) }}">{{$first_news['title']}}</a></h6>
                             <span class="meta">{{$first_news['created_at']}}   \\   <a href="#">No Coments.</a></span>
                             <p>{{$first_news['content']}}</p>
                         </div>
@@ -78,19 +78,22 @@
                                 </ul>
                             </div>
                             
-                            <h6 class="regular"><a href="{{route('single',$second_news['id'])}}">{{$second_news['title']}}</a></h6>
+                            <h6 class="regular"><a href="{{route('showInfo',[$second_news['TenKhongDau'],$second_news['slug']])}}">{{$second_news['title']}}</a></h6>
                             <span class="meta">{{$second_news['created_at']}}   \\   <a href="#">No Coments.</a></span>
                             <p>{{$second_news['content']}}</p>
                         </div>
                         
                         <div class="outerwide">
                         	<ul class="block2">
+                                <?php 
+                                    if(!empty($ds_news))
+                                 ?>
                                 @foreach($ds_news as $news)
                                 <li class="m-r-no">
-                                    <a href="{{route('single',$news['id'])}}"><img src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" class="alignleft" width="75px" height="75px" /></a>
+                                    <a href="{{ route('showInfo',[$news['TenKhongDau'],$news['slug']]) }}"><img src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" class="alignleft" width="75px" height="75px" /></a>
                                     <p>
                                         <span>26 May, 2013.</span>
-                                        <a href="{{route('single',$news['id'])}}">{{$news['title']}}</a>
+                                        <a href="{{route('showInfo',[$news['TenKhongDau'],$news['slug']])}}">{{$news['title']}}</a>
                                     </p>
                                     <span class="rating"><span style="width:100%;"></span></span>
                                 </li>

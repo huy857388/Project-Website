@@ -2,3 +2,9 @@
 -trong news bỏ phần đề cử, đề cử chỉ là random các film bất kì thôi, nên không cần tạo riêng
 -trong theloai id nên sửa lại vd: kinh dị - kd, hành động - hd, ...
 - trong theloai bỏ tênkhôngđấu đi nếu k có sài
+
+* cập nhật vài chỗ 20/05/2020:
+- News có thêm trường diem_danh_gia (kiểu double), trường slug, đã xoá trường DeCu
+- Thêm bảng subcomment
+- Thêm dữ liệu: vài thể loại và vài news
+=> file sql mới: database/rvphim_1.sql

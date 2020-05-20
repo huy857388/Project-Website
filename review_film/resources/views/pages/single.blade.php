@@ -5,8 +5,8 @@
             <div class="container">
             	
                 <div class="breadcrumbs column">
-                    <!-- Phần này World news là hiện gì thế? còn single nữa? -->
-                	<p><a href="{{route('home')}}">Home.</a>    \\   Single.</p>
+                    <!-- thể loại của phim phải fix nhìu chỗ?    -->
+                	<p><a href="{{route('home')}}">Home.</a>    \\   {{$theloai}}.</p>
                 </div>
             
             	<!-- Main Content -->
@@ -39,20 +39,36 @@
                         <div class="comments">
                             <h5 class="line"><span>Comments.</span></h5>
                             <ul>
+                                @foreach($ds_cmt as $cmt)
                                 <li>
-                                    @foreach($ds_cmt as $cmt)
                                     <div>
-                                        <div class="comment-avatar"><img src="{{url('public/img/avatar.png')}}" alt="MyPassion" /></div>
+                                        <div class="comment-avatar"><img src="{{url('public/img/banner/1.png')}}" alt="MyPassion" /></div>
                                         <div class="commment-text-wrap">
                                             <div class="comment-data">
-                                                <p><a href="#" class="url">Tài khoản 1</a> <br /> <span>{{$cmt['created_at']}} - <a href="#" class="comment-reply-link">reply</a></span></p>
+                                                <p><a href="#" class="url">{{$cmt['name']}} <strong>tên cũng có link nữa hả?</strong></a> <br /> <span>{{$cmt['updated_at']}} - <a href="#" class="comment-reply-link">trả lời</a></span></p>
                                             </div>
-                                            <div class="comment-text">Curabitur nunc mauris, <a href="#">link test</a> {{$cmt['NoiDung']}}</div>
+                                            <div class="comment-text">Curabitur nunc mauris phần comment-text này làm gì?, <a href="#">link test làm gì thế?</a> {{$cmt['NoiDung']}}</div>
                                         </div>
-                                        
                                     </div>
-                                    @endforeach
-                                    <!-- <div>
+                                    <ul class="children">
+                                        @foreach($cmt['sub_cmt'] as $sub_cmt)
+                                        <li>
+                                            <div>
+                                                <div class="comment-avatar"><img src="{{url('public/img//banner/2.png')}}" alt="MyPassion" /></div>
+                                                <div class="commment-text-wrap">
+                                                    <div class="comment-data">
+                                                        <p><a href="#" class="url">{{$sub_cmt['name']}}</a> <br /> <span>{{$sub_cmt['updated_at']}} - <a href="#" class="comment-reply-link">trả lời</a></span></p>
+                                                    </div>
+                                                    <div class="comment-text">{{$sub_cmt['NoiDung']}}</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        @endforeach                                        
+                                    </ul>
+                                </li>
+                                @endforeach
+                                <!-- <li>
+                                    <div>
                                         <div class="comment-avatar"><img src="{{url('public/img/avatar.png')}}" alt="MyPassion" /></div>
                                         <div class="commment-text-wrap">
                                             <div class="comment-data">
@@ -106,6 +122,7 @@
                                             </ul>
                                             
                                         </li>
+
                                     </ul>
                                     <ul class="children">
                                         <li>
@@ -119,8 +136,8 @@
                                                 </div>
                                             </div>
                                         </li>
-                                    </ul> -->
-                                </li>
+                                    </ul>
+                                </li> -->
                             </ul>
                         </div>
                         
@@ -146,6 +163,7 @@
                                         <input type="text" class="name" />
                                     </div>
                                 </div> -->
+                                <input type="hidden" name="idBaiRv" value="{{$news['id']}}">
                                 <div class="form">
                                     <label>Comment*</label>
                                     <textarea name="content" rows="10" cols="20"></textarea>
@@ -155,8 +173,13 @@
                         </div>
                         
                     </div>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                    <script>
+                        $(document).ready(function(){
+                            // alert("Gõ");
+                        });
+                    </script>
                     <!-- /Single -->
-                    
                 </div>
                 @stop
         

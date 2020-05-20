@@ -17,21 +17,21 @@
                     console.log(s);
                     var output = '';
                     output += '<div>';
-                     $.each(s.items, function(i, result_item){
+                    $.each(s.items, function(i, result_item){
                         var title = result_item.snippet.title;
                         var href = result_item.id;
                         var img = result_item.snippet.thumbnails.default.url;
                       //  output += '<img src="'+img+'" />';
                        output += '<div><a class="title" href="https://www.youtube.com/watch?v='+href+'"  >'+'<img src="'+img+'" width="280" height="150" /><br>'+title+'</a></div>';
                     output +='</div>';
-                     });
+                    });
                     document.getElementById("demo").innerHTML = output;
                                      
                                     
                 },
             });
         }
-window.onload =F1;
+    window.onload =F1;
                         
     </script>
                 <!-- Left Sidebar -->
@@ -39,8 +39,8 @@ window.onload =F1;
                      <div class="sidebar">
                         <h5 class="line"><span>Review Video.</span></h5>
 
-                        <span id ="demo"></span>
-                        <span class="meta" align="right" > Nguồn:Phê Phim</span>
+                        <span id="demo"></span>
+                        <span class="meta" align="right"> Nguồn:Phê Phim</span>
                      </div>
                  <div class="sidebar">
                         <div id="tabs">
@@ -61,8 +61,8 @@ window.onload =F1;
                                         }
                                         else $len=count($ds_new)?>
                                     @for ($i = 0; $i < $len; $i++)                                    
-                                    <li>
-                                        <a href="{{route('single',$ds_new[$i]['id'])}}" class="title">{{$ds_new[$i]['title']}}</a>
+                                    <li>                                        
+                                        <a href="{{ route('showInfo',[$ds_new[$i]['TenKhongDau'],$ds_new[$i]['slug']]) }}" class="title">{{$ds_new[$i]['title']}}</a>
                                         <span class="meta">{{$ds_new[$i]['short_content']}}  </span>
                                         <span class="rating"><span style="width:70%;"></span></span>
                                     </li>
@@ -83,7 +83,7 @@ window.onload =F1;
                                         else $len=count($ds_hot)?>
                                      @for ($i = 0; $i < $len; $i++)                                    
                                         <li>
-                                            <a href="{{route('single',$ds_hot[$i]['id'])}}" class="title">{{$ds_hot[$i]['title']}}</a>
+                                            <a href="{{route('showInfo',[$ds_hot[$i]['TenKhongDau'],$ds_hot[$i]['slug']])}}" class="title">{{$ds_hot[$i]['title']}}</a>
                                             <span class="meta">{{$ds_hot[$i]['short_content']}}  </span>
                                             <span class="rating"><span style="width:70%;"></span></span>
                                         </li>
@@ -133,8 +133,18 @@ window.onload =F1;
                 <div class="column-one-fourth">
                    <h5 class="line"><span>THỂ LOẠI.</span></h5>
                     <ul class="footnav"><!-- chạy dòng for -->
-                        <li><a href="danhmuc"><i class="icon-right-open"></i> Kinh dị</a></li>
-                        <li><a href="danhmuc"><i class="icon-right-open"></i> Viễn tưởng</a></li>                        
+                        <?php 
+                            if(isset($ds_theloai))
+                            {
+                                ?>
+                                @foreach($ds_theloai as $theloai)
+                                <li><a href="{{route('theLoai',$theloai['TenKhongDau'])}}"><i class="icon-right-open"></i> {{$theloai['Ten']}}</a></li>
+                                @endforeach
+                                <?php
+                            }
+                         ?>
+                        <!-- <li><a href="danhmuc"><i class="icon-right-open"></i> Kinh dị</a></li>
+                        <li><a href="danhmuc"><i class="icon-right-open"></i> Viễn tưởng</a></li>                         -->
                     </ul>
                 </div>
                 <div class="column-one-fourth">
@@ -166,8 +176,9 @@ window.onload =F1;
 <script type="text/javascript" src="{{url('public/js/jflickrfeed.min.js')}}"></script>
 <script type="text/javascript" src="{{url('public/js/mobilemenu.js')}}"></script>
 <!--[if lt IE 9]> <script type="text/javascript" src="js/html5.js"></script> <![endif]-->
+<script type="text/javascript" src="{{url('public/js/html5.js')}}"></script>
 <script type="text/javascript" src="{{url('public/js/mypassion.js')}}"></script>
-<script type="text/javascript" src="{{url('public/bootstrap/js/boostrap.js')}}"></script>
-
+<!-- <script type="text/javascript" src="{{url('public/bootstrap/js/bootstrap.js')}}"></script> -->
+<script type="text/javascript" src="{{url('public/js/comment.js')}}"></script>
 </body>
 </html>

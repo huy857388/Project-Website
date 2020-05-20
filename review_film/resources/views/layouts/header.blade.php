@@ -7,18 +7,20 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="description" content="News - Clean HTML5 and CSS3 responsive template">
-<meta name="author" content="MyPassion">
+<meta name="description" content="Đánh giá phim để lựa chọn những bộ phim đáng xem nhất!">
+<meta name="author" content="Nhóm 1 - Xây dựng ứng dụng WEB">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>Great Movies</title>
 
-<link rel="shortcut icon" href="img/sms-4.ico" />
+<link rel="shortcut icon" href="{{ url('public/img/sms-4.ico')}}" />
 
 <!-- STYLES -->
+
 <link rel="stylesheet" type="text/css" href="{{ url('public/css/superfish.css') }}" media="screen"/>
 <link rel="stylesheet" type="text/css" href="css/fontello/fontello.css" href="{{ url('public/css/superfish.css') }}"/>
+
 <link rel="stylesheet" type="text/css" media="screen" href="{{ url('public/css/flexslider.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ url('public/css/ui.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ url('public/css/base.css') }}"/>
@@ -29,7 +31,9 @@
 <link rel="stylesheet" type="text/css" href="css/devices/767.css" media="only screen and (min-width: 480px) and (max-width: 767px)" />
 <link rel="stylesheet" type="text/css" href="css/devices/479.css" media="only screen and (min-width: 200px) and (max-width: 479px)" />
 <!--[if lt IE 9]> <script type="text/javascript" src="js/customM.js"></script> <![endif]-->
-<link rel="stylesheet" type="text/css" href="{{ url('public/boostrap/css/boostrap.css')}}">
+<!-- <script type="text/javascript" src="{{url('public/js/customM.js')}}"></script> -->
+<!-- <link rel="stylesheet" type="text/css" href="{{ url('public/bootstrap/css/bootstrap.min.css')}}"> -->
+
 
 </head>
 
