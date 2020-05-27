@@ -3,15 +3,12 @@
 @section('content')
 <section id="content">
             <div class="container">
-            	
                 <div class="breadcrumbs column">
                     <!-- thể loại của phim phải fix nhìu chỗ?    -->
                 	<p><a href="{{route('home')}}">Home.</a>    \\   {{$theloai}}.</p>
                 </div>
-            
             	<!-- Main Content -->
                 <div class="main-content">
-                    
                     <!-- Single -->
                     <div class="column-two-third single">
                     	<div class="flexslider">
@@ -31,7 +28,7 @@
                         </div>
                         
                         <h6 class="title">{{$news['title']}}</h6>
-                        <span class="meta">{{$news['created_at']}}   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
+                        <span class="meta">{{$news['created_at']}}   \\  <a href="#">World new. </a>\\   <a href="#">{{$count_cmt}} Coments.</a></span>
                         <p>Tóm tắt nội dung: {{$news['short_content']}}</p>
                         <p>Nội dung: {{$news['content']}}</p>
                         
@@ -45,11 +42,17 @@
                                         <div class="comment-avatar"><img src="{{url('public/img/banner/1.png')}}" alt="MyPassion" /></div>
                                         <div class="commment-text-wrap">
                                             <div class="comment-data">
-                                                <p><a href="#" class="url">{{$cmt['name']}} <strong>tên cũng có link nữa hả?</strong></a> <br /> <span>{{$cmt['updated_at']}} - <a href="#" class="comment-reply-link">trả lời</a></span></p>
+                                                <p><a href="#" class="url">{{$cmt['name']}} <strong>tên cũng có link nữa hả?</strong></a> <br /> 
+                                                    <span>{{date("H:i:s d-m-Y", strtotime($cmt['updated_at']))}} - <a href="javascript:void(0)" class="comment-reply-link">
+                                                    <input type="hidden" value="{{$cmt['id']}}">
+                                                    trả lời</a>
+                                                    </span>
+                                                </p>
                                             </div>
-                                            <div class="comment-text">Curabitur nunc mauris phần comment-text này làm gì?, <a href="#">link test làm gì thế?</a> {{$cmt['NoiDung']}}</div>
+                                            <div class="comment-text">Curabitur nunc mauris phần comment-text này làm gì?,{{$cmt['NoiDung']}}</div>
                                         </div>
                                     </div>
+
                                     <ul class="children">
                                         @foreach($cmt['sub_cmt'] as $sub_cmt)
                                         <li>
@@ -57,112 +60,42 @@
                                                 <div class="comment-avatar"><img src="{{url('public/img//banner/2.png')}}" alt="MyPassion" /></div>
                                                 <div class="commment-text-wrap">
                                                     <div class="comment-data">
-                                                        <p><a href="#" class="url">{{$sub_cmt['name']}}</a> <br /> <span>{{$sub_cmt['updated_at']}} - <a href="#" class="comment-reply-link">trả lời</a></span></p>
+                                                        <p>
+                                                            <a href="#" class="url">{{$sub_cmt['name']}}</a> <br /> 
+                                                            <span>{{date("H:i:s d-m-Y", strtotime($sub_cmt['updated_at']))}}
+                                                            </span>
+                                                        </p>
                                                     </div>
                                                     <div class="comment-text">{{$sub_cmt['NoiDung']}}</div>
                                                 </div>
                                             </div>
                                         </li>
-                                        @endforeach                                        
+                                        @endforeach
+                                        <span class="form-reply"></span>
                                     </ul>
                                 </li>
                                 @endforeach
-                                <!-- <li>
-                                    <div>
-                                        <div class="comment-avatar"><img src="{{url('public/img/avatar.png')}}" alt="MyPassion" /></div>
-                                        <div class="commment-text-wrap">
-                                            <div class="comment-data">
-                                                <p><a href="#" class="url">MyPassion</a> <br /> <span>January 12, 2013 - <a href="#" class="comment-reply-link">reply</a></span></p>
-                                            </div>
-                                            <div class="comment-text">Curabitur nunc mauris, <a href="#">link test</a> id dictum quis, aliquet vel diam. Aliquam gravida, augue et dictum hendrerit, nisl erat congue elit, et molestie magna sapien cursus tortor.</div>
-                                        </div>
-                                        
-                                    </div>
-                                    <ul class="children">
-                                        <li>
-                                            <div>
-                                                <div class="comment-avatar"><img src="{{url('public/img/avatar.png')}}" alt="MyPassion" /></div>
-                                                <div class="commment-text-wrap">
-                                                    <div class="comment-data">
-                                                        <p><a href="#" class="url">MyPassion</a> <br /> <span>January 12, 2013 - <a href="#" class="comment-reply-link">reply</a></span></p>
-                                                    </div>
-                                                    <div class="comment-text">Curabitur nunc mauris, imperdiet id dictum quis, aliquet vel diam. Aliquam gravida, augue et dictum hendrerit, nisl erat congue elit, et molestie magna sapien cursus tortor.</div>
-                                                </div>
-                                            </div>
-                                            
-                                            <ul class="children">
-                                                <li>
-                                                    <div>
-                                                        <div class="comment-avatar"><img src="{{url('public/img/avatar.png')}}" alt="MyPassion" /></div>
-                                                        <div class="commment-text-wrap">
-                                                            <div class="comment-data">
-                                                                <p><a href="#" class="url">MyPassion</a> <br /> <span>January 12, 2013 - <a href="#" class="comment-reply-link">reply</a></span></p>
-                                                            </div>
-                                                            <div class="comment-text">Curabitur nunc mauris, imperdiet id dictum quis, aliquet vel diam. Aliquam gravida, augue et dictum hendrerit, nisl erat congue elit, et molestie magna sapien cursus tortor.</div>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                   
-                                                    
-                                                </li>
-                                            </ul>
-                                            
-                                            <ul class="children">
-                                                <li>
-                                                    <div>
-                                                        <div class="comment-avatar"><img src="{{url('public/img/avatar.png')}}" alt="MyPassion" /></div>
-                                                        <div class="commment-text-wrap">
-                                                            <div class="comment-data">
-                                                                <p><a href="#" class="url">MyPassion </a><br /> <span>January 12, 2013 - <a href="#" class="comment-reply-link">reply</a></span></p>
-                                                            </div>
-                                                            <div class="comment-text">Curabitur nunc mauris, imperdiet id dictum quis, aliquet vel diam. Aliquam gravida, augue et dictum hendrerit, nisl erat congue elit, et molestie magna sapien cursus tortor.</div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            
-                                        </li>
-
-                                    </ul>
-                                    <ul class="children">
-                                        <li>
-                                            <div>
-                                                <div class="comment-avatar"><img src="{{url('public/img/avatar.png')}}" alt="MyPassion" /></div>
-                                                <div class="commment-text-wrap">
-                                                    <div class="comment-data">
-                                                        <p><a href="#" class="url">MyPassion</a> <br /> <span>January 12, 2013 - <a href="#" class="comment-reply-link">reply</a></span></p>
-                                                    </div>
-                                                    <div class="comment-text">Curabitur nunc mauris, imperdiet id dictum quis, aliquet vel diam. Aliquam gravida, augue et dictum hendrerit, nisl erat congue elit, et molestie magna sapien cursus tortor.</div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li> -->
                             </ul>
                         </div>
                         
+                        @if(Auth::check()) 
+                        <div class="comment-form">
+                            <h5 class="line"><span>Leave a reply.</span></h5>
+                            <form method="post" id="comment-form">
+                                {{csrf_field()}}                               
+                                <input type="hidden" name="idBaiRv" value="{{$news['id']}}">
+                                <div class="form">
+                                    <label>Comment*</label>
+                                    <textarea name="content" rows="10" cols="20"></textarea>
+                                </div>
+                                <input type="button" class="post-comment" value="Post Comment" />
+                            </form>
+                        </div>
+                        @else
                         <div class="comment-form">
                             <h5 class="line"><span>Leave a reply.</span></h5>
                             <form action="{{route('comment')}}" method="post">
-                                {{csrf_field()}}
-                                <!-- <div class="form">
-                                    <label>Name*</label>
-                                    <div class="input">
-                                        <input type="text" class="name" />
-                                    </div>
-                                </div>
-                                <div class="form">
-                                    <label>Email*</label>
-                                    <div class="input">
-                                        <input type="text" class="name" />
-                                    </div>
-                                </div>
-                                <div class="form">
-                                    <label>Website</label>
-                                    <div class="input">
-                                        <input type="text" class="name" />
-                                    </div>
-                                </div> -->
+                                {{csrf_field()}}                                
                                 <input type="hidden" name="idBaiRv" value="{{$news['id']}}">
                                 <div class="form">
                                     <label>Comment*</label>
@@ -171,15 +104,69 @@
                                 <input type="submit" class="post-comment" value="Post Comment" />
                             </form>
                         </div>
-                        
-                    </div>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                        @endif
                     <script>
                         $(document).ready(function(){
-                            // alert("Gõ");
+
+                            $(".comment-reply-link").click(function(){
+                                // console.log($(this).parent().parent().parent().parent().parent().siblings().children(".form-reply").html());
+                                @if(Auth::check()) console.log($(this).children().val());
+                                @else console.log("401 Authorization");
+                                @endif
+                                var html = '<li><div class="comment-form" id="reply"><h5 class="line"><span>Leave a reply.</span></h5><form action="{{route('comment')}}" method="post">{{csrf_field()}}<input type="hidden" name="idBaiRv" value="{{$news['id']}}"><input type="hidden" name="idComment" value="' + $(this).children().val() + '"><div class="form"><label>Sub Comment*</label><textarea name="content" rows="10" cols="20"></textarea></div><input type="submit" class="post-comment" value="Post Comment" /></form></div></li>';
+                               $(this).parent().parent().parent().parent().parent().siblings().children(".form-reply").html(html);
+                            });
+
+                            $("#comment-form input[type=button]").click(function(){
+                                // alert("Yes");
+                                f = $("#comment-form").serializeArray();
+                                
+                                // console.log(f);
+                                $.ajax({
+                                    async: false,
+                                    url: "{{route('comment')}}",
+                                    type: "post", 
+                                    dataType: "json",
+                                    data: f,                                
+                                    success: function(data){                                                                           
+                                        console.log(data);
+                                        // Xử lý format chưa dc
+                                        // let format = $.format.date(new Date(data.updated_at), 'HH:mm:ss dd/MM/yyyy');
+                                        // console.log(format);
+                                        var html = '<li><div><div class="comment-avatar"><img src="{{url('public/img/banner/1.png')}}" alt="MyPassion" /></div><div class="commment-text-wrap"><div class="comment-data"><p><a href="#" class="url">' + data.Name + ' <strong>tên cũng có link nữa hả?</strong></a> <br /> <span>' + data.updated_at + ' - <a href="javascript:void(0)" class="comment-reply-link"><input type="hidden" value="' + data.id + '">trả lời</a></span></p></div><div class="comment-text">Curabitur nunc mauris phần comment-text này làm gì?,' + data.NoiDung + '</div></div></div><ul class="children"></ul></li>';
+                                        // console.log(html);
+                                        $(".comments").children("ul").append(html);
+                                    },
+                                    error:function(err){
+                                        console.log(err);
+                                    }
+                                });
+                                console.log(data);
+                               
+                            });
                         });
                     </script>
-                    <!-- /Single -->
+                    <!-- /Single -->                               
+                    <!-- <li>
+                        <div>
+                            <div class="comment-avatar"><img src="{{url('public/img/banner/1.png')}}" alt="MyPassion" /></div>
+                            <div class="commment-text-wrap">
+                                <div class="comment-data">
+                                    <p><a href="#" class="url">' + data.Name + ' <strong>tên cũng có link nữa hả?</strong></a> <br /> 
+                                        <span>{{date("H:i:s d-m-Y", strtotime(' + data.updated_at + '))}} - <a href="javascript:void(0)" class="comment-reply-link">
+                                        <input type="hidden" value="' + data.id + '">
+                                        trả lời</a>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="comment-text">Curabitur nunc mauris phần comment-text này làm gì?,' + data.NoiDung + '</div>
+                            </div>
+                        </div>
+
+                        <ul class="children">
+                        </ul>
+                    </li> -->
                 </div>
-                @stop
+            </div>
+            @stop
         

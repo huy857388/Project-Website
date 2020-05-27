@@ -1,12 +1,12 @@
  <!-- /Main Content -->
-    <script type="text/javascript">
+<script type="text/javascript">
         var player;
         function F1()
         {
             var apiKey = "AIzaSyAvamzI--kIuSoUGgRmoexZcDCibzdqRqM";
             var idVideo = "PLBULsmyQGMTh2BUCv70mTaIe6BsLdMMGT";
             var url= "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLBULsmyQGMTh2BUCv70mTaIe6BsLdMMGT&key=AIzaSyAvamzI--kIuSoUGgRmoexZcDCibzdqRqM&maxResults=3";
-            //alert('f1');
+            // alert('f1');
             $.ajax({
                 async: false,
                 type: 'GET',
@@ -26,14 +26,12 @@
                     output +='</div>';
                     });
                     document.getElementById("demo").innerHTML = output;
-                                     
-                                    
                 },
             });
-        }
-    window.onload =F1;
+        }   
+        window.onload =F1;
                         
-    </script>
+</script>
                 <!-- Left Sidebar -->
                 <div class="column-one-third">                
                      <div class="sidebar">
@@ -67,7 +65,7 @@
                                         <span class="rating"><span style="width:70%;"></span></span>
                                     </li>
                                     @endfor
-                                    ?<?php } ?>
+                                    <?php } ?>
                                 </ul>
                             </div>
                             <div id="tabs2">
@@ -161,24 +159,5 @@
 	</div>
 </div>
 <!-- / Body Wrapper -->
-
-
-<!-- SCRIPTS -->
-<script type="text/javascript" src="{{url('public/js/jquery.js')}}"></script>
-<script type="text/javascript" src="{{url('public/js/easing.min.js')}}"></script>
-<script type="text/javascript" src="{{url('public/js/1.8.2.min.js')}}"></script>
-<script type="text/javascript" src="{{url('public/js/ui.js')}}"></script>
-<script type="text/javascript" src="{{url('public/js/carouFredSel.js')}}"></script>
-<script type="text/javascript" src="{{url('public/js/superfish.js')}}"></script>
-<script type="text/javascript" src="{{url('public/js/customM.js')}}"></script>
-<script type="text/javascript" src="{{url('public/js/flexslider-min.js')}}"></script>
-<script type="text/javascript" src="{{url('public/js/jtwt.min.js')}}"></script>
-<script type="text/javascript" src="{{url('public/js/jflickrfeed.min.js')}}"></script>
-<script type="text/javascript" src="{{url('public/js/mobilemenu.js')}}"></script>
-<!--[if lt IE 9]> <script type="text/javascript" src="js/html5.js"></script> <![endif]-->
-<script type="text/javascript" src="{{url('public/js/html5.js')}}"></script>
-<script type="text/javascript" src="{{url('public/js/mypassion.js')}}"></script>
-<!-- <script type="text/javascript" src="{{url('public/bootstrap/js/bootstrap.js')}}"></script> -->
-<script type="text/javascript" src="{{url('public/js/comment.js')}}"></script>
 </body>
 </html>

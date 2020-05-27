@@ -141,25 +141,25 @@ jQuery(document).ready(function(){
 	});	
 	
 // -----------------------------------------------------  GOOGLE MAP
-	var myLatlng = new google.maps.LatLng(-34.397, 150.644);
-	var myOptions = {
-	  center:myLatlng,
-	  zoom:8,
-	  mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-	var map = new google.maps.Map(document.getElementById("map"),  myOptions);
-	var marker = new google.maps.Marker({
-	  position: myLatlng,
-	  map: map,
-	  title:"Click Me for more info!"
-	});
+	// var myLatlng = new google.maps.LatLng(-34.397, 150.644);
+	// var myOptions = {
+	//   center:myLatlng,
+	//   zoom:8,
+	//   mapTypeId: google.maps.MapTypeId.ROADMAP
+	// };
+	// var map = new google.maps.Map(document.getElementById("map"),  myOptions);
+	// var marker = new google.maps.Marker({
+	//   position: myLatlng,
+	//   map: map,
+	//   title:"Click Me for more info!"
+	// });
 	
-	var infowindow = new google.maps.InfoWindow({});
+	// var infowindow = new google.maps.InfoWindow({});
 	
-	google.maps.event.addListener(marker, 'click', function() {
-		infowindow.setContent("Write here some description"); //sets the content of your global infowindow to string "Tests: "
-		infowindow.open(map,marker); //then opens the infowindow at the marker
-	});
-	marker.setMap(map);
+	// google.maps.event.addListener(marker, 'click', function() {
+	// 	infowindow.setContent("Write here some description"); //sets the content of your global infowindow to string "Tests: "
+	// 	infowindow.open(map,marker); //then opens the infowindow at the marker
+	// });
+	// marker.setMap(map);
 
 });

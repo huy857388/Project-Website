@@ -27,6 +27,7 @@ route::get('the-loai/{theloai_url}/{news_url}','HomeController@single')->name('s
 route::get('the-loai/{theloai_url}','HomeController@theLoai')->name('theLoai'); // Phát
 route::get('/top-comment','HomeController@topComment')->name('topComment'); //Phát
 route::post('/comment','HomeController@postComment')->name('comment')->middleware('auth'); //Phát
+route::get('/search','HomeController@fullTextSearch')->name('search'); //Phát
 Auth::routes(); //Phát
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect'); //Phát
 Route::get('/callback/{provider}', 'SocialController@callback'); //Phát

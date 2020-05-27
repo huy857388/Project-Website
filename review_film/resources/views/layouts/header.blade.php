@@ -19,7 +19,7 @@
 <!-- STYLES -->
 
 <link rel="stylesheet" type="text/css" href="{{ url('public/css/superfish.css') }}" media="screen"/>
-<link rel="stylesheet" type="text/css" href="css/fontello/fontello.css" href="{{ url('public/css/superfish.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ url('public/css/superfish.css') }}"/>
 
 <link rel="stylesheet" type="text/css" media="screen" href="{{ url('public/css/flexslider.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ url('public/css/ui.css') }}"/>
@@ -27,13 +27,28 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/css/style.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ url('public/css/960.css') }}"/>
 
-<link rel="stylesheet" type="text/css" href="css/devices/1000.css" media="only screen and (min-width: 768px) and (max-width: 1000px)" />
-<link rel="stylesheet" type="text/css" href="css/devices/767.css" media="only screen and (min-width: 480px) and (max-width: 767px)" />
-<link rel="stylesheet" type="text/css" href="css/devices/479.css" media="only screen and (min-width: 200px) and (max-width: 479px)" />
+<link rel="stylesheet" type="text/css" href="{{ url('public/css/devices/1000.css')}}" media="only screen and (min-width: 768px) and (max-width: 1000px)" />
+<link rel="stylesheet" type="text/css" href="{{ url('public/css/devices/767.css')}}" media="only screen and (min-width: 480px) and (max-width: 767px)" />
+<link rel="stylesheet" type="text/css" href="{{ url('public/css/devices/479.css')}}" media="only screen and (min-width: 200px) and (max-width: 479px)" />
 <!--[if lt IE 9]> <script type="text/javascript" src="js/customM.js"></script> <![endif]-->
 <!-- <script type="text/javascript" src="{{url('public/js/customM.js')}}"></script> -->
 <!-- <link rel="stylesheet" type="text/css" href="{{ url('public/bootstrap/css/bootstrap.min.css')}}"> -->
 
+<!-- SCRIPTS -->
+<script type="text/javascript" src="{{url('public/js/jquery.js')}}"></script>
+<script type="text/javascript" src="{{url('public/js/easing.min.js')}}"></script>
+<script type="text/javascript" src="{{url('public/js/1.8.2.min.js')}}"></script>
+<script type="text/javascript" src="{{url('public/js/ui.js')}}"></script>
+<script type="text/javascript" src="{{url('public/js/carouFredSel.js')}}"></script>
+<script type="text/javascript" src="{{url('public/js/superfish.js')}}"></script>
+<script type="text/javascript" src="{{url('public/js/customM.js')}}"></script>
+<script type="text/javascript" src="{{url('public/js/flexslider-min.js')}}"></script>
+<script type="text/javascript" src="{{url('public/js/jtwt.min.js')}}"></script>
+<script type="text/javascript" src="{{url('public/js/jflickrfeed.min.js')}}"></script>
+<script type="text/javascript" src="{{url('public/js/mobilemenu.js')}}"></script>
+<!--[if lt IE 9]> <script type="text/javascript" src="js/html5.js"></script> <![endif]-->
+<script type="text/javascript" src="{{url('public/js/mypassion.js')}}"></script>
+<!-- <script type="text/javascript" src="{{url('public/bootstrap/js/bootstrap.js')}}"></script> -->
 
 </head>
 
