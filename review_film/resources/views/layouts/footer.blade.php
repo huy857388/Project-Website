@@ -35,7 +35,7 @@
                 <!-- Left Sidebar -->
                 <div class="column-one-third">                
                      <div class="sidebar">
-                        <h5 class="line"><span>Review Video.</span></h5>
+                        <h5 class="line"><span>News</span></h5>
 
                         <span id="demo"></span>
                         <span class="meta" align="right"> Nguồn:Phê Phim</span>

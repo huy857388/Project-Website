@@ -31,6 +31,7 @@ route::get('/search','HomeController@fullTextSearch')->name('search'); //Phát
 Auth::routes(); //Phát
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect'); //Phát
 Route::get('/callback/{provider}', 'SocialController@callback'); //Phát
+route::get('/top-rated','HomeController@toprated')->name('toprated');
 
 
 // <<<<<<< HEAD

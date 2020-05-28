@@ -29,7 +29,7 @@
                               <h6 class="regular"><a href="{{ route('showInfo',[$ds_film[0]['TenKhongDau'],$ds_film[0]['slug']]) }}">{{$ds_film[0]['title']}}</a></h6>
                             <span class="meta">{{$ds_film[0]['created_at']}}   \\   <a href="#">No Coments.</a></span>
                             <p>{{$ds_film[0]['content']}}</p>  </div>
-                        
+                        @if ($ds_film[1] != null)
                         <div class="outertight m-r-no m-t-no">
                             <div class="flexslider">
                                 <ul class="slides">
@@ -43,6 +43,7 @@
                             <h6 class="regular"><a href="{{ route('showInfo',[$ds_film[1]['TenKhongDau'],$ds_film[1]['slug']]) }}">{{$ds_film[1]['title']}}</a></h6>
                             <span class="meta">{{$ds_film[1]['created_at']}}   \\   <a href="#">No Coments.</a></span>
                             <p>{{$ds_film[1]['content']}}</p>   </div>
+                            @endif
                         
                         <div class="outerwide">
                         	<ul class="block2">
@@ -61,19 +62,10 @@
 
                             </ul>
                         </div>
+                       
                         
                         <div class="pager">
-                            <ul>
-                            	<li><a href="#" class="first-page"></a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#" class="active">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#" class="last-page"></a></li>
-                            </ul>
+                             {{ $ds_film->links() }}
                         </div>
                     	
                     </div>

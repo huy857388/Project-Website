@@ -849,7 +849,11 @@ a.send:hover{
 	color:#fff;
 	text-decoration:none;
 }
-.pager ul li a.active{
+.pager ul li.active span{
+	padding:3px 10px 4px 10px;
+	margin:0 5px 0 0;
+	color:#696969;
+	display:block;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ee6c6d), to(#bc393a)); /* Safari 4-5, Chrome 1-9 */ 
 	background: -webkit-linear-gradient(top, #ee6c6d, #bc393a);/* Safari 5.1, Chrome 10+ */  
 	background: -moz-linear-gradient(top, #ee6c6d, #bc393a); /* Firefox 3.6+ */ 
@@ -858,13 +862,18 @@ a.send:hover{
 	background-color:#ea4748;
 	color:#fff;
 }
-.pager ul li a.first-page{
-	background:#6c6c6c url(../img/slider-nav2.png) no-repeat center;
-	background-position:8px 8px;
-	padding:0;
-	width:25px;
+.pager ul li.disabled span{
+	padding:3px 10px 4px 10px;
+	margin:0 5px 0 0;
+	color:#696969;
 	display:block;
-	height:26px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ee6c6d), to(#bc393a)); /* Safari 4-5, Chrome 1-9 */ 
+	background: -webkit-linear-gradient(top, #ef8f90, #e6a3a3);/* Safari 5.1, Chrome 10+ */  
+	background: -moz-linear-gradient(top, #ee6c6d, #bc393a); /* Firefox 3.6+ */ 
+	background: -ms-linear-gradient(top, #ee6c6d, #bc393a); /* IE 10 */ 
+	background: -o-linear-gradient(top, #ee6c6d, #bc393a);/* Opera 11.10+ */ 
+	background-color:#ea4748;
+	color:#fff;;
 }
 
 .pager ul li a.last-page{

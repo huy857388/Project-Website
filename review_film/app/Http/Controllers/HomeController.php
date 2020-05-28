@@ -199,36 +199,38 @@ class HomeController extends Controller
         {        
             $ds_film = TheLoai::join('news','news.idTheLoai','=','theloai.id')
                 ->where('news.hot','=',1)
-                ->get()->toArray();
+                ->paginate(8);
         }
         if($url=='NEW')
         {       
             $ds_film = TheLoai::join('news','news.idTheLoai','=','theloai.id')
-                ->where('news.hot','=',1)
-                ->get()->toArray();
+                ->where('news.new','=',1)
+                ->paginate(8);
         }
         $danhmuc = $url;
         $ds_theloai = TheLoai::all()->toArray();
         // var_dump($ds_film);
         return view('pages.danhmuc',compact('danhmuc','ds_film','ds_theloai','ds_hot','ds_new')); 
 
-        // $ds_new = News::where('new',1)->take(4)->get()->toArray();
-        // $ds_hot = News::where('hot',1)->get()->toArray();
-        // if($url=='HOT')
-        // {
-        // $ds_film = News::where('news.hot',1)
-        //         ->get()->toArray();
-        // }
-        // if($url=='NEW')
-        // {
-        // $ds_film = News::where('news.new',1)
-        //         ->get()->toArray();
-        // }
-        // $danhmuc = $url;
-        //  $ds_theloai = TheLoai::all()->toArray();
-        // // var_dump($ds_film);
+       
+    }
+    public function toprated(){
+        $ds_new = TheLoai::join('news','news.idTheLoai','=','theloai.id')
+                ->where('news.new','=',1)
+                ->take(4)->get()->toArray();
 
-        // return view('pages.danhmuc',compact('danhmuc','ds_film','ds_theloai','ds_hot','ds_new'));
+        $ds_hot = TheLoai::join('news','news.idTheLoai','=','theloai.id')
+                ->where('news.hot','=',1)
+               ->get()->toArray();   
+
+        $ds_film = TheLoai::join('news','news.idTheLoai','=','theloai.id')->get()->sortByDesc("diem_danh_gia")->take(10)->toArray();                    
+        
+        $ds_cmt = Comment::all()->toArray();
+        $ds_theloai = TheLoai::all()->toArray();
+         //var_dump($ds_film);
+         $top1=0;
+         $top2=0;
+        return view('pages.top_rated',compact('ds_hot','ds_new','ds_cmt','ds_theloai','ds_film','top1','top2'));
     }
     
     public function postComment(Request $rq){
