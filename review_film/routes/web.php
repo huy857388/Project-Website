@@ -55,3 +55,21 @@ Route::post('/update_baiviet/{id_baiviet}','NewsProduct@update_baiviet');//Khanh
 Route::post('/save_baiviet','NewsProduct@save_baiviet'); //Khanh
 // >>>>>>> 9b85fe5447345d6ec862198bb72b73d08133b047
 // 
+//================KHANG - Thể Loại=====================
+
+Route::group(['prefix' => 'theloai'],function(){
+	Route::get('danhsach','category@danhsach_theloai');
+
+	Route::get('them','category@them_theloai');
+
+	Route::post('them','category@postthem_theloai');
+
+	Route::get('sua/{id}','category@sua_theloai');
+
+	Route::post('sua/{id}','category@postsua_theloai');
+
+	Route::get('xoa/{id}','category@xoa_theloai');
+
+
+
+});
