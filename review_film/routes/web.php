@@ -23,11 +23,13 @@ route::get('/danh-muc/{id}','HomeController@danhmuc')->name('danhmuc'); // Huy
 Route::get('/home','HomeController@index')->name('home'); // Huy và Phát
 Route::get('/','HomeController@index'); // Huy và Phát
 
-route::get('the-loai/{theloai_url}/{news_url}','HomeController@single')->name('showInfo'); // Phát
-route::get('the-loai/{theloai_url}','HomeController@theLoai')->name('theLoai'); // Phát
-route::get('/top-comment','HomeController@topComment')->name('topComment'); //Phát
-route::post('/comment','HomeController@postComment')->name('comment')->middleware('auth'); //Phát
-route::get('/search','HomeController@fullTextSearch')->name('search'); //Phát
+route::get('the-loai/{theloai_url}/{news_url}','NewsController@single')->name('showInfo'); // Phát
+route::get('the-loai/{theloai_url}','NewsController@theLoai')->name('theLoai'); // Phát
+route::get('/top-comment','NewsController@topComment')->name('topComment'); //Phát
+route::post('/comment','NewsController@postComment')->name('comment')->middleware('auth'); //Phát
+route::get('/search','NewsController@fullTextSearch')->name('search'); //Phát
+route::get('/delete-cmt/{id_cmt}','NewsController@deleteComment')->name('deleteCmt'); //Phát
+route::get('/delete-sub-cmt/{id_sub_cmt}','NewsController@deleteSubComment')->name('deleteSubCmt'); //Phát
 Auth::routes(); //Phát
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect'); //Phát
 Route::get('/callback/{provider}', 'SocialController@callback'); //Phát

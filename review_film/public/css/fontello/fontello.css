@@ -252,3 +252,4 @@
 .icon-chart-area:before { content: '🔾'; } /* '\1f53e' */
 .icon-rocket:before { content: '🚀'; } /* '\1f680' */
 .icon-truck:before { content: '🚚'; } /* '\1f69a' */
+.icon-gplus:before { content: '\f0d5'; }

@@ -30,10 +30,72 @@
             });
         }   
         window.onload =F1;
-                        
+        
+        // dấu gạch dưới menu tương ứng link bấm dựa theo section từng trang
+        switch($("section").attr('id')){
+            case "1":
+                $("#stt-home").addClass("current");
+                break;
+            case "HOT":
+                $("#stt-hot").addClass("current");
+                break; 
+            case "NEW":
+                $("#stt-new").addClass("current");
+                break;                             
+            case "6":
+                console.log("Ok");
+                $("#stt-topcomment").addClass("current");
+                break;
+            default:
+                $("#stt-theloai").addClass("current");
+                $("#stt-" + $("section").attr('id')).addClass("current");
+                break;                                
+        }            
 </script>
                 <!-- Left Sidebar -->
-                <div class="column-one-third">                
+                <div class="column-one-third">
+                    @if(!Auth::check())
+                    <div class="sidebar">
+                        <h5 class="line"><span>Kết nối mạng xã hội.</span></h5>
+                        <ul class="social">
+                            <li>
+                                <a href="{{url('/auth/redirect/facebook')}}" class="facebook"><i class="icon-facebook"></i></a>
+                                <span>Đăng nhập Facebook</span>
+                            </li>
+                           <!--  <li>
+                                <a href="#" class="twitter"><i class="icon-google-circles"></i></a>
+                                <span>12,475 <br/> <i>followers</i></span>
+                            </li> -->
+                            <li>
+                                <a href="{{url('/auth/redirect/google')}}" class="rss"><i class="icon-gplus"></i></a>
+                                <span>Đăng nhập Google</span>
+                            </li>
+                        </ul>
+                    </div>     
+                    @endif  
+                    <!-- <div class="relatednews">
+                        <h5 class="line"><span>Related News.</span></h5>
+                        <ul>
+                            
+                            <li>
+                                <a href="#"><img src="img/trash/6.png" alt="MyPassion" /></a>
+                                <p>
+                                    <span>26 May, 2013.</span>
+                                    <a href="#">Blandit Rutrum, Erat et Sagittis.</a>
+                                </p>
+                                <span class="rating"><span style="width:80%;"></span></span>
+                            </li>
+                             <li>
+                                <a href="#"><img src="img/trash/6.png" alt="MyPassion" /></a>
+                                <p>
+                                    <span>26 May, 2013.</span>
+                                    <a href="#">Blandit Rutrum, Erat et Sagittis.</a>
+                                </p>
+                                <span class="rating"><span style="width:80%;"></span></span>
+                            </li>
+                         
+                        </ul>
+                    </div>  -->        
                      <div class="sidebar">
                         <h5 class="line"><span>News</span></h5>
 

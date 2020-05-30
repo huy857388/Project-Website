@@ -5,7 +5,8 @@
         
         
         <!-- Content -->
-        <section id="content">
+        <!-- <section id="content"> -->
+        <section id="{{$danhmuc}}">
             <div class="container">
             	<!-- Main Content -->
                 
@@ -50,7 +51,7 @@
                                 <?php $len=count($ds_film)?>
                                  @for ($i = 2; $i < $len; $i++)
                                 <li class="m-r-no">
-                                    <a href="{{route('showInfo',[$ds_film[$i]['TenKhongDau'],$ds_film[$i]['slug']])}}"><img src="{{url('public/news_img/'.$ds_film[$i]['img'])}}" alt="MyPassion" class="alignleft" width="75px" height="75px" /></a>
+                                    <a href="{{route('showInfo',[$ds_film[$i]['TenKhongDau'],$ds_film[$i]['slug']])}}"><img src="{{url('public/news_img/'.$ds_film[$i]['img'])}}" alt="MyPassion" class="alignleft" width="100px" height="100px" /></a>
                                     <p>
                                         <span>26 May, 2013.</span>
                                         <a href="{{route('showInfo',[$ds_film[$i]['TenKhongDau'],$ds_film[$i]['slug']])}}">{{$ds_film[$i]['title']}}</a>

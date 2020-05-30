@@ -20,6 +20,7 @@
 
 <link rel="stylesheet" type="text/css" href="{{ url('public/css/superfish.css') }}" media="screen"/>
 <link rel="stylesheet" type="text/css" href="{{ url('public/css/superfish.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ url('public/css/fontello/fontello.css') }}" />
 
 <link rel="stylesheet" type="text/css" media="screen" href="{{ url('public/css/flexslider.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ url('public/css/ui.css') }}"/>
@@ -49,7 +50,6 @@
 <!--[if lt IE 9]> <script type="text/javascript" src="js/html5.js"></script> <![endif]-->
 <script type="text/javascript" src="{{url('public/js/mypassion.js')}}"></script>
 <!-- <script type="text/javascript" src="{{url('public/bootstrap/js/bootstrap.js')}}"></script> -->
-
 </head>
 
 <body>
