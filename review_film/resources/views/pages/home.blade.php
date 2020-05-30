@@ -2,7 +2,8 @@
         <!-- /Header -->
 @section('content')
         <!-- Slider -->
-        <section id="slider">
+        <!-- <section id="slider"> -->
+        <section id="1">            
             <div class="container">
                 <div class="main-slider">
                 	<div class="badg">

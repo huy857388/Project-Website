@@ -3,7 +3,8 @@
 @section('content')
         
         <!-- Content -->
-        <section id="content">
+        <!-- <section id="content"> -->
+        <section id="6">
             <div class="container">
             	<!-- Main Content -->
                 <!-- Phần này phải đợi danh mục -->
@@ -21,30 +22,21 @@
                             </div>
                             <div class="flexslider">
                                 <ul class="slides">
-                                    <!-- <li>
-                                        <img src="{{url('public/img/trash/25.png')}}" alt="MyPassion" />
+                                    <li>
+                                        <img src="{{url('public/news_img/'.$first_news['img'])}}" alt="{{url('public/news_img/'.$first_news['img'])}}"  width="450" height="200" />
                                     </li>
                                     <li>
-                                        <img src="{{url('public/img/trash/24.png')}}" alt="MyPassion" />
+                                        <img src="{{url('public/news_img/'.$first_news['img'])}}" alt="{{url('public/news_img/'.$first_news['img'])}}"  width="450" height="200" />
                                     </li>
                                     <li>
-                                        <img src="{{url('public/img/trash/26.png')}}" alt="MyPassion" />
-                                    </li> -->
-                                    <li>
-                                        <img src="{{url('public/news_img/'.$first_news['img'])}}" alt="{{url('public/news_img/'.$first_news['img'])}}" />
-                                    </li>
-                                    <li>
-                                        <img src="{{url('public/news_img/'.$first_news['img'])}}" alt="{{url('public/news_img/'.$first_news['img'])}}" />
-                                    </li>
-                                    <li>
-                                        <img src="{{url('public/news_img/'.$first_news['img'])}}" alt="{{url('public/news_img/'.$first_news['img'])}}" />
+                                        <img src="{{url('public/news_img/'.$first_news['img'])}}" alt="{{url('public/news_img/'.$first_news['img'])}}"  width="450" height="200"  />
                                     </li>
                                 </ul>
                             </div>
                             
-                            <h6 class="regular"><a href="{{route('showInfo',[$first_news['TenKhongDau'],$first_news['slug']])}}">{{$first_news['title']}}</a></h6>
-                            <!-- <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span> -->
-                            <span class="meta">{{$first_news['created_at']}} \\   <a href="#">No Coments.</a></span>
+                            <h6 class="regular"><a href="{{route('showInfo',[$first_news['TenKhongDau'],$first_news['slug']])}}">{{$first_news['title']}}</a></h6>                     
+                            <span class="meta">Ngày đăng: {{date("d-m-Y", strtotime($first_news['created_at']))    }}  \\   <a href="#">{{$first_news['count']}} Comments.</a></span>
+                            <p>{{$first_news['content']}}</p>
                         </div>
                         
                         <div class="outertight m-r-no m-t-no">
@@ -53,33 +45,21 @@
                             </div>
                             <div class="flexslider">
                                 <ul class="slides">
-                                    <!-- <li>
-                                        <img src="{{url('public/img/trash/27.png')}}" alt="MyPassion" />
+                                    <li>
+                                    <img src="{{url('public/news_img/'.$second_news['img'])}}" alt="{{url('public/news_img/'.$second_news['img'])}}"  width="450" height="200" />
                                     </li>
                                     <li>
-                                        <img src="{{url('public/img/trash/26.png')}}" alt="MyPassion" />
+                                        <img src="{{url('public/news_img/'.$second_news['img'])}}" alt="{{url('public/news_img/'.$second_news['img'])}}"  width="450" height="200"  />
                                     </li>
                                     <li>
-                                        <img src="{{url('public/img/trash/24.png')}}" alt="MyPassion" />
-                                    </li> -->
-                                    <li>
-                                    <img src="{{url('public/news_img/'.$second_news['img'])}}" alt="{{url('public/news_img/'.$second_news['img'])}}" />
-                                    </li>
-                                    <li>
-                                        <img src="{{url('public/news_img/'.$second_news['img'])}}" alt="{{url('public/news_img/'.$second_news['img'])}}" />
-                                    </li>
-                                    <li>
-                                        <img src="{{url('public/news_img/'.$second_news['img'])}}" alt="{{url('public/news_img/'.$second_news['img'])}}" />
+                                        <img src="{{url('public/news_img/'.$second_news['img'])}}" alt="{{url('public/news_img/'.$second_news['img'])}}"  width="450" height="200" />
                                     </li>
                                 </ul>
                             </div>
-                            
-                            <!-- <h6 class="regular"><a href="single.html">Blandit Rutrum, Erat et Sagittis. Lorem
-                                                        Ipsum Dolor, Sit Amet Adipsing.</a></h6>
-                            <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span> -->
 
                             <h6 class="regular"><a href="{{route('showInfo',[$second_news['TenKhongDau'],$second_news['slug']])}}">{{$second_news['title']}}</a></h6>
-                            <span class="meta">{{$second_news['created_at']}}  \\   <a href="#">No Coments.</a></span>
+                            <span class="meta">Ngày đăng: {{date("d-m-Y", strtotime($second_news['created_at']))    }}  \\   <a href="#">{{$second_news['count']}} Comments.</a></span>
+                            <p>{{$second_news['content']}}</p>
                             </div>
                         
                         <div class="outerwide">
@@ -91,6 +71,7 @@
                                         <span>TOP {{$key + 3}}</span>
                                         <a href="{{route('showInfo',[$news['TenKhongDau'],$news['slug']])}}">{{$news['title']}}</a>
                                     </p>
+                                    <p>{{$news['count'] == 0?'No':$news['count']}} Comments</p>
                                     <span class="rating"><span style="width:80%;"></span></span>
                                 </li>
                                 @endforeach
@@ -159,9 +140,7 @@
                                     <span class="rating"><span style="width:100%;"></span></span>
                                 </li> -->
                             </ul>
-                        </div>
-                        
-                    	
+                        </div>              
                     </div>
                     <!-- /Popular News -->
                     
