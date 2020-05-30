@@ -15,8 +15,13 @@
                 @endforeach
             </ul>
         </li>
+<<<<<<< HEAD
         <li><a href="#">TOP RATED MOVIES</a></li>
         <li id="stt-topcomment"><a href="{{ route('topComment')}}">TOP 10 COMMENT MOVIES</a></li>
+=======
+        <li><a href="{{ route('toprated')}}">TOP RATED MOVIES</a></li>
+        <li><a href="{{ route('topComment')}}">TOP COMMENT MOVIES</a></li>
+>>>>>>> 25bc3299c84c5fb3693d5f63be7bf11d9c82c972
         <!-- <li><a href="reviews.html">ĐỀ CỬ</a></li> -->
     <!--    <li>
             <a href="reviews.html">LỊCH.</a>

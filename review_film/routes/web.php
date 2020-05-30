@@ -33,6 +33,7 @@ route::get('/delete-sub-cmt/{id_sub_cmt}','NewsController@deleteSubComment')->na
 Auth::routes(); //Phát
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect'); //Phát
 Route::get('/callback/{provider}', 'SocialController@callback'); //Phát
+route::get('/top-rated','HomeController@toprated')->name('toprated');
 
 
 // <<<<<<< HEAD
