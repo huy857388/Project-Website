@@ -12,9 +12,9 @@
                 	<p><a href="{{url('/')}}">Home.</a>   \\   <a href="#">Categories.</a></p>
                 </div>
                 
-                <div class="main-content">
-                	
+                <div class="main-content">                	
                     <!-- Popular News -->
+                    @if(isset($first_news))
                 	<div class="column-two-third">
                     	<div class="outertight m-t-no">
                             <div class="badg">
@@ -38,7 +38,8 @@
                             <span class="meta">Ngày đăng: {{date("d-m-Y", strtotime($first_news['created_at']))    }}  \\   <a href="#">{{$first_news['count']}} Comments.</a></span>
                             <p>{{$first_news['content']}}</p>
                         </div>
-                        
+                        @endif
+                        @if(isset($second_news))
                         <div class="outertight m-r-no m-t-no">
                             <div class="badg">
                                 <p><a href="#">TOP 2</a></p>
@@ -56,12 +57,12 @@
                                     </li>
                                 </ul>
                             </div>
-
+                            
                             <h6 class="regular"><a href="{{route('showInfo',[$second_news['TenKhongDau'],$second_news['slug']])}}">{{$second_news['title']}}</a></h6>
                             <span class="meta">Ngày đăng: {{date("d-m-Y", strtotime($second_news['created_at']))    }}  \\   <a href="#">{{$second_news['count']}} Comments.</a></span>
                             <p>{{$second_news['content']}}</p>
                             </div>
-                        
+                            @endif
                         <div class="outerwide">
                         	<ul class="block2">
                                 @foreach($ds_top_news as $key => $news)

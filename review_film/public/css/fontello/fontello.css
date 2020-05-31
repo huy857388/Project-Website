@@ -51,7 +51,8 @@
   /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
- 
+
+.icon-gplus:before { content: '\f0d5'; }/* '\f0d5' */
 .icon-plus:before { content: '\2b'; } /* '+' */
 .icon-minus:before { content: '\2d'; } /* '-' */
 .icon-info:before { content: '\2139'; } /* 'ℹ' */
@@ -252,4 +253,3 @@
 .icon-chart-area:before { content: '🔾'; } /* '\1f53e' */
 .icon-rocket:before { content: '🚀'; } /* '\1f680' */
 .icon-truck:before { content: '🚚'; } /* '\1f69a' */
-.icon-gplus:before { content: '\f0d5'; }

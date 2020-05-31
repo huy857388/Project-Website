@@ -29,7 +29,7 @@ class NewsProduct extends Controller
     	$data['idTheLoai']=$request->id_theLoai; 	
     	$data['hot']=$request->hot_news!=''?1:0;
     	$data['new']=$request->new_news!=''?1:0;
-    	$data['deCu']=$request->deCu_news!=''?1:0;
+    	// $data['deCu']=$request->deCu_news!=''?1:0;
     	$get_image=$request->file('img_news');
     	if($get_image){
     		$new_image = rand(0,99).'.'.$get_image->getClientOriginalExtension();
@@ -57,7 +57,7 @@ class NewsProduct extends Controller
         $data['idTheLoai']=$request->id_theLoai;    
         $data['hot']=$request->hot_news!=''?1:0;
         $data['new']=$request->new_news!=''?1:0;
-        $data['deCu']=$request->deCu_news!=''?1:0;      
+        // $data['deCu']=$request->deCu_news!=''?1:0;      
         $get_image=$request->file('img_news');
         if($get_image){
             $new_image = rand(0,99).'.'.$get_image->getClientOriginalExtension();

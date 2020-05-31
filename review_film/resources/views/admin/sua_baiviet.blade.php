@@ -45,7 +45,7 @@
                     <?php 
                       $kt_hot=$baiviet->hot==0?0:'checked'; 
                       $kt_new=$baiviet->new==0?0:'checked';
-                      $kt_decu=$baiviet->deCu==0?0:'checked';
+                      // $kt_decu=$baiviet->deCu==0?0:'checked';
                       echo $baiviet->img;
                       ?>
                                 <div class="checkbox">
@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="deCu_news" value="1" <?php echo $kt_decu?>> DE CU
+                                        <!-- <input type="checkbox" name="deCu_news" value="1" <?php //echo $kt_decu?>> DE CU -->
                                     </label>
                                 </div>
                                 <img src="../public/news_img/conan.jpg" alt="">

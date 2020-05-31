@@ -19,10 +19,8 @@ class NewsController extends Controller
 {
     //
     public function single($theloai_url,$news_url){
-        // Problem
-        // Hình lệch? No comment? World new? datetime chưa định dạng?
+        // Problem       
         // Comment nhìu quá làm s? (xem thêm? => ajax or thg`)
-        // Dự tính: Ajax        
         $news = News::where('slug','LIKE',$news_url)
                 ->first()->toArray();
 
@@ -44,12 +42,6 @@ class NewsController extends Controller
                 ->get()->toArray();
         
         $count_cmt = empty($ds_cmt)? 0 : count($ds_cmt);                
-        // foreach ko chèn dc :))) chả hĩu
-        // foreach ($ds_cmt as $cmt) {            
-        //     $sub_cmt = SubComment::where('idComment','=',$cmt['id'])
-        //                             ->get()->toArray();
-        //     array_push($cmt,$sub_cmt);
-        // }
         for ($i=0; $i < count($ds_cmt) ; $i++) { 
             $sub_cmt = User::join('subcomment','users.id','=','subcomment.idUser')
                     ->select('users.name','subcomment.id','subcomment.idUser','subcomment.updated_at','subcomment.NoiDung')
@@ -67,7 +59,7 @@ class NewsController extends Controller
 
     public function topComment(){
         // Problem
-        // Hình lệch này? No Comment? datetime chưa định dạng? phần sao ở top 3 < ?
+        //  phần sao ở top 3 trở xuống thì s?
         // Link top 1, top 2 ?        
 
         $ds_new = TheLoai::join('news','news.idTheLoai','=','theloai.id')
@@ -78,16 +70,11 @@ class NewsController extends Controller
                 ->where('news.hot','=',1)
                 ->get()->toArray();   
 
-        // Hàm xây dựng xếp hạng theo lượt bình luận của news : chưa + sub_cmt
-        // $ds_top_news = News::join('comment','news.id','=','comment.idBaiRv')        			
-        //             ->select('news.id','news.idTheLoai','news.title','news.slug','news.img','news.short_content','news.content','news.hot','news.new','news.created_at',DB::raw('count(comment.idBaiRv) as count'))
-        //             ->groupBy('news.id','news.idTheLoai','news.title','news.slug','news.img','news.short_content','news.content','news.hot','news.new','news.created_at')
-        //             ->orderBy('count','desc')
-        //             ->take(10)->get()->toArray();
-
 		// B1: lấy toàn bộ news thuộc thể loại này
-		$ds_top_news = TheLoai::join('news','news.idTheLoai','=','theloai.id')            
-            		->get()->toArray(); 
+		// $ds_top_news = TheLoai::join('news','news.idTheLoai','=','theloai.id')            
+  //           		->take(10)->get()->toArray(); 
+        $ds_top_news = TheLoai::join('news','news.idTheLoai','=','theloai.id')            
+            ->get()->toArray(); 
          
 		// B2: lấy toàn bộ cmt của mỗi news trên
         for ($i=0; $i < count($ds_top_news) ; $i++) { 
@@ -101,8 +88,7 @@ class NewsController extends Controller
  			 	$count_sub_cmt = SubComment::where('idComment','=',$ds_cmt[$j]['id'])
  			 				->count();
  			 	$ds_cmt[$j]['count_sub_cmt'] = $count_sub_cmt;
- 			 	$total_sub_cmt += $count_sub_cmt;
- 			 	// echo "Comment id {$ds_cmt[$j]['id']} có ".$ds_sub_cmt." sub cmt.!</br>"; 
+ 			 	$total_sub_cmt += $count_sub_cmt; 			 	
  			}   
 
  			// B4: đếm từ sub_cmt ra cmt
@@ -112,11 +98,17 @@ class NewsController extends Controller
 	
 		// B5: so sánh và lấy TOP 2
 		// Sort theo count_cmt
-		usort($ds_top_news,function($a,$b){
-	    	return $a['count']<$b['count'];
+		usort($ds_top_news,function($news_one,$news_two){
+	    	return $news_one['count']<$news_two['count'];
 	    });                
-        
-      
+
+        // Lọc bớt để lấy TOP 10 thôi
+        define("PER_PAGE",10);
+        $count_top_news = count($ds_top_news);
+        for ($i=PER_PAGE; $i < $count_top_news; $i++) { 
+            unset($ds_top_news[$i]);
+        }                    
+
         // Lấy slug của thể loại
         for ($i=0; $i < count($ds_top_news) ; $i++) { 
             $ds_top_news[$i]['TenKhongDau'] = TheLoai::where('id','=',$ds_top_news[$i]['idTheLoai'])
@@ -124,10 +116,11 @@ class NewsController extends Controller
         }
         
         // Lấy phần tử đầu ra
-        $first_news = array_shift($ds_top_news);
-        $second_news = array_shift($ds_top_news);
-        // var_dump($top_news);
-        // var_dump($ds_top_news);
+        $first_news = null; $second_news = null;
+        if(count($ds_top_news) > 0){
+            $first_news = array_shift($ds_top_news);
+            if(count($ds_top_news) > 0)  $second_news = array_shift($ds_top_news);
+        }
 
         $ds_cmt = Comment::all()->toArray();
         $ds_theloai = TheLoai::all()->toArray();
@@ -139,8 +132,7 @@ class NewsController extends Controller
 
     public function theLoai($theloai_url){
         // Problem
-        // Link top1, top 2? No comment? phần sao top 3 <?
-        // Không có tin nào lun thì s ? :)
+        // phần sao top 3 <?        
         $ds_new = TheLoai::join('news','news.idTheLoai','=','theloai.id')
                 ->where('news.new','=',1)
                 ->take(4)->get()->toArray();
@@ -148,9 +140,8 @@ class NewsController extends Controller
         $ds_hot = TheLoai::join('news','news.idTheLoai','=','theloai.id')
                 ->where('news.hot','=',1)
                 ->get()->toArray();                         
-        
-        // const PER_PAGE = 2; 
-        define('PER_PAGE', 10);
+
+        define('PER_PAGE', 4);
         // paginate(n) nếu số phần tử tìm dc <= n => lỗi undefined offset 0        
         $ds_news = TheLoai::join('news','news.idTheLoai','=','theloai.id')
                 ->where('theloai.TenKhongDau','LIKE',$theloai_url)
@@ -206,8 +197,6 @@ class NewsController extends Controller
     }
 
     public function postComment(Request $rq){
-        // echo json_encode($rq->all());
-        // var_dump($rq->all());
         if(empty($rq->idComment)){
             $cmt = new Comment;
             $cmt->idUser = Auth()->user()->id;
@@ -246,7 +235,6 @@ class NewsController extends Controller
         $tu_khoa = preg_replace('/\s+/', ' ', $tu_khoa);
         $arr_key = explode(' ',$tu_khoa);
         array_unshift($arr_key, $tu_khoa);
-        // var_dump($arr);
 
         $ds_news = News::where('title','LIKE','%'.$tu_khoa.'%')
                 ->get()->toArray();

@@ -28,7 +28,7 @@
             <th>Tóm Tắt Nội Dung</th>
             <th>HOT</th>
             <th>NEW</th>
-            <th>ĐỀ CỬ</th>
+            <!-- <th>ĐỀ CỬ</th> -->
             <th>Ngày Tạo</th>
             <th>Ngày Cập Nhật</th>
             <th style="width:30px;"></th>
@@ -46,7 +46,7 @@
                       <?php 
                       $kt_hot=$baiviet->hot==0?0:'checked'; 
                       $kt_new=$baiviet->new==0?0:'checked';
-                      $kt_decu=$baiviet->deCu==0?0:'checked';
+                      //$kt_decu=$baiviet->deCu==0?0:'checked';
                       ?>
             <td>
                 <input type="checkbox" <?php echo $kt_hot?> >
@@ -54,9 +54,9 @@
                         <td>
                 <input type="checkbox" <?php echo $kt_new?> >
             </td>
-                        <td>
-                <input type="checkbox" <?php echo $kt_decu?>>
-            </td>
+            <!-- <td>
+                <input type="checkbox" <?php //echo $kt_decu?>>
+            </td> -->
                         <td></td>
                         <td></td>
             <td>
