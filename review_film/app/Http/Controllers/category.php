@@ -8,19 +8,30 @@ use App\theloai;
 
 class category extends Controller
 {
+    public function authLogin(){
+        $adminId = Session::get('adminId');
+        if($adminId){
+            return Redirect::to('dashboard');
+        }else{
+            return Redirect::to('admin')->send();
+        }
+    }
  
      public function danhsach_theloai(){
+        $this->authLogin();
      	$theloai = theloai::all();
      	return view('admin.danhsach_theloai',['theloai' => $theloai]); 
     	
     }
 
     public function them_theloai(){
+        $this->authLogin();
 
     	return view('admin.them_theloai');
     }
     public function postthem_theloai(Request $request)
     {
+        $this->authLogin();
     	
     	
     	$this->validate($request,
@@ -42,6 +53,7 @@ class category extends Controller
 
     public function sua_theloai($id)
     {
+        $this->authLogin();
         $theloai = theloai::find($id);
         return view('admin.sua_theloai',['theloai'=>$theloai]);
 
@@ -49,6 +61,7 @@ class category extends Controller
 
     public function postsua_theloai(Request $request, $id)
     {
+        $this->authLogin();
         $theloai = theloai::find($id);
         $this->validate($request,
             [
@@ -68,6 +81,7 @@ class category extends Controller
 
     public function xoa_theloai($id)
     {
+        $this->authLogin();
         $theloai = theloai::find($id);
         $theloai->delete();
         return redirect('theloai/danhsach')->with('thong bao','Đã xóa thành công');

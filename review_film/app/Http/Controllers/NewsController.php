@@ -17,8 +17,17 @@ use Auth;
 
 class NewsController extends Controller
 {
+        public function authLogin(){
+                $adminId = Session::get('adminId');
+                if($adminId){
+                    return Redirect::to('dashboard');
+                }else{
+                    return Redirect::to('admin')->send();
+                }
+            }
     //
     public function single($theloai_url,$news_url){
+        $this->authLogin();
         // Problem
         // Hình lệch? No comment? World new? datetime chưa định dạng?
         // Comment nhìu quá làm s? (xem thêm? => ajax or thg`)
@@ -66,6 +75,7 @@ class NewsController extends Controller
     }
 
     public function topComment(){
+        $this->authLogin();
         // Problem
         // Hình lệch này? No Comment? datetime chưa định dạng? phần sao ở top 3 < ?
         // Link top 1, top 2 ?        
@@ -138,6 +148,7 @@ class NewsController extends Controller
 
 
     public function theLoai($theloai_url){
+        $this->authLogin();
         // Problem
         // Link top1, top 2? No comment? phần sao top 3 <?
         // Không có tin nào lun thì s ? :)
@@ -206,6 +217,7 @@ class NewsController extends Controller
     }
 
     public function postComment(Request $rq){
+        $this->authLogin();
         // echo json_encode($rq->all());
         // var_dump($rq->all());
         if(empty($rq->idComment)){
@@ -238,6 +250,7 @@ class NewsController extends Controller
     }
 
     public function fullTextSearch(Request $rq){
+        $this->authLogin();
         $tu_khoa = $rq->key;
         // Không dấu : Ok.
         // Có dấu: Ok.
@@ -272,7 +285,8 @@ class NewsController extends Controller
         return view('pages.search',compact('ds_new','ds_hot','ds_theloai','ds_news','tu_khoa'));
     }
 
-    public function deleteComment($id_cmt){        	
+    public function deleteComment($id_cmt){       
+        $this->authLogin(); 	
 		$cmt = Comment::find($id_cmt);
 		$ds_sub_cmt = SubComment::where('idComment','=',$id_cmt)
 					->get();
@@ -285,6 +299,8 @@ class NewsController extends Controller
     }
 
     public function deleteSubComment($id_sub_cmt){
+        $this->authLogin();
+        
     	$sub_cmt = SubComment::find($id_sub_cmt);
     	$sub_cmt->delete();
     	echo "Xoá SubCmt r`!";
