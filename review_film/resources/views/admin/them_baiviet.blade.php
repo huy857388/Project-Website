@@ -1,5 +1,10 @@
 @extends('adminLayout')
 @section('adminContent')
+@if(session('thong bao'))
+    <div class="alert alert-success">
+       {{session('thong bao')}}
+    </div>
+ @endif
         <div class="row">
             <div class="col-lg-12">
                     <section class="panel">
@@ -48,11 +53,10 @@
                                         <input type="checkbox" name="new_news" value="1"> NEW
                                     </label>
                                 </div>
-                                                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="deCu_news" value="1"> DE CU
-                                    </label>
-                                </div>
+                   <div class="form-group">
+                                    <label for="exampleInputEmail1">Điểm Đánh Giá</label>
+                                    <input type="text" name="diem_danh_gia_news" class="form-control" id="exampleInputEmail1" placeholder="tieude">
+                                </div>                     
                                 <div class="form-group">
                                     <label for="exampleInputFile">Ảnh</label>
                                     <input type="file" id="exampleInputFile" name="img_news">

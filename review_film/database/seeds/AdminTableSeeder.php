@@ -14,23 +14,22 @@ class AdminTableSeeder extends Seeder
         //
         Schema::disableForeignKeyConstraints();
         DB::table('admin')->truncate();
-
+        
         $data = [
-        	['username' => 'Danh', 'email' => 'Danh@gmail.com', 'password' => '123456'],
-        	['username' => 'Huy', 'email' => 'Huy@gmail.com', 'password' => '456123'],
-        	['username' => 'Khang', 'email' => 'Khang@gmail.com', 'password' => '987654'],
-        	['username' => 'Khanh', 'email' => 'Khanh@gmail.com', 'password' => '456789'],
-        	['username' => 'Phat', 'email' => 'Phat@gmail.com', 'password' => '123789']
+        	['adminName' => 'Danh', 'adminEmail' => 'Danh@gmail.com', 'adminPassword' => '123456'],
+        	['adminName' => 'Huy', 'adminEmail' => 'Huy@gmail.com', 'adminPassword' => '456123'],
+        	['adminName' => 'Khang', 'adminEmail' => 'Khang@gmail.com', 'adminPassword' => '987654'],
+        	['adminName' => 'Khanh', 'adminEmail' => 'Khanh@gmail.com', 'adminPassword' => '456789'],
+        	['adminName' => 'Phat', 'adminEmail' => 'Phat@gmail.com', 'adminPassword' => '123789']
         ];
 
         foreach ($data as $v) {
         	DB::table('admin')->insert(
         		[
-        			'username' => $v['username'],
-        			'name' => $v['username'],
-        			'email' => $v['email'],
-        			'password' => bcrypt($v['password']),
-        			'phone' => $v['password'],
+        			'adminName' => $v['adminName'],        			
+        			'adminEmail' => $v['adminEmail'],
+        			'adminPassword' => md5($v['adminPassword']),
+        			'phone' => $v['adminPassword'],
         			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
         			'updated_at' => Carbon\Carbon::now()->toDateTimeString()
         		]

@@ -17,9 +17,9 @@ use Auth;
 
 class NewsController extends Controller
 {
-    //
     public function single($theloai_url,$news_url){
-        // Problem       
+        // Problem
+        // Hình lệch? No comment? World new? datetime chưa định dạng?
         // Comment nhìu quá làm s? (xem thêm? => ajax or thg`)
         $news = News::where('slug','LIKE',$news_url)
                 ->first()->toArray();
@@ -224,7 +224,9 @@ class NewsController extends Controller
         return view('pages.theloai',compact('theloai_url','ds_news','ds_theloai','ds_new','ds_hot','first_news','second_news','ds_cmt'));
     }
 
-    public function postComment(Request $rq){
+    public function postComment(Request $rq){        
+        // echo json_encode($rq->all());
+        // var_dump($rq->all());
         if(empty($rq->idComment)){
             $cmt = new Comment;
             $cmt->idUser = Auth()->user()->id;
@@ -254,7 +256,7 @@ class NewsController extends Controller
         } 
     }
 
-    public function fullTextSearch(Request $rq){
+    public function fullTextSearch(Request $rq){        
         $tu_khoa = $rq->key;
         // Không dấu : Ok.
         // Có dấu: Ok.
@@ -297,7 +299,7 @@ class NewsController extends Controller
         return view('pages.search',compact('ds_new','ds_hot','ds_theloai','ds_news','tu_khoa','ds_cmt'));
     }
 
-    public function deleteComment($id_cmt){        	
+    public function deleteComment($id_cmt){               
 		$cmt = Comment::find($id_cmt);
 		$ds_sub_cmt = SubComment::where('idComment','=',$id_cmt)
 					->get();
@@ -308,7 +310,7 @@ class NewsController extends Controller
 		echo "Xoá Cmt r`!";		
     }
 
-    public function deleteSubComment($id_sub_cmt){
+    public function deleteSubComment($id_sub_cmt){        
     	$sub_cmt = SubComment::find($id_sub_cmt);
     	$sub_cmt->delete();
     	echo "Xoá SubCmt r`!";    	

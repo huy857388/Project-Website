@@ -13,11 +13,12 @@ class CreateAbminTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin', function (Blueprint $table) {
-            $table->string('username')->unique();
-            $table->string('password')->nullable();
-            $table->string('name')->nullable();
-            $table->string('email')->nullable();
+        Schema::create('admin', function (Blueprint $table) {      
+            $table->increments('adminId');
+            $table->string('adminEmail')->unique();
+            $table->string('adminPassword')->nullable();
+            $table->string('adminName')->nullable();
+            $table->string('adminPhone')->nullable();
             $table->string('phone')->nullable();
             $table->rememberToken();
             $table->timestamps();

@@ -7,15 +7,24 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests;
 use DB;
 use Session;
-session_start();
+// session_start();
 
 class AdminController extends Controller
 {
+    public function authLogin(){
+        $adminId = Session::get('adminId');
+        if($adminId){
+            return Redirect::to('dashboard');
+        }else{
+            return Redirect::to('admin')->send();
+        }
+    }
     public function index(){
         return view('adminLogin');
     }
 
     public function showDashboard(){
+        $this->authLogin();
         return view('admin.dashboard');
     }
 
@@ -41,6 +50,7 @@ class AdminController extends Controller
     }
 
      public function logOut(){
+        $this->authLogin();
         session::put('adminName',null);
         session::put('adminId',null);
         return Redirect::to('/admin');

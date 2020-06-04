@@ -72,6 +72,9 @@ Route::get('/danhsach_baiviet','NewsProduct@danhsach_baiviet'); //Khanh
 Route::post('/update_baiviet/{id_baiviet}','NewsProduct@update_baiviet');//Khanh
 Route::post('/save_baiviet','NewsProduct@save_baiviet'); //Khanh
 // >>>>>>> 9b85fe5447345d6ec862198bb72b73d08133b047
+
+Route::get('/xoa_comment/{id_comment}','comment@xoa_comment');//Khanh
+Route::get('/danhsach_comment','comment@danhsach_comment'); //Khanh
 // 
 //================KHANG - Thể Loại=====================
 

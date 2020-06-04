@@ -85,19 +85,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
-                        <span>Quản Lý</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="#">Danh 🐯 </a></li>
-                        <li><a href="#">Huy 💩</a></li>
-                        <li><a href="#">Khang 👻</a></li>
-                        <li><a href="#">Khánh 👽</a></li>
-                        <li><a href="#">Phát 🐲</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-book"></i>
                         <span>Quản Lý bài viết</span>
                     </a>
                     <ul class="sub">
@@ -114,6 +101,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="{{URL::to('/theloai/danhsach')}}">Danh sách thể loại</a></li>
                         <li><a href="{{URL::to('/theloai/them')}}">Thêm thể loại</a></li>
                     </ul>
+
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
@@ -125,6 +113,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <!-- <li><a href="{{URL::to('/theloai/them')}}">Thêm thể loại</a></li> -->
                     </ul>
                 </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Quản Lý comment</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{URL::to('/danhsach_comment')}}">Danh sách comment</a></li>
+                    </ul>
+
         </div>
         <!-- sidebar menu end-->
     </div>
