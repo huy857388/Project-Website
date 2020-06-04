@@ -32,22 +32,30 @@ class NewsProduct extends Controller
     }
     public function save_baiviet(Request $request){
       //  $this->authLogin();
-    	$data=array();
+    	$data=array();$images=array();
     	$data['title']= $request->titles_news;     //'ten cot trong sql' -> ten name
     	$data['content']=$request->content_news;
     	$data['short_content']=$request->short_content_news;
     	$data['idTheLoai']=$request->id_theLoai;
-        $data['diem_danh_gia']=$request->diem_danh_gia_news;     	
+        $data['diem_danh_gia']=$request->diem_danh_gia_news; 
+        $data['slug']= str_slug($data['title']);    	
     	$data['hot']=$request->hot_news!=''?1:0;
     	$data['new']=$request->new_news!=''?1:0;
-    	$get_image=$request->file('img_news');
-    	if($get_image){
-    		$new_image = rand(0,99).'.'.$get_image->getClientOriginalExtension();
-    		$get_image->move('public/news_img',$new_image);
-    		$data['img']=$new_image;
-    		DB::table('news')->insert($data);
-    		return Redirect::to('them_baiviet')->with('thong bao','Thêm bài viết thành công');
-    	}
+        $get_image=$request->file('img_news');
+        if($get_image){
+        foreach($get_image as $file){
+            $name=$file->getClientOriginalName();
+            $file->move('public/news_img',$name);
+            $images[]=$name;
+            
+           
+        }
+        $new_image=json_encode($images);
+        $data['img']=$new_image;
+        DB::table('news')->insert($data);
+        return Redirect::to('them_baiviet')->with('thong bao','Thêm bài viết thành công');
+
+    }
     	$data['img']='';
     	DB::table('news')->insert($data);
     	return Redirect::to('them_baiviet')->with('thong bao','Thêm bài viết thành công');

@@ -59,7 +59,7 @@
                                 </div>                     
                                 <div class="form-group">
                                     <label for="exampleInputFile">Ảnh</label>
-                                    <input type="file" id="exampleInputFile" name="img_news">
+                                    <input type="file" id="exampleInputFile" name="img_news[]" multiple>
                                     <p class="help-block"></p>
                                 </div>
                                 <button type="submit" class="btn btn-info" name="them_baiviet">Thêm</button>
