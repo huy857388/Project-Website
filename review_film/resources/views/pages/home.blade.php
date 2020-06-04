@@ -14,9 +14,9 @@
                             @foreach($ds_hot as $news)
                             
                             <li>
-                                <img src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" width="450" height="400"/>
+                                <img src="{{url('public/news_img/'.$news['img'][0])}}" alt="MyPassion" width="450" height="400"/>
                                 <p class="flex-caption"><a href="{{route('showInfo',[$news['TenKhongDau'],$news['slug']])}}">{{$news['title']}}</a> 
-                                {{$news['content']}}</p>";
+                                {{$news['short_content']}}</p>";
                             </li>
                             @endforeach
                         </ul>
@@ -28,17 +28,17 @@
                     	<p><a href="#">ĐỀ CỬ</a></p>
                     </div>
  					<?php $rand_key= array_rand($ds_film,3); ?>
-                    <a href="{{ route('showInfo',[$ds_film[$rand_key[0]]['TenKhongDau'],$ds_film[$rand_key[0]]['slug']]) }}"><img src="{{url('public/news_img/'.$ds_film[$rand_key[0]]['img'])}}" alt="MyPassion" width="400" height="250" /></a>
-                    <p class="caption"><a href="{{ route('showInfo',[$ds_film[$rand_key[0]]['TenKhongDau'],$ds_film[$rand_key[0]]['slug']]) }}">{{$ds_film[$rand_key[0]]['title']}}</a>{{$ds_film[$rand_key[0]]['content']}} </p>
+                    <a href="{{ route('showInfo',[$ds_film[$rand_key[0]]['TenKhongDau'],$ds_film[$rand_key[0]]['slug']]) }}"><img src="{{url('public/news_img/'.$ds_film[$rand_key[0]]['img'][0])}}" alt="MyPassion" width="400" height="250" /></a>
+                    <p class="caption"><a href="{{ route('showInfo',[$ds_film[$rand_key[0]]['TenKhongDau'],$ds_film[$rand_key[0]]['slug']]) }}">{{$ds_film[$rand_key[0]]['title']}}</a>{{$ds_film[$rand_key[0]]['short_content']}} </p>
                 </div>
                 
                 <div class="slider3">
-                	<a href="{{ route('showInfo',[$ds_film[$rand_key[1]]['TenKhongDau'],$ds_film[$rand_key[1]]['slug']]) }}"><img src="{{url('public/news_img/'.$ds_film[$rand_key[1]]['img'])}}" alt="MyPassion" width="200" height="150" /></a>
+                	<a href="{{ route('showInfo',[$ds_film[$rand_key[1]]['TenKhongDau'],$ds_film[$rand_key[1]]['slug']]) }}"><img src="{{url('public/news_img/'.$ds_film[$rand_key[1]]['img'][0])}}" alt="MyPassion" width="200" height="150" /></a>
                     <p class="caption"><a href="{{ route('showInfo',[$ds_film[$rand_key[1]]['TenKhongDau'],$ds_film[$rand_key[1]]['slug']]) }}">{{$ds_film[$rand_key[1]]['title']}}</a></p>
                 </div>
                 
                 <div class="slider3">
-                    <a href="{{ route('showInfo',[$ds_film[$rand_key[2]]['TenKhongDau'],$ds_film[$rand_key[2]]['slug']]) }}"><img src="{{url('public/news_img/'.$ds_film[$rand_key[2]]['img'])}}" alt="MyPassion" width="200" height="150" /></a>
+                    <a href="{{ route('showInfo',[$ds_film[$rand_key[2]]['TenKhongDau'],$ds_film[$rand_key[2]]['slug']]) }}"><img src="{{url('public/news_img/'.$ds_film[$rand_key[2]]['img'][0])}}" alt="MyPassion" width="200" height="150" /></a>
                     <p class="caption"><a href="{{ route('showInfo',[$ds_film[$rand_key[2]]['TenKhongDau'],$ds_film[$rand_key[2]]['slug']]) }}">{{$ds_film[$rand_key[2]]['title']}}</a></p>
 
                 </div>
@@ -65,31 +65,24 @@
                         
                         <div class="outerwide" >
                         	<ul class="wnews" id="carousel2">
-<!--                             	<li>
-                                	<img src="{{url('public/img/trash/25.png')}}" alt="MyPassion" class="alignleft" />
-                                    <h6 class="regular"><a href="#">Blandit Rutrum, Erat et Sagittis. Lorem Ipsum Dolor, Sit Amet Adipsing.</a></h6>
-                                    <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                                    <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem purus eu sapien. Curabitur a orci nec risus lacinia vehic...</p>
-                                </li> -->
                                 <!-- chạy dòng for -->
                                 <!-- Phần này t làm chưa hoàn chỉnh -->
                                 @foreach($ds_hot as $news)
                                 <li>
-                                    <img src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" class="alignleft"  width="600" height="350"/>
+                                    <img src="{{url('public/news_img/'.$news['img'][0])}}" alt="MyPassion" class="alignleft"  width="600" height="350"/>
                                     <h6 class="regular"><a href="{{ route('showInfo',[$news['TenKhongDau'],$news['slug']]) }}">{{$news['title']}}</a></h6>
                                     <span class="meta">{{$news['created_at']}}   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                                    <p>{{$news['content']}}</p>
+                                    <p>{{$news['short_content']}}</p>
                                 </li>
                                 @endforeach
                             </ul>
                         </div>
-                        
-                        <!-- Phần này ôg chưa chú thích nè, t để tạm các tin đề cử -->
+                                                
                         <div class="outerwide">
                         	<ul class="block2">
                                 @foreach($ds_new as $news)
                                 <li>
-                                    <a href="{{ route('showInfo',[$news['TenKhongDau'],$news['slug']]) }}"><img style="width: 75px; height: 75px;" src="{{url('public/news_img/'.$news['img'])}}" alt="MyPassion" class="alignleft" /></a>
+                                    <a href="{{ route('showInfo',[$news['TenKhongDau'],$news['slug']]) }}"><img style="width: 75px; height: 75px;" src="{{url('public/news_img/'.$news['img'][0])}}" alt="MyPassion" class="alignleft" /></a>
                                     <p>
                                         <span>{{$news['created_at']}}</span>
                                         <a href="{{ route('showInfo',[$news['TenKhongDau'],$news['slug']]) }}">{{$news['title']}}</a>
@@ -97,28 +90,10 @@
                                     <span class="rating"><span style="width:80%;"></span></span>
                                 </li>
                                 @endforeach
-                               <!--  <li>
-                                    <a href="#"><img src="{{url('public/img/trash/17.png')}}" alt="MyPassion" class="alignleft" /></a>
-                                    <p>
-                                        <span>26 May, 2013.</span>
-                                        <a href="#">Blandit Rutrum, Erat et Sagittis.</a>
-                                    </p>
-                                    <span class="rating"><span style="width:80%;"></span></span>
-                                </li>
-                                <li class="m-r-no">
-                                    <a href="#"><img src="{{url('public/img/trash/18.png')}}" alt="MyPassion" class="alignleft" /></a>
-                                    <p>
-                                        <span>26 May, 2013.</span>
-                                        <a href="#">Blandit Rutrum, Erat et Sagittis.</a>
-                                    </p>
-                                    <span class="rating"><span style="width:100%;"></span></span>
-                                </li> -->
                             </ul>
                         </div>
                     </div>
-                    <!-- /World News -->
-                    
-                    
+                    <!-- /World News -->                                    
                 </div>
                 <!-- /Main Content -->
                 @stop

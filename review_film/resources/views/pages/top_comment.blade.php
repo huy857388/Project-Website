@@ -22,21 +22,17 @@
                             </div>
                             <div class="flexslider">
                                 <ul class="slides">
-                                    <li>
-                                        <img src="{{url('public/news_img/'.$first_news['img'])}}" alt="{{url('public/news_img/'.$first_news['img'])}}"  width="450" height="200" />
+                                    @foreach($first_news['img'] as $image)
+                                     <li>
+                                        <img src="{{url('public/news_img/'.$image)}}" alt="{{url('public/news_img/'.$image)}}"  width="450" height="200" title="{{$first_news['title']}}" />
                                     </li>
-                                    <li>
-                                        <img src="{{url('public/news_img/'.$first_news['img'])}}" alt="{{url('public/news_img/'.$first_news['img'])}}"  width="450" height="200" />
-                                    </li>
-                                    <li>
-                                        <img src="{{url('public/news_img/'.$first_news['img'])}}" alt="{{url('public/news_img/'.$first_news['img'])}}"  width="450" height="200"  />
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             
                             <h6 class="regular"><a href="{{route('showInfo',[$first_news['TenKhongDau'],$first_news['slug']])}}">{{$first_news['title']}}</a></h6>                     
                             <span class="meta">Ngày đăng: {{date("d-m-Y", strtotime($first_news['created_at']))    }}  \\   <a href="#">{{$first_news['count']}} Comments.</a></span>
-                            <p>{{$first_news['content']}}</p>
+                            <p>{{$first_news['short_content']}}</p>
                         </div>
                         @endif
                         @if(isset($second_news))
@@ -45,101 +41,37 @@
                                 <p><a href="#">TOP 2</a></p>
                             </div>
                             <div class="flexslider">
-                                <ul class="slides">
-                                    <li>
-                                    <img src="{{url('public/news_img/'.$second_news['img'])}}" alt="{{url('public/news_img/'.$second_news['img'])}}"  width="450" height="200" />
+                                <ul class="slides">                                   
+                                    @foreach($second_news['img'] as $image)
+                                     <li>
+                                        <img src="{{url('public/news_img/'.$image)}}" alt="{{url('public/news_img/'.$image)}}"  width="450" height="200" title="{{$second_news['title']}}" />
                                     </li>
-                                    <li>
-                                        <img src="{{url('public/news_img/'.$second_news['img'])}}" alt="{{url('public/news_img/'.$second_news['img'])}}"  width="450" height="200"  />
-                                    </li>
-                                    <li>
-                                        <img src="{{url('public/news_img/'.$second_news['img'])}}" alt="{{url('public/news_img/'.$second_news['img'])}}"  width="450" height="200" />
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             
                             <h6 class="regular"><a href="{{route('showInfo',[$second_news['TenKhongDau'],$second_news['slug']])}}">{{$second_news['title']}}</a></h6>
                             <span class="meta">Ngày đăng: {{date("d-m-Y", strtotime($second_news['created_at']))    }}  \\   <a href="#">{{$second_news['count']}} Comments.</a></span>
-                            <p>{{$second_news['content']}}</p>
+                            <p>{{$second_news['short_content']}}</p>
                             </div>
                             @endif
                         <div class="outerwide">
                         	<ul class="block2">
                                 @foreach($ds_top_news as $key => $news)
                                <li>
-                                    <a href="{{route('showInfo',[$news['TenKhongDau'],$news['slug']])}}"><img style="width: 100px; height: 100px;" src="{{url('public/news_img/'.$news['img'])}}" alt="{{url('public/news_img/'.$news['img'])}}" class="alignleft" /></a>
+                                    <a href="{{route('showInfo',[$news['TenKhongDau'],$news['slug']])}}">
+                                        @if($news['img'] != null)
+                                        <img style="width: 100px; height: 80px;" src="{{url('public/news_img/'.$news['img'][0])}}" alt="{{url('public/news_img/'.$news['img'][0])}}" class="alignleft" title="{{$news['title']}}" />
+                                        @endif
+                                    </a>
                                     <p>
                                         <span>TOP {{$key + 3}}</span>
                                         <a href="{{route('showInfo',[$news['TenKhongDau'],$news['slug']])}}">{{$news['title']}}</a>
                                     </p>
                                     <p>{{$news['count'] == 0?'No':$news['count']}} Comments</p>
-                                    <span class="rating"><span style="width:80%;"></span></span>
+                                    <!-- <span class="rating"><span style="width:80%;"></span></span> -->
                                 </li>
-                                @endforeach
-                               <!--  <li>
-                                    <a href="single.html"><img src="{{url('public/img/trash/5.png')}}" alt="MyPassion" class="alignleft" /></a>
-                                    <p>
-                                        <span>TOP 3</span>
-                                        <a href="single.html">Blandit Rutrum, Erat et Sagittis.</a>
-                                    </p>
-                                    <span class="rating"><span style="width:80%;"></span></span>
-                                </li>
-                                <li class="m-r-no">
-                                    <a href="single.html"><img src="{{url('public/img/trash/6.png')}}" alt="MyPassion" class="alignleft" /></a>
-                                    <p>
-                                        <span>TOP 4</span>
-                                        <a href="single.html">Blandit Rutrum, Erat et Sagittis.</a>
-                                    </p>
-                                    <span class="rating"><span style="width:100%;"></span></span>
-                                </li>
-                                 <li>
-                                    <a href="single.html"><img src="{{url('public/img/trash/21.png')}}" alt="MyPassion" class="alignleft" /></a>
-                                    <p>
-                                        <span>TOP 5</span>
-                                        <a href="single.html">Blandit Rutrum, Erat et Sagittis.</a>
-                                    </p>
-                                    <span class="rating"><span style="width:80%;"></span></span>
-                                </li>
-                                <li class="m-r-no">
-                                    <a href="single.html"><img src="{{url('public/img/trash/20.png')}}" alt="MyPassion" class="alignleft" /></a>
-                                    <p>
-                                        <span>TOP 6</span>
-                                        <a href="single.html">Blandit Rutrum, Erat et Sagittis.</a>
-                                    </p>
-                                    <span class="rating"><span style="width:60%;"></span></span>
-                                </li>
-                                <li>
-                                    <a href="single.html"><img src="{{url('public/img/trash/21.png')}}" alt="MyPassion" class="alignleft" /></a>
-                                    <p>
-                                        <span>TOP 7</span>
-                                        <a href="single.html">Blandit Rutrum, Erat et Sagittis.</a>
-                                    </p>
-                                    <span class="rating"><span style="width:80%;"></span></span>
-                                </li>
-                                <li class="m-r-no">
-                                    <a href="single.html"><img src="{{url('public/img/trash/22.png')}}" alt="MyPassion" class="alignleft" /></a>
-                                    <p>
-                                        <span>TOP 8</span>
-                                        <a href="single.html">Blandit Rutrum, Erat et Sagittis.</a>
-                                    </p>
-                                    <span class="rating"><span style="width:100%;"></span></span>
-                                </li>
-                                 <li>
-                                    <a href="single.html"><img src="{{url('public/img/trash/21.png')}}" alt="MyPassion" class="alignleft" /></a>
-                                    <p>
-                                        <span>TOP 9</span>
-                                        <a href="single.html">Blandit Rutrum, Erat et Sagittis.</a>
-                                    </p>
-                                    <span class="rating"><span style="width:80%;"></span></span>
-                                </li>
-                                <li class="m-r-no">
-                                    <a href="single.html"><img src="{{url('public/img/trash/22.png')}}" alt="MyPassion" class="alignleft" /></a>
-                                    <p>
-                                        <span>TOP 10</span>
-                                        <a href="single.html">Blandit Rutrum, Erat et Sagittis.</a>
-                                    </p>
-                                    <span class="rating"><span style="width:100%;"></span></span>
-                                </li> -->
+                                @endforeach                              
                             </ul>
                         </div>              
                     </div>

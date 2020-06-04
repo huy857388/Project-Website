@@ -10,7 +10,7 @@
             @if($ds_news['current_page'] != $i)
             <a href="{{ $ds_news['path'].'?page='.$i }}">{!! $i !!}</a>
             @else 
-            <a class="{!! ($ds_news['current_page'] == $i)? 'active':'' !!}" href="#">{!! $i !!}</a>
+            <a class="{!! ($ds_news['current_page'] == $i)? 'active':'' !!}" href="javascript:void(0)">{!! $i !!}</a>
             @endif
         </li>
         @endfor

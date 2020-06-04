@@ -104,6 +104,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="{{URL::to('/them_baiviet')}}">Thêm bài viết</a></li>
                         <li><a href="{{URL::to('/danhsach_baiviet')}}">Danh sách bài viết</a></li>
                     </ul>
+                </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
@@ -113,6 +114,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="{{URL::to('/theloai/danhsach')}}">Danh sách thể loại</a></li>
                         <li><a href="{{URL::to('/theloai/them')}}">Thêm thể loại</a></li>
                     </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Quản Lý tài khoản</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{URL::to('/taikhoan/danhsach')}}">Danh sách tài khoản</a></li>
+                        <!-- <li><a href="{{URL::to('/theloai/them')}}">Thêm thể loại</a></li> -->
+                    </ul>
+                </li>
         </div>
         <!-- sidebar menu end-->
     </div>

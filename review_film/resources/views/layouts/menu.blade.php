@@ -15,7 +15,7 @@
             </ul>
         </li>
         <!-- <<<<<<< HEAD -->
-        <li><a href="{{ route('toprated')}}">TOP RATED MOVIES</a></li>
+        <li id="stt-toprated"><a href="{{ route('toprated')}}">TOP RATED MOVIES</a></li>
         <li id="stt-topcomment"><a href="{{ route('topComment')}}">TOP 10 COMMENT MOVIES</a></li>
 <!-- ======= -->        
 <!-- >>>>>>> 25bc3299c84c5fb3693d5f63be7bf11d9c82c972 -->
@@ -35,12 +35,28 @@
         </li>
  -->
         @if(Auth::check())
-        Chào bạn, {{ Auth::user()->name }}
+        <li id="stt-user">
+            <a href="#"i><i style="color:red;">Hi, {{ Auth::user()->name }}</i></a>
+            <ul>
+                <li id="stt-follow">   
+                    <a href="{{route('follow')}}">Tin theo dõi</a>  
+                   
+                </li>
+                <li>
+                     <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                    Đăng xuất
+                    </a>
+                </li>
+            </ul>
+        </li>
+       <!--  Chào bạn, {{ Auth::user()->name }}
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
                      document.getElementById('logout-form').submit();">
             Đăng xuất
-        </a>
+        </a> -->
        
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}

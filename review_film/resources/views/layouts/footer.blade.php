@@ -14,7 +14,7 @@
                 success:function(s)
                 {
                     //alert('ok');
-                    console.log(s);
+                    // console.log(s);
                     var output = '';
                     output += '<div>';
                     $.each(s.items, function(i, result_item){
@@ -41,10 +41,16 @@
                 break; 
             case "NEW":
                 $("#stt-new").addClass("current");
-                break;                             
-            case "6":
-                console.log("Ok");
+                break;   
+            case "5":
+                $("#stt-toprated").addClass("current");
+                break;                          
+            case "6":                
                 $("#stt-topcomment").addClass("current");
+                break;
+            case "user":
+                $("#stt-user").addClass("current");                
+                $("#stt-follow").addClass("current");
                 break;
             default:
                 $("#stt-theloai").addClass("current");
@@ -157,16 +163,17 @@
                                     <!-- Chỗ này chạy bình luận của tin nào vậy? -->
                                     <!-- T để tạm tất cả  các thông tin sơ bình luận đó -->
                                     <!-- chạy random vài bình luận ,t chỉnh rồi đó -->
+                                    @foreach($ds_cmt as $cmt)
                                     <li>
-                                        <a href="#" class="title"><strong>tài khoản bình luận: </strong>123456</a>
+
+                                       <!--  <a href="#" class="title"> -->
+                                            <strong>{{$cmt['name']}}</strong> 
+                                            <i>bình luận:</i>
+                                            
+                                            <u>{{$cmt['NoiDung']}}</u>
+                                        <!-- </a> -->
                                     </li>
-                                    <li>
-                                        <a href="#" class="title"><strong>tài khoản bình luận: </strong> 78978978</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="title"><strong>tài khoản bình luận: </strong> 978978789</a>
-                                    </li>
-                                   
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
