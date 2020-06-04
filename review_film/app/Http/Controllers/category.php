@@ -25,7 +25,7 @@ class category extends Controller
     }
 
     public function them_theloai(){
-        $this->authLogin();
+       $this->authLogin();
 
     	return view('admin.them_theloai');
     }
@@ -81,7 +81,7 @@ class category extends Controller
 
     public function xoa_theloai($id)
     {
-        $this->authLogin();
+       $this->authLogin();
         $theloai = theloai::find($id);
         $theloai->delete();
         return redirect('theloai/danhsach')->with('thong bao','Đã xóa thành công');

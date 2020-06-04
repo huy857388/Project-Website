@@ -8,7 +8,7 @@
         <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      Danh sách bài viết
+      Danh sách comment
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-4">
@@ -26,45 +26,29 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th>ID bài viết</th>
-            <th>ID thể loại</th>
-            <th>Tiểu Đề</th>
+            <th>ID</th>
+            <th>ID User</th>
+            <th>ID Bài Viết</th>
             <th>Nội Dung</th>
-            <th>Tóm Tắt Nội Dung</th>
-            <th>HOT</th>
-            <th>NEW</th>
-            <th>Điểm Đánh Giá</th>
             <th>Ngày Tạo</th>
             <th>Ngày Cập Nhật</th>
             <th style="width:30px;"></th>
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($ds_baiviet as $key => $baiviet): ?>
+          <?php foreach ($ds_comment as $key => $comment): ?>
             
           <tr>
-            <td>{{$baiviet->id}}</td>
-            <td>{{$baiviet->idTheLoai}}</td>
-            <td>{{$baiviet->title}}</td>
-            <td>{{$baiviet->content}}</td>
-            <td>{{$baiviet->short_content}}</td>
-                      <?php 
-                      $kt_hot=$baiviet->hot==0?0:'checked'; 
-                      $kt_new=$baiviet->new==0?0:'checked';
-                      ?>
+            <td>{{$comment->id}}</td>
+            <td>{{$comment->idUser}}</td>
+            <td>{{$comment->idBaiRv}}</td>
+            <td>{{$comment->NoiDung}}</td>
+                        <td>{{$comment->created_at}}</td>
+                        <td>{{$comment->updated_at}}</td>
             <td>
-                <input type="checkbox" <?php echo $kt_hot?> >
-            </td> 
-                        <td>
-                <input type="checkbox" <?php echo $kt_new?> >
-            </td>
-            <td>{{$baiviet->diem_danh_gia}}</td>
-            <td>{{$baiviet->created_at}}</td>
-            <td>{{$baiviet->updated_at}}</td>
-            <td>
-              <a href="{{URL::to('/edit_baiviet/'.$baiviet->id)}}" class="active styling-edit" ui-toggle-class="">
+              <a href="" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
-                <a href="{{URL::to('/xoa_baiviet/'.$baiviet->id)}}" class="active styling-edit" ui-toggle-class="">
+                <a href="{{URL::to('/xoa_comment/'.$comment->id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i></a>
             </td>
           </tr>

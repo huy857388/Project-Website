@@ -7,18 +7,13 @@
                             Sửa bài viết
                         </header>
                         <div class="panel-body">
-                                <?php
-    $message = Session::get('message');
-    if ($message) {
-        echo '<span class="text-alert">',$message.'</span>';
-        Session::put('message',NULL);
-    }?>
-    <?php foreach ($tbl_baiviet as $key => $baiviet): ?>
+
         
 
                             <div class="position-center">
+                                    <?php foreach ($tbl_baiviet as $key => $baiviet): ?>
                                 <form role="form" action="{{URL::to('/update_baiviet/'.$baiviet->id)}}" method="POST" enctype="multipart/form-data">
-                                    {{csrf_field()}} 
+                                    {{ csrf_field() }} 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tiểu Đề</label>
                                     <input type="text" value="{{$baiviet->title}}" name="titles_news" class="form-control" id="exampleInputEmail1" placeholder="tieude">
@@ -45,8 +40,6 @@
                     <?php 
                       $kt_hot=$baiviet->hot==0?0:'checked'; 
                       $kt_new=$baiviet->new==0?0:'checked';
-                      $kt_decu=$baiviet->deCu==0?0:'checked';
-                      echo $baiviet->img;
                       ?>
                                 <div class="checkbox">
                                     <label>
@@ -58,16 +51,14 @@
                                         <input type="checkbox" name="new_news" value="1" <?php echo $kt_new?>> NEW
                                     </label>
                                 </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="deCu_news" value="1" <?php echo $kt_decu?>> DE CU
-                                    </label>
+                            <div class="form-group">
+                                    <label for="exampleInputEmail1">Điểm Đánh Giá</label>
+                                    <input type="text" value="{{$baiviet->diem_danh_gia}}" name="diem_danh_gia_news" class="form-control" id="exampleInputEmail1" placeholder="tieude">
                                 </div>
-                                <img src="../public/news_img/conan.jpg" alt="">
                                 <div class="form-group">
                                     <label for="exampleInputFile">Ảnh</label>
                                     <input type="file" id="exampleInputFile" name="img_news" class="form-control">
-                                    <img scr="../public/news_img/conan.jpg" >
+                                    <img scr="{{URL::to('public/news_img/'.$baiviet->img)}}" height="100" width="100">
                                 </div>
                                 <button type="submit" class="btn btn-info" name="update_baiviet">Sửa</button>
                             </form>
