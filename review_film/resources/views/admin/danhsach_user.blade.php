@@ -10,8 +10,9 @@
     <section class="wrapper">
         <div class="table-agile-info">
  <div class="panel panel-default">
+
     <div class="panel-heading">
-     <B>Danh Sách Thể Loại</B>
+     <B>Danh Sách User</B>
     </div>
     <div>
       <table class="table" ui-jq="footable" ui-options='{
@@ -27,22 +28,22 @@
         <thead>
           <tr>
             <th data-breakpoints="xs">ID</th>
-            <th data-breakpoints="xs">Tên Thể Loại</th>
-            <th data-breakpoints="xs">Tên Không Dấu</th>
+            <th data-breakpoints="xs">Tên User</th>
+            <th data-breakpoints="xs">Email</th>
             <th data-breakpoints="xs">Xóa</th>
             <th data-breakpoints="xs">Sửa</th>
           </tr>
         </thead>
         <tbody>
-          @foreach($theloai as $tl)
-          <tr data-expanded="true">
-            <td>{{$tl->id}}</td>
-            <td>{{$tl->Ten}}</td>
-            <td>{{$tl->TenKhongDau}}</td>
-            <td><a href="xoa/{{$tl->id}}">Xóa</a></td>
-            <td><a href="sua/{{$tl->id}}">Sửa</a></td>
-          </tr>
-          @endforeach
+         @foreach($users as $u)
+         <tr data-expanded="true">
+           <td>{{$u->id}}</td>
+           <td>{{$u->name}}</td>
+           <td>{{$u->email}}</td>
+           <td><a href="xoa/{{$u->id}}">Xóa</a></td>
+           <td><a href="sua/{{$u->id}}">Sửa</a></td>
+         </tr>
+         @endforeach
         </tbody>
       </table>
     </div>

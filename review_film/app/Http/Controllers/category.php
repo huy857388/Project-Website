@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 use App\theloai;
+use App\News;
+use DB;
+use Session;
 
+session_start();
 class category extends Controller
 {
     public function authLogin(){
@@ -18,20 +23,20 @@ class category extends Controller
     }
  
      public function danhsach_theloai(){
-        $this->authLogin();
+        //$this->authLogin();
      	$theloai = theloai::all();
      	return view('admin.danhsach_theloai',['theloai' => $theloai]); 
     	
     }
 
     public function them_theloai(){
-       $this->authLogin();
+       //$this->authLogin();
 
     	return view('admin.them_theloai');
     }
     public function postthem_theloai(Request $request)
     {
-        $this->authLogin();
+        //$this->authLogin();
     	
     	
     	$this->validate($request,
@@ -53,7 +58,7 @@ class category extends Controller
 
     public function sua_theloai($id)
     {
-        $this->authLogin();
+       // $this->authLogin();
         $theloai = theloai::find($id);
         return view('admin.sua_theloai',['theloai'=>$theloai]);
 
@@ -61,7 +66,7 @@ class category extends Controller
 
     public function postsua_theloai(Request $request, $id)
     {
-        $this->authLogin();
+        //$this->authLogin();
         $theloai = theloai::find($id);
         $this->validate($request,
             [
@@ -81,9 +86,14 @@ class category extends Controller
 
     public function xoa_theloai($id)
     {
-       $this->authLogin();
+      // $this->authLogin();
+      $count = News::where('idTheloai','=',$id)->count();
+      if($count > 0)
+        return redirect('theloai/danhsach')->with('thong bao','Không thể xóa, đã tồn tại bài viết');
+      else{
         $theloai = theloai::find($id);
         $theloai->delete();
         return redirect('theloai/danhsach')->with('thong bao','Đã xóa thành công');
+        }
     }
 }

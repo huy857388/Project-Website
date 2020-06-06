@@ -108,6 +108,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <ul class="sub">
                         <li><a href="{{URL::to('/danhsach_comment')}}">Danh sách comment</a></li>
                     </ul>
+                    <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Quản Lý User</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{URL::to('/user/danhsach')}}">Danh sách user</a></li>
+                        <li><a href="{{URL::to('/user/them')}}">Thêm user</a></li>
+                    </ul>
         </div>
         <!-- sidebar menu end-->
     </div>

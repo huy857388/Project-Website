@@ -74,6 +74,22 @@ Route::group(['prefix' => 'theloai'],function(){
 	Route::post('sua/{id}','category@postsua_theloai');
 
 	Route::get('xoa/{id}','category@xoa_theloai');
+});
+
+
+//================KHANG - User=====================
+Route::group(['prefix' => 'user'],function(){
+	Route::get('danhsach','usercontroller@danhsach_user');
+
+	Route::get('them','usercontroller@them_user');
+
+	Route::post('them','usercontroller@postthem_user');
+
+	Route::get('sua/{id}','usercontroller@sua_user');
+
+	Route::post('sua/{id}','usercontroller@postsua_user');
+
+	Route::get('xoa/{id}','usercontroller@xoa_user');
 
 
 
