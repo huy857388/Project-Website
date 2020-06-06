@@ -8,10 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <title>Great Movies</title>
+    <link rel="shortcut icon" href="{{ url('public/img/sms-4.ico')}}" />
     <!-- Styles -->
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -29,7 +30,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Review Film
                     </a>
                 </div>
 
@@ -43,8 +44,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">Đăng nhập</a></li>
+                            <li><a href="{{ route('register') }}">Đăng ký</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

@@ -33,7 +33,11 @@
             <th>Tóm Tắt Nội Dung</th>
             <th>HOT</th>
             <th>NEW</th>
+<<<<<<< HEAD
+            <!-- <th>ĐỀ CỬ</th> -->
+=======
             <th>Điểm Đánh Giá</th>
+>>>>>>> 61c72004b6e62a8f590a01257f6f86ad9d680fc8
             <th>Ngày Tạo</th>
             <th>Ngày Cập Nhật</th>
             <th style="width:30px;"></th>
@@ -58,9 +62,16 @@
                         <td>
                 <input type="checkbox" <?php echo $kt_new?> >
             </td>
+
+            <!-- <td>
+                <input type="checkbox" <?php //echo $kt_decu?>>
+            </td> -->
+                        <td></td>
+                        <td></td>
             <td>{{$baiviet->diem_danh_gia}}</td>
             <td>{{$baiviet->created_at}}</td>
             <td>{{$baiviet->updated_at}}</td>
+
             <td>
               <a href="{{URL::to('/edit_baiviet/'.$baiviet->id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>

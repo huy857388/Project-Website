@@ -40,6 +40,9 @@
                     <?php 
                       $kt_hot=$baiviet->hot==0?0:'checked'; 
                       $kt_new=$baiviet->new==0?0:'checked';
+                      // $kt_decu=$baiviet->deCu==0?0:'checked';
+                      echo $baiviet->img;
+
                       ?>
                                 <div class="checkbox">
                                     <label>
@@ -51,9 +54,16 @@
                                         <input type="checkbox" name="new_news" value="1" <?php echo $kt_new?>> NEW
                                     </label>
                                 </div>
+
+                                <div class="checkbox">
+                                    <label>
+                                        <!-- <input type="checkbox" name="deCu_news" value="1" <?php //echo $kt_decu?>> DE CU -->
+                                    </label>
+
                             <div class="form-group">
                                     <label for="exampleInputEmail1">Điểm Đánh Giá</label>
                                     <input type="text" value="{{$baiviet->diem_danh_gia}}" name="diem_danh_gia_news" class="form-control" id="exampleInputEmail1" placeholder="tieude">
+
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">Ảnh</label>

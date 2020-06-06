@@ -3,14 +3,14 @@
 @section('content')
         
         <!-- Content -->
-        <section id="content">
+        <section id="user">
             <div class="container">
             	<!-- Main Content -->
                 <!-- Phần này phải đợi danh mục -->
                 <div class="breadcrumbs column">                    
                 	<p>
                         <a href="{{url('/')}}">Home. </a>
-                       \\ Tìm kiếm với từ khoá: <span class="highlight"><strong>{{$tu_khoa}}</strong></span>
+                       \\ những bộ phim đang theo dõi
                     </p>
 
                 </div>
@@ -20,6 +20,9 @@
                 	<div class="column-two-third">                    	
                         <div class="outerwide">
                         	<ul class="block2">  
+                        		@if(empty($ds_news))
+                        			<h5>Bạn chưa có theo dõi news nào cả! Hãy chọn news theo dõi đi nào!</h5>
+                        		@else
                                 @foreach($ds_news as $news)
                                 <li>
                                     <a href="{{ route('showInfo',[$news['TenKhongDau'],$news['slug']]) }}">
@@ -30,11 +33,9 @@
                                         <span>Thể loại: {{$news['Ten']}}</span>
                                         <a href="{{route('showInfo',[$news['TenKhongDau'],$news['slug']])}}">{{$news['title']}}</a>
                                     </p>
-                                    <!-- Phân này nhỏ wa' hiển thị bị lệch style -->
-                                    <!-- <p>Tóm tắt nội dung</p> -->
-                                    <span class="rating"><span style="width:80%;"></span></span>
+                                    <p>Đang theo dõi</p>                                    
                                 </li>
-                                @endforeach                                                              
+                                @endforeach                                                           @endif   
                             </ul>
                         </div>
                     </div>

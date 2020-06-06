@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests;
 use DB;
 use Session;
-session_start();
+// session_start();
 
 class AdminController extends Controller
 {

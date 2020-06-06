@@ -17,6 +17,7 @@
 // <<<<<<< HEAD
 // =======
 route::get('/danh-muc/{id}','HomeController@danhmuc')->name('danhmuc'); // Huy
+route::get('/top-rated','HomeController@toprated')->name('toprated'); //Huy
 // Mục tin tức Ajax và API => Huy
 
 // >>>>>>> 7e7198d5fd9f50dade39ae6705ed8a7ea6eb5386
@@ -30,11 +31,26 @@ route::post('/comment','NewsController@postComment')->name('comment')->middlewar
 route::get('/search','NewsController@fullTextSearch')->name('search'); //Phát
 route::get('/delete-cmt/{id_cmt}','NewsController@deleteComment')->name('deleteCmt'); //Phát
 route::get('/delete-sub-cmt/{id_sub_cmt}','NewsController@deleteSubComment')->name('deleteSubCmt'); //Phát
+route::get('/user/follow','NewsController@getFollow')->name('follow'); //Phát
+route::get('/follow/{id_news}','NewsController@followNews'); //Phát
+route::get('/unfollow/{id_news}','NewsController@unfollowNews'); //Phát
 Auth::routes(); //Phát
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect'); //Phát
 Route::get('/callback/{provider}', 'SocialController@callback'); //Phát
-route::get('/top-rated','HomeController@toprated')->name('toprated');
 
+Route::group(['prefix' => 'taikhoan'],function(){
+	Route::get('danhsach','UserController@danhsach_taikhoan');
+
+	// Route::get('them','UserController@them');
+
+	// Route::post('them','UserController@postthem');
+
+	// Route::get('sua/{id}','UserController@sua_theloai');
+
+	// Route::post('sua/{id}','UserController@postsua_theloai');
+
+	// Route::get('xoa/{id}','UserController@xoa_theloai');
+}); //Phát
 
 // <<<<<<< HEAD
 
